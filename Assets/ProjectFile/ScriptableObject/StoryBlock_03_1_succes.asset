@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentElements:
   - type: 0
-    text: 3asdad
+    text: "\uC131\uACF5!!\n"
     image: {fileID: 0}
   choices:
   - text: "\uB2E4\uC74C!"
-    nextIndex: -1
+    nextBlock: {fileID: 0}
     nextChapter: 0
     requiredItemId: 
     itemReward: 
@@ -27,10 +27,10 @@ MonoBehaviour:
     moralityChange: 0
     lifePointReward: 0
     spiritPointReward: 0
-    requiresDiceRoll: 1
+    requiresDiceRoll: 0
     successThreshold: 0
-    successIndex: -1
-    failIndex: -1
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
     requiredStatMin: 0
     requiredStatName: 
     passStatIndex: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   traitGained: 
   isBattleStart: 0
   monsterToSpawn: {fileID: 0}
-  returnIndexAfterBattle: 0
+  returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
   nextIndex: -1
   nextChapter: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
     image: {fileID: 0}
   choices:
   - text: "\uB2E4\uC74C?"
-    nextIndex: 2
+    nextBlock: {fileID: 11400000, guid: 4e01601b9920a0f4cb0b85d2d95a484b, type: 2}
     nextChapter: 0
     requiredItemId: 
     itemReward: 
@@ -27,10 +27,10 @@ MonoBehaviour:
     moralityChange: 0
     lifePointReward: 0
     spiritPointReward: 0
-    requiresDiceRoll: 1
+    requiresDiceRoll: 0
     successThreshold: 0
-    successIndex: -1
-    failIndex: -1
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
     requiredStatMin: 0
     requiredStatName: 
     passStatIndex: 0
@@ -47,12 +47,12 @@ MonoBehaviour:
     indexIfLowMorality: 0
     indexIfMidMorality: 0
     indexIfHighMorality: 0
-  goldGained: 0
+  goldGained: 20
   itemsGained: []
   traitGained: 
   isBattleStart: 0
   monsterToSpawn: {fileID: 0}
-  returnIndexAfterBattle: 0
+  returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
   nextIndex: 2
   nextChapter: 0

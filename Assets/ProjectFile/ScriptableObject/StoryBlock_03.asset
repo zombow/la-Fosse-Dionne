@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentElements:
   - type: 0
-    text: 3asdad
+    text: "\uC8FC\uC0AC\uC704\uB97C \uAD74\uB824\uB77C\n"
     image: {fileID: 0}
   choices:
-  - text: "\uB2E4\uC74C!"
-    nextIndex: -1
+  - text: "\uC8FC\uC0AC\uC704\uB97C \uB358\uC9C4\uB2E4"
+    nextBlock: {fileID: 0}
     nextChapter: 0
     requiredItemId: 
     itemReward: 
@@ -29,13 +29,13 @@ MonoBehaviour:
     spiritPointReward: 0
     requiresDiceRoll: 1
     successThreshold: 0
-    successIndex: -1
-    failIndex: -1
+    successBlock: {fileID: 11400000, guid: 61b3cb7cd5227b74397c66bff447b84a, type: 2}
+    failBlock: {fileID: 11400000, guid: ec06308fad65bc543a347a13e2c97776, type: 2}
     requiredStatMin: 0
     requiredStatName: 
     passStatIndex: 0
     failStatIndex: 0
-    requiresProbabilityCheck: 0
+    requiresProbabilityCheck: 1
     baseChance: 0
     strengthMultiplier: 0
     agilityMultiplier: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   traitGained: 
   isBattleStart: 0
   monsterToSpawn: {fileID: 0}
-  returnIndexAfterBattle: 0
+  returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
   nextIndex: -1
   nextChapter: 0
