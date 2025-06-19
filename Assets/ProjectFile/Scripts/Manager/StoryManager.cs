@@ -3,30 +3,27 @@ using System.Collections.Generic;
 
 public class StoryManager : MonoBehaviour
 {
-    public List<StoryBlock> storyBlocks;
+    public StoryBlock StartstoryBlock;
     public StoryUI storyUI;
     public CombatManager combatManager;
 
-    private int currentIndex = 0;
+    private StoryBlock currentblock = null;
     private PlayerStats player;
 
     void Start()
     {
         player = FindObjectOfType<PlayerStats>();
-        ShowStoryBlock(currentIndex);
+        currentblock = StartstoryBlock;
+        ShowStoryBlock(currentblock);
     }
 
-    public void ShowStoryBlock(int index)
+    public void ShowStoryBlock(StoryBlock block)
     {
-        if (index < 0 || index >= storyBlocks.Count) return;
-        currentIndex = index;
-        var block = storyBlocks[index];
-
         if (block.isBattleStart && block.monsterToSpawn != null)
         {
             combatManager.StartCombat(player, block.monsterToSpawn, () =>
             {
-                ShowStoryBlock(block.returnIndexAfterBattle);
+                ShowStoryBlock(block.returnBlockAfterBattle);
             });
         }
         else
@@ -41,13 +38,13 @@ public class StoryManager : MonoBehaviour
         {
             float chance = choice.CalculateSuccessChance(player);
             if (Random.Range(0f, 100f) <= chance)
-                ShowStoryBlock(choice.successIndex);
+                ShowStoryBlock(choice.successBlock);
             else
-                ShowStoryBlock(choice.failIndex);
+                ShowStoryBlock(choice.failBlock);
         }
         else
         {
-            ShowStoryBlock(choice.nextIndex);
+            ShowStoryBlock(choice.nextBlock);
         }
     }
 }

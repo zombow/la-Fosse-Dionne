@@ -14,7 +14,7 @@ public class StoryBlock : ScriptableObject
     public bool isBattleStart;
     public Monster monsterToSpawn;
 
-    public int returnIndexAfterBattle;
+    public StoryBlock returnBlockAfterBattle;
     public int moralityChange;
     public int nextIndex;
     public int nextChapter;

@@ -1,4 +1,5 @@
 // StoryUI.cs
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -31,9 +32,19 @@ public class StoryUI : MonoBehaviour
 
                 case StoryElementType.Image:
                     var imageGO = Instantiate(imagePrefab, contentTransform);
-                    var image = imageGO.GetComponent<Image>();
+                    var image = imageGO.GetComponentInChildren<Image>();
                     image.sprite = element.image;
                     image.preserveAspect = true;
+
+                    // 높이 제한 없이 비율대로 늘어남
+                    var layout = imageGO.GetComponent<LayoutElement>();
+                    if (layout != null && element.image != null)
+                    {
+                        float aspect = (float)element.image.rect.width / element.image.rect.height;
+                        layout.preferredHeight = contentTransform.rect.width / aspect;
+                        
+                    }
+
                     break;
             }
         }
@@ -52,9 +63,7 @@ public class StoryUI : MonoBehaviour
             GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceContainer);
             buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = choice.text;
 
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => {
-                manager.Choose(choice);
-            });
+            buttonObj.GetComponent<Button>().onClick.AddListener(() => { manager.Choose(choice); });
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class StoryChoice
 {
     public string text;
-    public int nextIndex;
+    public StoryBlock nextBlock;
     public int nextChapter;
 
     public string requiredItemId;
@@ -17,8 +17,8 @@ public class StoryChoice
 
     public bool requiresDiceRoll;
     public int successThreshold;
-    public int successIndex;
-    public int failIndex;
+    public StoryBlock successBlock;
+    public StoryBlock failBlock;
 
     public int requiredStatMin;
     public string requiredStatName;
@@ -42,6 +42,6 @@ public class StoryChoice
 
     public float CalculateSuccessChance(PlayerStats player)
     {
-        return baseChance + player.strength * strengthMultiplier;
+        return baseChance + player.strength * strengthMultiplier; //TODO: 힘배수만 적용중 수정필요
     }
 }

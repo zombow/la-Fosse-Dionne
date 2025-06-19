@@ -1,0 +1,5 @@
+Assets/ProjectFile/ScriptableObject/StoryBlock_01.asset|259.52|45.6616
+Assets/ProjectFile/ScriptableObject/StoryBlock_02.asset|260.667|171.0963
+Assets/ProjectFile/ScriptableObject/StoryBlock_03.asset|261.301|291.5341
+Assets/ProjectFile/ScriptableObject/StoryBlock_03_1 _fail.asset|443|419
+Assets/ProjectFile/ScriptableObject/StoryBlock_03_1_succes.asset|126|430
