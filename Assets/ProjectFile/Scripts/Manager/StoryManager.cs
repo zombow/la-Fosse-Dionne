@@ -3,20 +3,22 @@ using System.Collections.Generic;
 
 public class StoryManager : MonoBehaviour
 {
-    public StoryBlock StartstoryBlock;
-    public StoryUI storyUI;
+
+    public StoryScene Storyscene;
     public CombatManager combatManager;
 
     private StoryBlock currentblock = null;
     private PlayerStats player;
 
-    void Start()
+    public void InitAndStart(StoryBlock startBlock, StoryScene storyScene)
     {
         player = FindObjectOfType<PlayerStats>();
-        currentblock = StartstoryBlock;
+        currentblock = startBlock;
+        Storyscene = storyScene;
+        
         ShowStoryBlock(currentblock);
     }
-
+    
     public void ShowStoryBlock(StoryBlock block)
     {
         if (block.isBattleStart && block.monsterToSpawn != null)
@@ -28,7 +30,8 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            storyUI.Display(block, this);
+            Storyscene.Display(block, this);
+
         }
     }
 
