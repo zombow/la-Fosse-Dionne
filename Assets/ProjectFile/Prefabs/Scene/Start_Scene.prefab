@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 8689140552150668927}
   - component: {fileID: 1167102383406111101}
   m_Layer: 0
-  m_Name: StartScene
+  m_Name: Start_Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

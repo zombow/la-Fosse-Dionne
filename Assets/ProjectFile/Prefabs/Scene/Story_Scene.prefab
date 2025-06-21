@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 2857757298316012984}
   - component: {fileID: 3997314524609305035}
   m_Layer: 0
-  m_Name: StoryScene
+  m_Name: Story_Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
