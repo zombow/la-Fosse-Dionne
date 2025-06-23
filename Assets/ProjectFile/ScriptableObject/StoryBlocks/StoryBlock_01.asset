@@ -54,7 +54,7 @@ MonoBehaviour:
     spiritPointReward: 0
     requiresDiceRoll: 0
     successThreshold: 0
-    successBlock: {fileID: 0}
+    successBlock: {fileID: 11400000, guid: 14b2a0b089fb3cb46a961f776916a1e9, type: 2}
     failBlock: {fileID: 0}
     requiredStatMin: 0
     requiredStatName: 

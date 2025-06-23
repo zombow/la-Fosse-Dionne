@@ -15,6 +15,11 @@ public class StartScene : MonoBehaviour
     private void OnStart()
     {
         var uiManager = FindObjectOfType<SceneManager>();
-        uiManager.ChangeScene();
+        if (!uiManager)
+        {
+            Debug.LogError("Manager Not Found!");
+            return;
+        }
+        uiManager.ChangeScene(SceneType.CharacterCreate);
     }
 }

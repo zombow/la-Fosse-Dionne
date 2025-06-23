@@ -2,21 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SceneType
+{
+    Start,
+    CharacterCreate,
+    Story
+}
+
+[System.Serializable]
+public struct ScenePrefab
+{
+    public SceneType sceneType;
+    public GameObject prefab;
+}
+
 public class SceneManager : MonoBehaviour
 {
-    public StoryManager StoryManager;
-
+    public StoryManager storyManager;
     public Transform panelRoot; // UI 패널을 붙일 부모 (예: Canvas 하위)
     private GameObject currentPanel;
-    public StartScene startScenePrefab;
-    public CharacterCreateScene characterCreateScenePrefab;
-    public StoryScene storyScenePrefab;
+
+    public List<ScenePrefab> scenePrefabs;
 
     public void Start()
     {
-        if (startScenePrefab != null)
+        foreach (var scene in scenePrefabs)
         {
-            ShowPanel(startScenePrefab.gameObject);
+            if (scene.sceneType == SceneType.Start)
+            {
+                ShowPanel(scene.prefab);
+            }
         }
     }
 
@@ -28,8 +43,14 @@ public class SceneManager : MonoBehaviour
         currentPanel = Instantiate(panelPrefab, panelRoot);
     }
 
-    public void ChangeScene()
+    public void ChangeScene(SceneType sceneType)
     {
-        ShowPanel(storyScenePrefab.gameObject);
+        foreach (var scene in scenePrefabs)
+        {
+            if (scene.sceneType == sceneType)
+            {
+                ShowPanel(scene.prefab);
+            }
+        }
     }
 }
