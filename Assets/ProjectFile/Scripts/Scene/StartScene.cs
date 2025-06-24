@@ -6,10 +6,23 @@ using UnityEngine.UI;
 public class StartScene : MonoBehaviour
 {
     public Button startButton;
+    public Button settingButton;
 
     private void Awake()
     {
         startButton.onClick.AddListener(OnStart);
+        settingButton.onClick.AddListener(OnSetting);
+    }
+
+    private void OnSetting()
+    {
+        var settingManager = FindObjectOfType<SettingManager>();
+        if (!settingManager)
+        {
+            Debug.LogError("Manager Not Found!");
+            return;
+        }
+        settingManager.PopupOnOff();
     }
 
     private void OnStart()
@@ -20,6 +33,7 @@ public class StartScene : MonoBehaviour
             Debug.LogError("Manager Not Found!");
             return;
         }
+
         uiManager.ChangeScene(SceneType.CharacterCreate);
     }
 }

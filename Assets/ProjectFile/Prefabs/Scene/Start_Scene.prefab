@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 7797544527274923999}
+  settingButton: {fileID: 161920084395268319}
 --- !u!1 &7432392023977162031
 GameObject:
   m_ObjectHideFlags: 0
