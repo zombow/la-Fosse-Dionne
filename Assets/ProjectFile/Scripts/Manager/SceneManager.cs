@@ -18,6 +18,7 @@ public struct ScenePrefab
 
 public class SceneManager : MonoBehaviour
 {
+    public Canvas baseCanvas;
     public Transform panelRoot; // UI 패널을 붙일 부모 (예: Canvas 하위)
     private GameObject currentPanel;
 
