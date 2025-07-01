@@ -6,15 +6,11 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public enum GenderType
-{
-    Female,
-    Male
-}
+
 
 public class GenderInfo
 {
-    public GenderType genderType; // 성별타입
+    public string genderType; // 성별타입
     public int looksIndex; // 외모 인덱스
 }
 
@@ -22,6 +18,7 @@ public class CharacterCreateScene : MonoBehaviour
 {
     public Button StartButton;
     private SceneManager sceneManager;
+    private PlayerStats player;
     private Transform pannelroot;
     public AlertPopup alertPopupPrefab;
     private AlertPopup alertPopupInstance;
@@ -31,12 +28,18 @@ public class CharacterCreateScene : MonoBehaviour
 
     [Header("Player Gender")] [SerializeField]
     private GenderInfo PlayerGender = new GenderInfo();
-    public GenderType basePlayerGender = GenderType.Male;
-    public int baseLooksIndex = 0; // 기본 외모 인덱스
 
+    public string basePlayerGender = "Male";
+    public int baseLooksIndex = 0; // 기본 외모 인덱스
 
     [Header("Player State")] [SerializeField]
     public int baseStatPoints, remainingPoints = 16; // 기본 능력치 포인트
+
+    [Header("Player Weapon")] [SerializeField]
+    public int baseWeaponIndex = 0; // 기본 무기 인덱스
+
+    private int weaponIndex = 0; // 현재 선택된 무기 인덱스
+    public TMP_Dropdown weaponDropdownBox;
 
 
     void Start()
@@ -49,22 +52,30 @@ public class CharacterCreateScene : MonoBehaviour
             Debug.LogError("Manager Not Found!");
         }
 
-        PlayerGender.genderType = basePlayerGender;// 기본 플레이어 성별 설정
+        PlayerGender.genderType = basePlayerGender; // 기본 플레이어 성별 설정
         PlayerGender.looksIndex = baseLooksIndex; // 기본 플레이어 외모 인덱스 설정
-        
+
+        weaponDropdownBox.onValueChanged.AddListener(SetWeaponIndex);
+
         pannelroot = sceneManager.baseCanvas.transform;
         alertPopupInstance = Instantiate(alertPopupPrefab, pannelroot);
         alertPopupInstance.gameObject.SetActive(false);
     }
 
-    public void SetPlayerGenderType(GenderType genderType)
+    public void SetPlayerGenderType(string genderType)
     {
         PlayerGender.genderType = genderType;
     }
-    
+
     public void SetPlayerGenderlooks(int looksIndex)
     {
         PlayerGender.looksIndex = looksIndex;
+    }
+
+    public void SetWeaponIndex(int index)
+    {
+        Debug.Log($"Selected Weapon Index: {index}");
+        weaponIndex = index;
     }
 
     private void OnStart()
@@ -87,7 +98,7 @@ public class CharacterCreateScene : MonoBehaviour
         }
         else
         {
-            // TODO:Player정보 초기화 하는동작
+           // player.PlayerInit(); // Playerstates 초기화 
             sceneManager.ChangeScene(SceneType.Story);
             return;
         }

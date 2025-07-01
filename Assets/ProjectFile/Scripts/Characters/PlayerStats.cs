@@ -2,6 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StateType
+{
+    Str,
+    Dex,
+    Int,
+    Lux
+}
+public class PlayerInfo
+{
+    GenderInfo genderInfo; // 성별 정보
+    int wepaonIndex; // 무기 인덱스
+}
+
 [System.Serializable]
 public class PlayerStats : MonoBehaviour
 {
@@ -105,5 +118,10 @@ public class PlayerStats : MonoBehaviour
                 total += item.stats[statName];
         }
         return total;
+    }
+
+    public void PlayerInit()
+    {
+        
     }
 }

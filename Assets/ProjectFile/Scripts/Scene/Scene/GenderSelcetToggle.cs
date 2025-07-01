@@ -19,7 +19,7 @@ public class GenderSelcetToggle : MonoBehaviour
     {
         if (isOn)
         {
-            characterCreateScene.SetPlayerGenderType(GenderType.Male);
+            characterCreateScene.SetPlayerGenderType("Male");
         }
     }
 
@@ -27,7 +27,7 @@ public class GenderSelcetToggle : MonoBehaviour
     {
         if (isOn)
         {
-            characterCreateScene.SetPlayerGenderType(GenderType.Female);
+            characterCreateScene.SetPlayerGenderType("Female");
         }
     }
     

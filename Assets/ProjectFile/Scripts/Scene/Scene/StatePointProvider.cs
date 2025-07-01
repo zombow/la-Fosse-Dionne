@@ -4,13 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum StateType
-{
-    Str,
-    Dex,
-    Int,
-    Lux
-}
 
 [System.Serializable]
 public class StateGroup
@@ -20,6 +13,7 @@ public class StateGroup
     public TextMeshProUGUI stateText;
     public Button plusButton;
     public int stateValue;
+    public Slider stateValueSlider;
 }
 
 public class StatePointProvider : MonoBehaviour
@@ -28,6 +22,8 @@ public class StatePointProvider : MonoBehaviour
     public TextMeshProUGUI statePointText;
     public int statePoint = 0;
 
+    public Button resetButton;
+    public Button randomButton;
     public List<StateGroup> States;
     public Dictionary<StateType, StateGroup> StatesDictionary = new Dictionary<StateType, StateGroup>();
 
@@ -37,44 +33,52 @@ public class StatePointProvider : MonoBehaviour
         foreach (var state in States)
         {
             StatesDictionary.Add(state.stateType, state);
-            state.minusButton.onClick.AddListener(() => StatePointReturn(state.stateType));
-            state.plusButton.onClick.AddListener(() => StatePointUse(state.stateType));
+            state.minusButton.onClick.AddListener(() => StatePointEdit(state.stateType, -1));
+            state.plusButton.onClick.AddListener(() => StatePointEdit(state.stateType, 1));
+            state.stateValueSlider.value = 0;
         }
+
+        resetButton.onClick.AddListener(ResetStatePoint);
+        randomButton.onClick.AddListener(RandomStatePoint);
 
         statePoint = characterCreateScene.remainingPoints;
     }
 
-    public void StatePointUse(StateType stateType)
+    public void StatePointEdit(StateType stateType, int pointvalue)
     {
-        if (statePoint > 0)
+        if (pointvalue > 0)
         {
-            statePoint--;
-            StatesDictionary[stateType].stateValue++;
-            StatesDictionary[stateType].stateText.text = StatesDictionary[stateType].stateValue.ToString();
+            if (statePoint > 0)
+            {
+                statePoint -= pointvalue;
+                StatesDictionary[stateType].stateValue += pointvalue;
+                StatesDictionary[stateType].stateText.text = StatesDictionary[stateType].stateValue.ToString();
+                StatesDictionary[stateType].stateValueSlider.value = StatesDictionary[stateType].stateValue;
+            }
+            else
+            {
+                Debug.LogWarning("No remaining state points to use.");
+            }
         }
         else
         {
-            Debug.LogWarning("No remaining state points to use.");
+            if (StatesDictionary[stateType].stateValue > 0)
+            {
+                statePoint += pointvalue;
+                StatesDictionary[stateType].stateValue -= pointvalue;
+                StatesDictionary[stateType].stateText.text = StatesDictionary[stateType].stateValue.ToString();
+                StatesDictionary[stateType].stateValueSlider.value = StatesDictionary[stateType].stateValue;
+            }
+            else
+            {
+                Debug.LogWarning("No points to return for this state.");
+            }
         }
 
+        characterCreateScene.remainingPoints = statePoint;
         UpdateStatePointText();
     }
 
-    public void StatePointReturn(StateType stateType)
-    {
-        if (StatesDictionary[stateType].stateValue > 0)
-        {
-            statePoint++;
-            StatesDictionary[stateType].stateValue--;
-            StatesDictionary[stateType].stateText.text = StatesDictionary[stateType].stateValue.ToString();
-        }
-        else
-        {
-            Debug.LogWarning("No points to return for this state.");
-        }
-
-        UpdateStatePointText();
-    }
 
     public void ResetStatePoint()
     {
@@ -83,8 +87,10 @@ public class StatePointProvider : MonoBehaviour
         {
             StatesDictionary[state.Key].stateValue = 0;
             StatesDictionary[state.Key].stateText.text = StatesDictionary[state.Key].stateValue.ToString();
+            StatesDictionary[state.Key].stateValueSlider.value = StatesDictionary[state.Key].stateValue;
         }
 
+        characterCreateScene.remainingPoints = statePoint;
         UpdateStatePointText();
     }
 
@@ -95,16 +101,15 @@ public class StatePointProvider : MonoBehaviour
         {
             int randomPoints = Random.Range(1, statePoint);
             StateType randomState = (StateType)Random.Range(0, System.Enum.GetValues(typeof(StateType)).Length);
-            StatesDictionary[randomState].stateValue += randomPoints;
-            StatesDictionary[randomState].stateText.text = StatesDictionary[randomState].stateValue.ToString();
-            statePoint -= randomPoints;
+
+            StatePointEdit(randomState, randomPoints);
         }
 
-        
+        UpdateStatePointText();
     }
 
     public void UpdateStatePointText()
     {
-        statePointText.text = $"능력치 분배 ({statePoint})";
+        statePointText.text = $"({statePoint})";
     }
 }
