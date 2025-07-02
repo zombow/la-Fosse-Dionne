@@ -72,6 +72,36 @@ MonoBehaviour:
     indexIfLowMorality: 0
     indexIfMidMorality: 0
     indexIfHighMorality: 0
+  - text: "\uD14C\uC2A4\uD2B8\uC6A9 2\uBC88\uC9F8"
+    nextBlock: {fileID: 11400000, guid: 14b2a0b089fb3cb46a961f776916a1e9, type: 2}
+    nextChapter: 0
+    requiredItemId: 
+    itemReward: 
+    traitReward: 
+    goldReward: 0
+    moralityChange: 0
+    lifePointReward: 0
+    spiritPointReward: 0
+    requiresDiceRoll: 0
+    successThreshold: 0
+    successBlock: {fileID: 11400000, guid: 14b2a0b089fb3cb46a961f776916a1e9, type: 2}
+    failBlock: {fileID: 0}
+    requiredStatMin: 0
+    requiredStatName: 
+    passStatIndex: 0
+    failStatIndex: 0
+    requiresProbabilityCheck: 0
+    baseChance: 0
+    strengthMultiplier: 0
+    agilityMultiplier: 0
+    intelligenceMultiplier: 0
+    luckMultiplier: 0
+    moralityLowThreshold: 0
+    moralityMidThreshold: 0
+    moralityHighThreshold: 0
+    indexIfLowMorality: 0
+    indexIfMidMorality: 0
+    indexIfHighMorality: 0
   goldGained: 10
   itemsGained: []
   traitGained: 

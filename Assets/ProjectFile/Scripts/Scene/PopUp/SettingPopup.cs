@@ -5,17 +5,37 @@ using UnityEngine.UI;
 
 public class SettingPopup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Button ExitButton;
+    [Header("Exit")]
+    public Button exitButton;
+    [Header("New Game")]
+    public Button newGameButton;
+    public NewGameAlertPopup newGameAlertPopup;
+    private NewGameAlertPopup newGameAlertPopupInstance;
+    [Header("ThanksTo")]
+    public Button thanksToButton;
+    public ThanksToPopup thanksToPopup;
+    private ThanksToPopup thanksToPopupInstance;
 
-
-    private void Awake()
+    private void Start()
     {
-        ExitButton.onClick.AddListener(OnExit);
-
+        exitButton.onClick.AddListener(OnExit);
+        newGameButton.onClick.AddListener(()=>SetPopup(newGameAlertPopupInstance.gameObject));
+        
+        newGameAlertPopupInstance = Instantiate(newGameAlertPopup, transform);
+        newGameAlertPopupInstance.gameObject.SetActive(false);
+        newGameAlertPopupInstance.newGameButton.onClick.AddListener(OnNewGame);
+        
+        thanksToButton.onClick.AddListener(()=>SetPopup(thanksToPopupInstance.gameObject));
+        thanksToPopupInstance = Instantiate(thanksToPopup, transform);
+        thanksToPopupInstance.gameObject.SetActive(false);
+        
     }
 
-    // Update is called once per frame
+    private void SetPopup(GameObject instance)
+    {
+        instance.SetActive(!instance.activeSelf);
+    }
+
     void OnExit()
     {
         var settingManager = FindObjectOfType<SettingManager>();
@@ -24,6 +44,20 @@ public class SettingPopup : MonoBehaviour
             Debug.LogError("Manager Not Found!");
             return;
         }
+
         settingManager.PopupOnOff();
+    }
+
+    private void OnNewGame()
+    {
+        var sceneManager = FindObjectOfType<SceneManager>();
+        if (!sceneManager)
+        {
+            Debug.LogError("SceneManager Not Found!");
+            return;
+        }
+        SetPopup(newGameAlertPopupInstance.gameObject);
+        sceneManager.ChangeScene(SceneType.Start);
+        OnExit();
     }
 }

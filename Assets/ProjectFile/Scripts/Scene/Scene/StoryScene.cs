@@ -19,8 +19,20 @@ public class StoryScene : MonoBehaviour
     public Transform choiceContainer;
     public GameObject choiceButtonPrefab;
 
-    public float typingSpeed = 0.04f;
+    [Header("Utility")]
+    public Button inventoryButton;
+    public InventoryPopup inventoryPopupPrefab;
+    private InventoryPopup instanceInventoryPopup;
+    public Button settingButton;
+    private SettingManager settingManager;
+    public GameObject storyPanel; // popup발동시 비활성화시키기위해서
 
+    [Header("StatePopup")] 
+    public List<Button> stateInfoButtons;
+    public StateInfoPopup stateInfoPopupPrefab;
+    public StateInfoPopup instanceStateInfoPopupPrefab;
+    
+    public float typingSpeed = 0.04f;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool skipRequested = false;
@@ -42,9 +54,27 @@ public class StoryScene : MonoBehaviour
             Debug.LogError("Manager Not Found!");
             return;
         }
+
         manager.InitAndStart(StartstoryBlock, this);
     }
 
+    public void Start()
+    {
+        instanceInventoryPopup = Instantiate(inventoryPopupPrefab, transform);
+        instanceInventoryPopup.gameObject.SetActive(false);
+        settingManager = FindObjectOfType<SettingManager>();
+
+        inventoryButton.onClick.AddListener(() => OpenPopup(instanceInventoryPopup.gameObject));
+        settingButton.onClick.AddListener(settingManager.PopupOnOff);
+    }
+
+    public void OpenPopup(GameObject instancedPopup)
+    {
+        storyPanel.SetActive(instancedPopup.activeSelf);
+        choiceContainer.gameObject.SetActive(instancedPopup.activeSelf);
+        
+        instancedPopup.SetActive(!instancedPopup.activeSelf);
+    }
 
     public void Display(StoryBlock block, StoryManager manager)
     {

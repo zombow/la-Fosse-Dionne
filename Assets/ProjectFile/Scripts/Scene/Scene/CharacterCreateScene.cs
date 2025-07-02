@@ -56,9 +56,8 @@ public class CharacterCreateScene : MonoBehaviour
         PlayerGender.looksIndex = baseLooksIndex; // 기본 플레이어 외모 인덱스 설정
 
         weaponDropdownBox.onValueChanged.AddListener(SetWeaponIndex);
-
-        pannelroot = sceneManager.baseCanvas.transform;
-        alertPopupInstance = Instantiate(alertPopupPrefab, pannelroot);
+        
+        alertPopupInstance = Instantiate(alertPopupPrefab, transform);
         alertPopupInstance.gameObject.SetActive(false);
     }
 

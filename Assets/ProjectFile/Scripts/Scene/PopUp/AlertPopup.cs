@@ -8,17 +8,19 @@ using Button = UnityEngine.UI.Button;
 public class AlertPopup : MonoBehaviour
 {
     public TextMeshProUGUI AlertTextBox;
-    public Button ExiteButton;
+    public Button exitButton;
+
+
     void Start()
     {
-        ExiteButton.onClick.AddListener(OnExit);
-        
+        exitButton.onClick.AddListener(OnExit);
     }
+
     public void SetText(string text)
     {
         AlertTextBox.text = text;
     }
-    
+
     private void OnExit()
     {
         gameObject.SetActive(false);

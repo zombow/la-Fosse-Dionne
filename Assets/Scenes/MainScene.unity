@@ -732,7 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97536c433b4eb5408ba79de5235fc9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCanvas: {fileID: 753303754}
   panelRoot: {fileID: 1713683355}
   scenePrefabs:
   - sceneType: 0
