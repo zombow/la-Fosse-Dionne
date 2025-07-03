@@ -19,19 +19,13 @@ public class StoryScene : MonoBehaviour
     public Transform choiceContainer;
     public GameObject choiceButtonPrefab;
 
-    [Header("Utility")]
-    public Button inventoryButton;
+    [Header("Utility")] public Button inventoryButton;
     public InventoryPopup inventoryPopupPrefab;
     private InventoryPopup instanceInventoryPopup;
     public Button settingButton;
     private SettingManager settingManager;
     public GameObject storyPanel; // popup발동시 비활성화시키기위해서
 
-    [Header("StatePopup")] 
-    public List<Button> stateInfoButtons;
-    public StateInfoPopup stateInfoPopupPrefab;
-    public StateInfoPopup instanceStateInfoPopupPrefab;
-    
     public float typingSpeed = 0.04f;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
@@ -49,6 +43,7 @@ public class StoryScene : MonoBehaviour
     private void Awake()
     {
         manager = FindObjectOfType<StoryManager>();
+        settingManager = FindObjectOfType<SettingManager>();
         if (!manager)
         {
             Debug.LogError("Manager Not Found!");
@@ -60,10 +55,9 @@ public class StoryScene : MonoBehaviour
 
     public void Start()
     {
+        // InventroyPopup 초기화
         instanceInventoryPopup = Instantiate(inventoryPopupPrefab, transform);
         instanceInventoryPopup.gameObject.SetActive(false);
-        settingManager = FindObjectOfType<SettingManager>();
-
         inventoryButton.onClick.AddListener(() => OpenPopup(instanceInventoryPopup.gameObject));
         settingButton.onClick.AddListener(settingManager.PopupOnOff);
     }
@@ -72,7 +66,7 @@ public class StoryScene : MonoBehaviour
     {
         storyPanel.SetActive(instancedPopup.activeSelf);
         choiceContainer.gameObject.SetActive(instancedPopup.activeSelf);
-        
+
         instancedPopup.SetActive(!instancedPopup.activeSelf);
     }
 
