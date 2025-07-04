@@ -26,6 +26,11 @@ public class StoryScene : MonoBehaviour
     private SettingManager settingManager;
     public GameObject storyPanel; // popup발동시 비활성화시키기위해서
 
+    [Header("Battle")] public GameObject gaugePanel; // 전투시 비활성화를위해
+    public Image storyBG;
+    public Sprite defaultBgSprite;
+    public Sprite battleBgSprite;
+
     public float typingSpeed = 0.04f;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
@@ -70,7 +75,7 @@ public class StoryScene : MonoBehaviour
         instancedPopup.SetActive(!instancedPopup.activeSelf);
     }
 
-    public void Display(StoryBlock block, StoryManager manager)
+    public void ClearDisplay()
     {
         // 이전 UI 초기화
         foreach (Transform child in contentTransform)
@@ -81,6 +86,11 @@ public class StoryScene : MonoBehaviour
         textComponents.Clear();
         textOriginals.Clear();
         lastDisplayedElement = -1;
+    }
+
+    public void Display(StoryBlock block, StoryManager manager)
+    {
+        ClearDisplay();
 
         currentBlock = block;
         currentManager = manager;
@@ -91,6 +101,18 @@ public class StoryScene : MonoBehaviour
             StopCoroutine(typingCoroutine);
         skipRequested = false;
         typingCoroutine = StartCoroutine(TypeContentElements(block, manager));
+    }
+
+    public void BeginBattle()
+    {
+        ClearDisplay();
+        gaugePanel.SetActive(false);
+        storyBG.sprite = battleBgSprite;
+    }
+
+    public void BeginShop()
+    {
+        ClearDisplay();
     }
 
 // [핵심] 텍스트/이미지를 순서대로 출력. skip 시 즉시 모든 내용 표시
@@ -294,5 +316,10 @@ public class StoryScene : MonoBehaviour
             if (btn != null)
                 btn.interactable = active;
         }
+    }
+
+    public void UpdateGaugePanel(object gaugeValue)
+    {
+        gaugePanel.SetActive(true);
     }
 }

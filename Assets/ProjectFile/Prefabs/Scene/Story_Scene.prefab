@@ -2053,6 +2053,10 @@ MonoBehaviour:
   inventoryPopupPrefab: {fileID: 6226945764375402735, guid: 1c9642246ff7a4a43b37168a40b0864d, type: 3}
   settingButton: {fileID: 4233564732309985417}
   storyPanel: {fileID: 3132948756618979250}
+  gaugePanel: {fileID: 2443689935259687860}
+  storyBG: {fileID: 3636283345206718881}
+  defaultBgSprite: {fileID: 21300000, guid: 87bed2907bbfd7a40b090499f2b5f239, type: 3}
+  battleBgSprite: {fileID: 21300000, guid: 8e9445b7f23731648b03e290ae1f7e4c, type: 3}
   typingSpeed: 0.04
 --- !u!1 &4026216399408569813
 GameObject:

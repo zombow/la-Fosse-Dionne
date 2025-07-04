@@ -1,5 +1,3 @@
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_01.asset|353.9512|21.06748
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_02.asset|353.6586|154.8781
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_03.asset|356.1952|275.5121
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_03_1 _fail.asset|164.3904|408.3658
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_03_1_succes.asset|557.6831|427.8048
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Intro.asset|407|-2
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Shop.asset|407|280
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_ShopIntro.asset|411|134

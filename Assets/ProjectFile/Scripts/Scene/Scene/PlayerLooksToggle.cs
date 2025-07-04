@@ -6,14 +6,14 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ToggleEntry
 {
-    public int looksIndex;
+    public Image looksImage;
     public Toggle toggle;
 }
 public class PlayerLooksToggle : MonoBehaviour
 {
     public List<ToggleEntry> Toggles;
 
-    public GenderSelcetToggle genderSelcetToggle;
+    public GenderSelcetToggle genderSelectToggle;
 
     void Start()
     {
@@ -21,16 +21,16 @@ public class PlayerLooksToggle : MonoBehaviour
         {
             toggle.toggle.onValueChanged.AddListener((isOn) =>
             {
-                OnLooksToggleChanged(isOn, toggle.looksIndex);
+                OnLooksToggleChanged(isOn, toggle.looksImage.sprite);
             });
         }
     }
 
-    private void OnLooksToggleChanged(bool isOn, int looksIndex)
+    private void OnLooksToggleChanged(bool isOn, Sprite looksSprite)
     {
         if (isOn)
         {
-            genderSelcetToggle.SetLooksIndex(looksIndex);
+            genderSelectToggle.SetLookssprite(looksSprite);
         }
     }
 }

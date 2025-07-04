@@ -31,8 +31,8 @@ public class GenderSelcetToggle : MonoBehaviour
         }
     }
     
-    public void SetLooksIndex(int index)
+    public void SetLookssprite(Sprite looksSprite)
     {
-        characterCreateScene.SetPlayerGenderlooks(index);
+        characterCreateScene.SetPlayerGenderlooks(looksSprite);
     }
 }

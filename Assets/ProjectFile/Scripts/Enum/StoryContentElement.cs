@@ -3,7 +3,7 @@ using UnityEngine;
 public enum StoryElementType
 {
     Text,
-    Image
+    Image,
 }
 
 [System.Serializable]

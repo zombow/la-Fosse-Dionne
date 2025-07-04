@@ -9,18 +9,14 @@ public enum StateType
     Int,
     Lux
 }
-public class PlayerInfo
-{
-    GenderInfo genderInfo; // 성별 정보
-    int wepaonIndex; // 무기 인덱스
-}
 
 [System.Serializable]
 public class PlayerStats : MonoBehaviour
 {
- public string playerName = "Player";
+    public string playerName = "Player";
     public string gender = "Unknown";
     public string appearance = "Normal";
+    public Sprite looksSprite;
 
     public int level = 1;
     public int gold = 0;
@@ -33,20 +29,17 @@ public class PlayerStats : MonoBehaviour
     public int maxSpiritpoint = 5;
     public int experience = 0;
 
-    [Header("Base Stats")]
-    public int strength = 10;
+    [Header("Base Stats")] public int strength = 10;
     public int agility = 10;
     public int intelligence = 10;
     public int luck = 10;
 
-    [Header("Equipped Items")]
-    public Item equippedWeapon;
+    [Header("Equipped Items")] public Item equippedWeapon;
     public Item armor;
     public Item shield;
     public Item accessory;
 
-    [Header("Inventory")]
-    public List<Item> inventory = new List<Item>();
+    [Header("Inventory")] public List<Item> inventory = new List<Item>();
 
     public bool IsAlive => hp > 0;
 
@@ -117,11 +110,12 @@ public class PlayerStats : MonoBehaviour
             if (item != null && item.stats.ContainsKey(statName))
                 total += item.stats[statName];
         }
+
         return total;
     }
 
-    public void PlayerInit()
+    public void PlayerInit(PlayerStats tempPlayerStats)
     {
-        
+        playerName = tempPlayerStats.playerName;
     }
 }

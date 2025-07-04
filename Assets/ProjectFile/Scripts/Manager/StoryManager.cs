@@ -3,35 +3,45 @@ using System.Collections.Generic;
 
 public class StoryManager : MonoBehaviour
 {
+    [HideInInspector] public StoryScene Storyscene;
 
-    public StoryScene Storyscene;
     public CombatManager combatManager;
+    public ShopManager shopmanager;
 
     private StoryBlock currentblock = null;
-    private PlayerStats player;
+    public PlayerStats player;
 
     public void InitAndStart(StoryBlock startBlock, StoryScene storyScene)
     {
         player = FindObjectOfType<PlayerStats>();
         currentblock = startBlock;
         Storyscene = storyScene;
-        
+
         ShowStoryBlock(currentblock);
     }
-    
+
     public void ShowStoryBlock(StoryBlock block)
     {
-        if (block.isBattleStart && block.monsterToSpawn != null)
+        Storyscene.UpdateGaugePanel(1); // 게이지 패널 업데이트 (게이지 패널값은 Block의 갯수를 백분율로 나누는것으로 수정필요)
+
+        if (block.isBattleStart && block.monsterToSpawn) // battle분기
         {
+            Storyscene.BeginBattle();
             combatManager.StartCombat(player, block.monsterToSpawn, () =>
             {
                 ShowStoryBlock(block.returnBlockAfterBattle);
+                Storyscene.storyBG.sprite
+                    = Storyscene.defaultBgSprite;
             });
+        }
+        else if (block.isShop) // 상점 분기
+        {
+            Storyscene.BeginShop();
+            shopmanager.ShowShop(block.shopType, () => { ShowStoryBlock(block.nextBlockAfterShop); });
         }
         else
         {
             Storyscene.Display(block, this);
-
         }
     }
 

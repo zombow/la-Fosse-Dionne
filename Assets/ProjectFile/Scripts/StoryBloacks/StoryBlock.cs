@@ -13,7 +13,6 @@ public class StoryBlock : ScriptableObject
 
     public bool isBattleStart;
     public Monster monsterToSpawn;
-
     public StoryBlock returnBlockAfterBattle;
     public int moralityChange;
     public int nextIndex;
@@ -24,6 +23,8 @@ public class StoryBlock : ScriptableObject
     public bool isShop;
     public int shopType;
     public float shopChance;
+    public StoryBlock nextBlockAfterShop;
+    
     public bool isRandomEncounter;
     public bool answer;
 }

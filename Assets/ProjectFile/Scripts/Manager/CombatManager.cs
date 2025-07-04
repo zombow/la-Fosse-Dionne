@@ -3,17 +3,20 @@ using System;
 
 public class CombatManager : MonoBehaviour
 {
+    public Transform SafeAreaTransform;
+    public CombatPopup CombatPopupPrefab;
+    private CombatPopup instanceCombatPopupPrefab;
     public PlayerStats player;
     public Monster monster;
-
-    private Action onCombatEnd;
-
+    
     public void StartCombat(PlayerStats playerRef, Monster monsterRef, Action callback)
     {
+        instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
+        instanceCombatPopupPrefab.Initialize(playerRef, monsterRef, callback);
+        
         player = playerRef;
         monster = Instantiate(monsterRef);
         monster.ResetHp();
-        onCombatEnd = callback;
 
         Debug.Log($"전투 시작: {player.playerName} vs {monster.monsterName}");
         NextTurn();
@@ -24,14 +27,14 @@ public class CombatManager : MonoBehaviour
         if (!player.IsAlive)
         {
             Debug.Log("플레이어가 사망했습니다.");
-            onCombatEnd?.Invoke();
+            CombatPopupPrefab.CombatEnd();
             return;
         }
 
         if (!monster.IsAlive)
         {
             Debug.Log("몬스터를 처치했습니다!");
-            onCombatEnd?.Invoke();
+            CombatPopupPrefab.CombatEnd();
             return;
         }
 
