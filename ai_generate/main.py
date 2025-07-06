@@ -1,8 +1,8 @@
-# main.py - 수정된 최종 버전
+# main.py - 호스트 문제 해결 버전
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from logic1 import process_user_message, init_rag_context
+from logic import process_user_message, init_rag_context
 from contextlib import asynccontextmanager
 import os
 
@@ -36,6 +36,11 @@ class MessageResponse(BaseModel):
     mental_amount: int | None = None
     health_amount: int | None = None
 
+@app.get("/")
+async def root():
+    """서버 상태 확인용 엔드포인트"""
+    return {"message": "TRPG 서버가 정상 작동 중입니다! 🎮", "status": "running"}
+
 @app.post("/chat", response_model=MessageResponse)
 async def chat(request: MessageRequest):
     message = request.message.strip()
@@ -67,3 +72,13 @@ async def chat(request: MessageRequest):
         mental_amount=mental_amount,
         health_amount=health_amount
     )
+
+# 서버 실행 코드 - 호스트 설정 변경
+if __name__ == "__main__":
+    import uvicorn
+    print("🐍 TRPG 서버를 시작합니다...")
+    print("🌐 http://127.0.0.1:8000 에서 실행됩니다")
+    print("🔗 브라우저에서 http://127.0.0.1:8000 접속하여 확인하세요")
+    
+    # 호스트를 127.0.0.1로 변경
+    uvicorn.run(app, host="127.0.0.1", port=8000, reload=False)
