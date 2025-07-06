@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class StoryScene : MonoBehaviour
 {
     private StoryManager manager;
-
+    public PlayerStats player;
     public StoryBlock StartstoryBlock;
     public ScrollRect scrollRect;
     public RectTransform contentTransform;
@@ -30,6 +30,8 @@ public class StoryScene : MonoBehaviour
     public Image storyBG;
     public Sprite defaultBgSprite;
     public Sprite battleBgSprite;
+
+    [Header("Character")] public CharacterInfoUI characterInfoUI;
 
     public float typingSpeed = 0.04f;
     private Coroutine typingCoroutine;
@@ -65,6 +67,9 @@ public class StoryScene : MonoBehaviour
         instanceInventoryPopup.gameObject.SetActive(false);
         inventoryButton.onClick.AddListener(() => OpenPopup(instanceInventoryPopup.gameObject));
         settingButton.onClick.AddListener(settingManager.PopupOnOff);
+        
+        player = manager.player;
+        characterInfoUI.InfoInit(player.playerStateBlock);
     }
 
     public void OpenPopup(GameObject instancedPopup)

@@ -2057,6 +2057,7 @@ MonoBehaviour:
   storyBG: {fileID: 3636283345206718881}
   defaultBgSprite: {fileID: 21300000, guid: 87bed2907bbfd7a40b090499f2b5f239, type: 3}
   battleBgSprite: {fileID: 21300000, guid: 8e9445b7f23731648b03e290ae1f7e4c, type: 3}
+  characterInfoUI: {fileID: 8957557267307371157}
   typingSpeed: 0.04
 --- !u!1 &4026216399408569813
 GameObject:
@@ -3441,6 +3442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 30845837766630896}
   - component: {fileID: 8360832927995677270}
+  - component: {fileID: 8957557267307371157}
   m_Layer: 5
   m_Name: State_Panel
   m_TagString: Untagged
@@ -3487,6 +3489,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 3
   m_AspectRatio: 3.132705
+--- !u!114 &8957557267307371157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810709720082685504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049d25291adc3134a9e30711976c3ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterImage: {fileID: 6477826617197634191}
+  characterNameText: {fileID: 3121681034515560584}
+  hpGroup:
+  - {fileID: 7839978338500903455}
+  - {fileID: 2261555395275694216}
+  - {fileID: 9207011605600377018}
+  - {fileID: 3827539940253781506}
+  - {fileID: 5474161441492427114}
+  spritGroup:
+  - {fileID: 7002747629113839673}
+  - {fileID: 6292785544554436513}
+  - {fileID: 5428237378588289850}
+  - {fileID: 2107175829338098725}
+  - {fileID: 6735221719736662767}
+  stateText:
+  - stateType: 0
+    stateText: {fileID: 8635217050671148103}
+  - stateType: 1
+    stateText: {fileID: 4726763650580920584}
+  - stateType: 2
+    stateText: {fileID: 6728712629720153919}
+  - stateType: 3
+    stateText: {fileID: 1855925116050304009}
+  - stateType: 4
+    stateText: {fileID: 4219093252735652939}
 --- !u!1 &5863790255447277736
 GameObject:
   m_ObjectHideFlags: 0

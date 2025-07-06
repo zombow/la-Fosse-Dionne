@@ -24,13 +24,13 @@ public class StatePointProvider : MonoBehaviour
 
     public Button resetButton;
     public Button randomButton;
-    public List<StateGroup> States;
+    public List<StateGroup> Status;
     public Dictionary<StateType, StateGroup> StatesDictionary = new Dictionary<StateType, StateGroup>();
 
 
     void Start()
     {
-        foreach (var state in States)
+        foreach (var state in Status)
         {
             StatesDictionary.Add(state.stateType, state);
             state.minusButton.onClick.AddListener(() => StatePointEdit(state.stateType, -1));
@@ -64,8 +64,8 @@ public class StatePointProvider : MonoBehaviour
         {
             if (StatesDictionary[stateType].stateValue > 0)
             {
-                statePoint += pointvalue;
-                StatesDictionary[stateType].stateValue -= pointvalue;
+                statePoint -= pointvalue;
+                StatesDictionary[stateType].stateValue += pointvalue;
                 StatesDictionary[stateType].stateText.text = StatesDictionary[stateType].stateValue.ToString();
                 StatesDictionary[stateType].stateValueSlider.value = StatesDictionary[stateType].stateValue;
             }
@@ -97,10 +97,22 @@ public class StatePointProvider : MonoBehaviour
     public void RandomStatePoint()
     {
         ResetStatePoint();
+        StateType[] allStates = (StateType[])System.Enum.GetValues(typeof(StateType));
+        List<StateType> filteredStates = new List<StateType>();
+        foreach (StateType state in allStates) // Mortality제외
+        {
+            if (state != StateType.Mortality)
+            {
+                filteredStates.Add(state);
+            }
+        }
+
         while (statePoint > 0)
         {
             int randomPoints = Random.Range(1, statePoint);
-            StateType randomState = (StateType)Random.Range(0, System.Enum.GetValues(typeof(StateType)).Length);
+
+
+            StateType randomState = (StateType)Random.Range(0, filteredStates.Count);
 
             StatePointEdit(randomState, randomPoints);
         }
@@ -111,5 +123,18 @@ public class StatePointProvider : MonoBehaviour
     public void UpdateStatePointText()
     {
         statePointText.text = $"({statePoint})";
+        characterCreateScene.SetPlayerStatePoint(GetStatePointDictionary());
+    }
+
+    private Dictionary<StateType, int> GetStatePointDictionary()
+    {
+        Dictionary<StateType, int> temp = new Dictionary<StateType, int>();
+        foreach (var Value in StatesDictionary)
+        {
+            temp.Add(Value.Key, Value.Value.stateValue);
+        }
+        
+        temp.Add(StateType.Mortality, 0); // Mortality는 0으로 설정
+        return temp;
     }
 }

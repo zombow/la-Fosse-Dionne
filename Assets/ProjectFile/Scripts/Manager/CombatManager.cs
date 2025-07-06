@@ -18,7 +18,7 @@ public class CombatManager : MonoBehaviour
         monster = Instantiate(monsterRef);
         monster.ResetHp();
 
-        Debug.Log($"전투 시작: {player.playerName} vs {monster.monsterName}");
+        Debug.Log($"전투 시작: {player.playerStateBlock.playerName} vs {monster.monsterName}");
         NextTurn();
     }
 
@@ -47,15 +47,15 @@ public class CombatManager : MonoBehaviour
 
     private void PlayerAttack()
     {
-        int damage = Mathf.Max(1, player.strength - monster.defense);
+        int damage = Mathf.Max(1, player.playerStateBlock.playerStatus[StateType.Str] - monster.defense);
         monster.TakeDamage(damage);
         Debug.Log($"플레이어가 몬스터에게 {damage} 데미지를 입혔습니다. (남은 HP: {monster.hp})");
     }
 
     private void MonsterAttack()
     {
-        int damage = Mathf.Max(1, monster.attack - player.strength / 2);
-        player.hp = Mathf.Max(0, player.hp - damage);
-        Debug.Log($"몬스터가 플레이어에게 {damage} 데미지를 입혔습니다. (남은 HP: {player.hp})");
+        int damage = Mathf.Max(1, monster.attack - player.playerStateBlock.playerStatus[StateType.Str] / 2);
+        player.playerStateBlock.hp = Mathf.Max(0, player.playerStateBlock.hp - damage);
+        Debug.Log($"몬스터가 플레이어에게 {damage} 데미지를 입혔습니다. (남은 HP: {player.playerStateBlock.hp})");
     }
 }

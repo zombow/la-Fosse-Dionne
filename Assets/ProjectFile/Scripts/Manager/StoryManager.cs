@@ -13,7 +13,6 @@ public class StoryManager : MonoBehaviour
 
     public void InitAndStart(StoryBlock startBlock, StoryScene storyScene)
     {
-        player = FindObjectOfType<PlayerStats>();
         currentblock = startBlock;
         Storyscene = storyScene;
 

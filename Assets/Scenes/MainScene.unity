@@ -390,23 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50e52c17ea1f884392d4097e4cd64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player
-  gender: Unknown
-  appearance: Normal
-  looksSprite: {fileID: 0}
-  level: 1
-  gold: 0
-  hp: 0
-  maxHp: 0
-  lifepoint: 5
-  maxLifepoint: 5
-  spiritpoint: 5
-  maxSpiritpoint: 5
-  experience: 0
-  strength: 10
-  agility: 10
-  intelligence: 10
-  luck: 10
   equippedWeapon: {fileID: 0}
   armor: {fileID: 0}
   shield: {fileID: 0}
@@ -608,7 +591,7 @@ MonoBehaviour:
   Storyscene: {fileID: 0}
   combatManager: {fileID: 473099725}
   shopmanager: {fileID: 594618478}
-  player: {fileID: 0}
+  player: {fileID: 556650827}
 --- !u!1 &1127738712
 GameObject:
   m_ObjectHideFlags: 0
