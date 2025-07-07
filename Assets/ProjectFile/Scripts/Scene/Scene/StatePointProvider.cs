@@ -97,22 +97,19 @@ public class StatePointProvider : MonoBehaviour
     public void RandomStatePoint()
     {
         ResetStatePoint();
-        StateType[] allStates = (StateType[])System.Enum.GetValues(typeof(StateType));
-        List<StateType> filteredStates = new List<StateType>();
-        foreach (StateType state in allStates) // Mortality제외
+        List<StateType> filteredStates = new List<StateType>
         {
-            if (state != StateType.Mortality)
-            {
-                filteredStates.Add(state);
-            }
-        }
+            StateType.Strength,
+            StateType.Agility,
+            StateType.Intelligence,
+            StateType.Luck,
+        };
 
         while (statePoint > 0)
         {
             int randomPoints = Random.Range(1, statePoint);
-
-
-            StateType randomState = (StateType)Random.Range(0, filteredStates.Count);
+            
+            StateType randomState = filteredStates[Random.Range(0, filteredStates.Count)];
 
             StatePointEdit(randomState, randomPoints);
         }
@@ -134,7 +131,6 @@ public class StatePointProvider : MonoBehaviour
             temp.Add(Value.Key, Value.Value.stateValue);
         }
         
-        temp.Add(StateType.Mortality, 0); // Mortality는 0으로 설정
         return temp;
     }
 }

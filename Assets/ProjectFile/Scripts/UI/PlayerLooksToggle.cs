@@ -17,20 +17,23 @@ public class PlayerLooksToggle : MonoBehaviour
 
     void Start()
     {
-        foreach (var toggle in Toggles)
+        for (int i = 0; i < Toggles.Count; i++)
         {
-            toggle.toggle.onValueChanged.AddListener((isOn) =>
+            int index = i; // 반드시 필요. 람다 클로저로 인한 문제 방지
+            Toggles[i].toggle.onValueChanged.AddListener((isOn) =>
             {
-                OnLooksToggleChanged(isOn, toggle.looksImage.sprite);
+                OnLooksToggleChanged(isOn, Toggles[index].looksImage.sprite, index);
             });
         }
     }
 
-    private void OnLooksToggleChanged(bool isOn, Sprite looksSprite)
+    private void OnLooksToggleChanged(bool isOn, Sprite looksSprite, int index)
     {
         if (isOn)
         {
             genderSelectToggle.SetLookssprite(looksSprite);
+            genderSelectToggle.SetCurrentSelectedIndex(index); // 아래 함수 추가 필요
         }
     }
+
 }

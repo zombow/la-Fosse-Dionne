@@ -20,7 +20,7 @@ public class CharacterCreateScene : MonoBehaviour
     [Header("---Player Name---")] [SerializeField]
     public TMP_InputField playerNameTextbox;
 
-    public string basePlayerGender = "Female";
+    public string basePlayerGender = "Male";
     public Image baseLooksImage;
 
     [Header("Player State")] [SerializeField]
@@ -29,7 +29,12 @@ public class CharacterCreateScene : MonoBehaviour
     [Header("Player Weapon")] [SerializeField]
     public int baseWeaponIndex = 0; // 기본 무기 인덱스
 
-    private int weaponIndex = 0; // 현재 선택된 무기 인덱스
+    private Dictionary<int, string> startweapons = new Dictionary<int, string>
+    {
+        { 0, "tier1_dagger" },
+        { 1, "tier1_wand" },
+    };
+
     public TMP_Dropdown weaponDropdownBox;
 
 
@@ -37,7 +42,7 @@ public class CharacterCreateScene : MonoBehaviour
     {
         player = FindObjectOfType<PlayerStats>();
         tempPlayerStats = gameObject.AddComponent<PlayerStats>();
-        
+
         StartButton.onClick.AddListener(OnStart);
         sceneManager = FindObjectOfType<SceneManager>();
         if (!sceneManager)
@@ -67,14 +72,14 @@ public class CharacterCreateScene : MonoBehaviour
 
     public void SetWeaponIndex(int index)
     {
-        weaponIndex = index;
+        baseWeaponIndex = index;
     }
 
     public void SetPlayerStatePoint(Dictionary<StateType, int> playerStatsParam)
     {
         tempPlayerStats.playerStateBlock.playerStatus = playerStatsParam;
-
     }
+
     private void OnStart()
     {
         EventSystem.current.SetSelectedGameObject(null); // 포커스 초기화로 최종값 설정
@@ -88,12 +93,17 @@ public class CharacterCreateScene : MonoBehaviour
             alertPopupInstance.SetText("남은 능력치 포인트가 있습니다.\n" +
                                        "능력치를 모두 분배해주세요.");
         }
-        else
+        else // 기초값 지정
         {
             tempPlayerStats.playerStateBlock.playerName = playerNameTextbox.text;
+            tempPlayerStats.equippedWeapon = AssetManager.Instance.itemList[startweapons[baseWeaponIndex]];
+            tempPlayerStats.accessory = AssetManager.Instance.itemList["acc_silver_ring"];
+            tempPlayerStats.armor = AssetManager.Instance.itemList["tier1_pad_armor"];
 
             player.PlayerInit(tempPlayerStats);
             sceneManager.ChangeScene(SceneType.Story);
+
+            tempPlayerStats.ResetStats(); // 플레이어 상태 초기화
             return;
         }
 

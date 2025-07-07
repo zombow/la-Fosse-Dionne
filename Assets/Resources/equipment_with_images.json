@@ -456,8 +456,7 @@
     "type": "consumable",
     "tier": 1,
     "stats": {
-      "life": 1,
-      "speed": 0
+      "life": 1
     },
     "value": 30,
     "description": "체력을 회복하는 작은 포션. 딸기 맛이 날 것처럼 생겼지만 그렇진 않다. 체력 1칸 회복.",
@@ -469,8 +468,7 @@
     "type": "consumable",
     "tier": 1,
     "stats": {
-      "spirit": 1,
-      "speed": 0
+      "spirit": 1
     },
     "value": 30,
     "description": "정신력을 회복하는 작은 포션. 마시면 머리가 맑아지는 기분이 든다. 정신력 1칸 회복.",
@@ -482,8 +480,7 @@
     "type": "consumable",
     "tier": 2,
     "stats": {
-      "life": 2,
-      "speed": 0
+      "life": 2
     },
     "value": 50,
     "description": "체력을 회복하는 포션. 딸기 맛이 날 것처럼 생겼지만 그렇진 않다. 체력 2칸 회복.",
@@ -495,8 +492,7 @@
     "type": "consumable",
     "tier": 2,
     "stats": {
-      "spirit": 2,
-      "speed": 0
+      "spirit": 2
     },
     "value": 50,
     "description": "정신력을 회복하는 포션. 마시면 머리가 맑아지는 기분이 든다. 정신력 2칸 회복.",
@@ -523,8 +519,8 @@
     "stats": {
       "intelligence": 0
     },
-    "description": "세공된 황금빛 거울 조각",
-    "image": "Image/story/rust_key"
+    "description": "사슴의 눈이 다시 빛을 찾자, 사당 전체에 평화로운 기운이 감돌았다. 당신은 이제 비르나에게 돌아가 다음 단계를 준비해야 했다.",
+    "image": "Image/story/gold_glass_piece"
   },
   {
     "id": "solar_mirror_of_virna",

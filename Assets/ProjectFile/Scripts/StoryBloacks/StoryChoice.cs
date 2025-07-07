@@ -42,6 +42,6 @@ public class StoryChoice
 
     public float CalculateSuccessChance(PlayerStats player)
     {
-        return baseChance + player.playerStateBlock.playerStatus[StateType.Str] * strengthMultiplier; //TODO: 힘배수만 적용중 수정필요
+        return baseChance + player.playerStateBlock.playerStatus[StateType.Strength] * strengthMultiplier; //TODO: 힘배수만 적용중 수정필요
     }
 }

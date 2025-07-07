@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class StateInfoPopup : MonoBehaviour
 {
     public Image stateIcon;
+    public TextMeshProUGUI stateNameText;
     public TextMeshProUGUI statePointText;
     public TextMeshProUGUI stateInfoText;
     public Button exitButton;
@@ -14,8 +15,9 @@ public class StateInfoPopup : MonoBehaviour
 
     public void InitPopup(StateInfos infos)
     {
-        stateIcon.sprite = infos.stateIcone.sprite;
-        statePointText.text = infos.statePoint.ToString();
+        stateNameText.text = $"모험가 {infos.playername}의 능력치";
+        stateIcon.sprite = infos.stateIcon.sprite;
+        statePointText.text = infos.statePoint.text;
         stateInfoText.text = infos.stateTextinfo;
     }
 }

@@ -62,18 +62,25 @@ public class StoryScene : MonoBehaviour
 
     public void Start()
     {
+        player = manager.player;
         // InventroyPopup 초기화
         instanceInventoryPopup = Instantiate(inventoryPopupPrefab, transform);
+        instanceInventoryPopup.SetupInventory(player);
         instanceInventoryPopup.gameObject.SetActive(false);
+
         inventoryButton.onClick.AddListener(() => OpenPopup(instanceInventoryPopup.gameObject));
         settingButton.onClick.AddListener(settingManager.PopupOnOff);
-        
-        player = manager.player;
-        characterInfoUI.InfoInit(player.playerStateBlock);
+
+        characterInfoUI.InfoInit(player);
     }
 
     public void OpenPopup(GameObject instancedPopup)
     {
+        if ((currentBlock.isShop || currentBlock.isBattleStart) && instancedPopup.gameObject.GetComponentInChildren<InventoryPopup>())
+        {
+            return;
+        }
+
         storyPanel.SetActive(instancedPopup.activeSelf);
         choiceContainer.gameObject.SetActive(instancedPopup.activeSelf);
 
@@ -108,15 +115,19 @@ public class StoryScene : MonoBehaviour
         typingCoroutine = StartCoroutine(TypeContentElements(block, manager));
     }
 
-    public void BeginBattle()
+    public void BeginBattle(StoryBlock block, StoryManager storyManager)
     {
+        currentBlock = block;
+        currentManager = storyManager;
         ClearDisplay();
         gaugePanel.SetActive(false);
         storyBG.sprite = battleBgSprite;
     }
 
-    public void BeginShop()
+    public void BeginShop(StoryBlock block, StoryManager storyManager)
     {
+        currentBlock = block;
+        currentManager = storyManager;
         ClearDisplay();
     }
 

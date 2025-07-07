@@ -1,27 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using UnityEngine;
 
-[System.Serializable]
-public class ItemStats
+public enum StateType
 {
-    public int strength;
-    public int agility;
-    public int intelligence;
-    public int defense;
-    public int hp;
-    public int speed;
-    public int luck;
-    public int life;
-    public int spirit;
+    [EnumMember(Value = "strength")] Strength,
+    [EnumMember(Value = "agility")] Agility,
+    [EnumMember(Value = "intelligence")] Intelligence,
+    [EnumMember(Value = "luck")] Luck,
+    [EnumMember(Value = "hp")] Hp,
+    [EnumMember(Value = "defense")] Defense,
+    [EnumMember(Value = "speed")] Speed,
+    [EnumMember(Value = "life")] Life,
+    [EnumMember(Value = "spirit")] Spirit,
+    [EnumMember(Value = "mortality")] Mortality
+}
+
+public enum ItemType
+{
+    [EnumMember(Value = "weapon")] Weapon,
+    [EnumMember(Value = "armor")] Armor,
+    [EnumMember(Value = "shield")] Shield,
+    [EnumMember(Value = "accessory")] Accessory,
+    [EnumMember(Value = "consumable")] Consumable,
+    [EnumMember(Value = "special")] Special
+}
+
+public enum GripType
+{
+    [EnumMember(Value = "none")] None,
+    [EnumMember(Value = "one-handed")] OneHanded,
+    [EnumMember(Value = "two-handed")] TwoHanded
 }
 
 [System.Serializable]
-public class ItemData
+public class Item
 {
     public string id;
     public string name;
-    public string type;      // weapon, armor, shield, accessory, consumable, special 등
+    public ItemType type; // weapon, armor, shield, accessory, consumable, special 등
     public int tier;
-    public string grip;      // 무기일 경우: one-handed, two-handed
-    public ItemStats stats;
+    public GripType grip; // 무기일 경우: one-handed, two-handed
+    public Dictionary<StateType, int> stats;
     public int value;
     public string description;
     public string image;

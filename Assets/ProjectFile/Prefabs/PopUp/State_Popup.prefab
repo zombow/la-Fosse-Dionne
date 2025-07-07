@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateIcon: {fileID: 6945834054550326181}
+  stateNameText: {fileID: 468754692481645813}
   statePointText: {fileID: 1158648818856865469}
   stateInfoText: {fileID: 595162959813586587}
   exitButton: {fileID: 3148278739735325511}

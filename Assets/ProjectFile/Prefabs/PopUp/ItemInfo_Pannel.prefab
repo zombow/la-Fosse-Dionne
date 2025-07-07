@@ -666,7 +666,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.95
+  m_fontSize: 69.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.35
+  m_fontSize: 64.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.95
+  m_fontSize: 69.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.8
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.95
+  m_fontSize: 69.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1841,6 +1841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394622830209393729}
   - component: {fileID: 8864941131950511637}
+  - component: {fileID: 3309158727077990031}
   m_Layer: 5
   m_Name: ItemInfo_Pannel
   m_TagString: Untagged
@@ -1876,6 +1877,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7227062024872087836}
   m_CullTransparentMesh: 1
+--- !u!114 &3309158727077990031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227062024872087836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb69d02d70100b40ae2930714c76aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedItemImage: {fileID: 4920301803989041384}
+  selectedItemDescription: {fileID: 2543866795188475494}
+  selectedItemName: {fileID: 8265773595122579577}
+  selectedItemValue: {fileID: 7403688382978636894}
+  ItemStateStrength: {fileID: 2891306006076776863}
+  ItemStateAttack: {fileID: 2848439933372268063}
+  ItemStateLuck: {fileID: 5172034433832246056}
+  ItemStateDefense: {fileID: 367887824789997011}
 --- !u!1 &7607928737727011587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1989,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.95
+  m_fontSize: 69.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

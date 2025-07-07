@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
 public class StateInfos
 {
-    public Image stateIcone;
-    public int statePoint;
+    public string playername;
+    public Image stateIcon;
+    public TextMeshProUGUI statePoint;
     public Button button;
     [TextArea] public string stateTextinfo;
 }
@@ -18,6 +20,8 @@ public class StatePopupController : MonoBehaviour
     public List<StateInfos> stateInfoButtons;
     public StateInfoPopup stateInfoPopupPrefab;
     private StateInfoPopup instanceStateInfoPopupPrefab;
+
+    public TextMeshProUGUI playerNameText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,7 @@ public class StatePopupController : MonoBehaviour
 
     void OpenPopup(StateInfoPopup popup, StateInfos stateInfos)
     {
+        stateInfos.playername = playerNameText.text;
         popup.InitPopup(stateInfos);
         popup.gameObject.SetActive(!popup.gameObject.activeSelf);
     }

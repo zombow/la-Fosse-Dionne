@@ -343,7 +343,6 @@ Transform:
   - {fileID: 1720101770}
   - {fileID: 67491797}
   - {fileID: 594618477}
-  - {fileID: 1766373913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556650825
@@ -390,10 +389,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50e52c17ea1f884392d4097e4cd64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
-  armor: {fileID: 0}
-  shield: {fileID: 0}
-  accessory: {fileID: 0}
+  equippedWeapon:
+    id: 
+    name: 
+    type: 0
+    tier: 0
+    grip: 0
+    value: 0
+    description: 
+    image: 
+  armor:
+    id: 
+    name: 
+    type: 0
+    tier: 0
+    grip: 0
+    value: 0
+    description: 
+    image: 
+  shield:
+    id: 
+    name: 
+    type: 0
+    tier: 0
+    grip: 0
+    value: 0
+    description: 
+    image: 
+  accessory:
+    id: 
+    name: 
+    type: 0
+    tier: 0
+    grip: 0
+    value: 0
+    description: 
+    image: 
   inventory: []
 --- !u!1 &594618476
 GameObject:
@@ -801,12 +832,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766373912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 490255447}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -825,7 +856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b94dd3d86d88147a66753a9ad2d703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: []
 --- !u!222 &1766373916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -943,3 +973,4 @@ SceneRoots:
   - {fileID: 490255447}
   - {fileID: 2133565576}
   - {fileID: 2082211107}
+  - {fileID: 1766373913}
