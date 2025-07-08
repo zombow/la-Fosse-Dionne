@@ -1,8 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class LookSprites
+{
+    public Sprite LooksSprites;
+    public Sprite SelectSprites;
+}
 public class GenderSelcetToggle : MonoBehaviour
 {
     public Toggle femaleToggle;
@@ -10,8 +17,9 @@ public class GenderSelcetToggle : MonoBehaviour
     public CharacterCreateScene characterCreateScene;
 
     public List<Image> looksImages;
-    public List<Sprite> femaleLooksSprites;
-    public List<Sprite> maleLooksSprites;
+    public List<Image> selectLooksImages;
+    public List<LookSprites> femaleLooksSprites;
+    public List<LookSprites> maleLooksSprites;
 
     private int currentSelectedIndex = 0;
     void Start()
@@ -46,15 +54,16 @@ public class GenderSelcetToggle : MonoBehaviour
 
     public void ImageSetSprite(string genderType)
     {
-        List<Sprite> targetList = (genderType == "Female") ? femaleLooksSprites : maleLooksSprites;
+        List<LookSprites> targetList = (genderType == "Female") ? femaleLooksSprites : maleLooksSprites;
 
         for (int i = 0; i < looksImages.Count; i++)
         {
-            looksImages[i].sprite = targetList[i];
+            looksImages[i].sprite = targetList[i].LooksSprites;
+            selectLooksImages[i].sprite = targetList[i].SelectSprites;
         }
 
         // 현재 선택된 위치의 looksSprite를 다시 Set
-        SetLookssprite(targetList[currentSelectedIndex]);
+        SetLookssprite(targetList[currentSelectedIndex].LooksSprites);
     }
 
     public void SetCurrentSelectedIndex(int index)

@@ -19,7 +19,7 @@ public class PlayerLooksToggle : MonoBehaviour
     {
         for (int i = 0; i < Toggles.Count; i++)
         {
-            int index = i; // 반드시 필요. 람다 클로저로 인한 문제 방지
+            int index = i;
             Toggles[i].toggle.onValueChanged.AddListener((isOn) =>
             {
                 OnLooksToggleChanged(isOn, Toggles[index].looksImage.sprite, index);

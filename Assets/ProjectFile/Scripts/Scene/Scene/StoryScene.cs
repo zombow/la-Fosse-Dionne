@@ -68,7 +68,13 @@ public class StoryScene : MonoBehaviour
         instanceInventoryPopup.SetupInventory(player);
         instanceInventoryPopup.gameObject.SetActive(false);
 
-        inventoryButton.onClick.AddListener(() => OpenPopup(instanceInventoryPopup.gameObject));
+        inventoryButton.onClick.AddListener(() =>
+        {
+            OpenPopup(instanceInventoryPopup.gameObject);
+            instanceInventoryPopup.inventoryPanelPrefab.UpdateInventoryUI();
+            instanceInventoryPopup.inventoryPanelPrefab.DiSelectSlot();
+        });
+
         settingButton.onClick.AddListener(settingManager.PopupOnOff);
 
         characterInfoUI.InfoInit(player);

@@ -9,10 +9,10 @@ public class ShopManager : MonoBehaviour
     public ShopPopup shopPopup;
     private ShopPopup instanceshopPopup;
 
-    public void ShowShop(int shopType, Action onExit)
+    public void ShowShop(PlayerStats player, int shopType, Action onExit)
     {
         instanceshopPopup = Instantiate(shopPopup, safeAreaTransform);
-        instanceshopPopup.Initialize(shopType, onExit);
+        instanceshopPopup.Initialize(player, shopType, onExit);
     }
 }
 

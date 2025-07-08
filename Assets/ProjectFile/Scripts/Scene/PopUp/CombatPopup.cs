@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CombatPopup : MonoBehaviour
 {
+    SettingPopup settingPopup;
     [Header("Panels")] public GameObject enemyPanel;
     public GameObject logPanel;
     public GameObject playerPanel;
@@ -18,6 +19,8 @@ public class CombatPopup : MonoBehaviour
 
     public void Initialize(PlayerStats playerRef, Monster monsterRef, Action callback)
     {
+        settingPopup = SettingManager.Instance._initPrefab;
+        settingPopup.NewGame += CloseCombat;
         onExit = callback;
         exitButton.onClick.AddListener(CloseCombat);
     }
@@ -30,6 +33,7 @@ public class CombatPopup : MonoBehaviour
 
     public void CloseCombat()
     {
+        settingPopup.NewGame -= CloseCombat;
         Destroy(gameObject);
         onExit?.Invoke();
     }

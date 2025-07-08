@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,14 @@ public class SettingPopup : MonoBehaviour
     [Header("New Game")]
     public Button newGameButton;
     public NewGameAlertPopup newGameAlertPopup;
-    private NewGameAlertPopup newGameAlertPopupInstance;
+    [HideInInspector]
+    public NewGameAlertPopup newGameAlertPopupInstance;
     [Header("ThanksTo")]
     public Button thanksToButton;
     public ThanksToPopup thanksToPopup;
     private ThanksToPopup thanksToPopupInstance;
+
+    public event Action NewGame;
 
     private void Start()
     {
@@ -50,6 +54,7 @@ public class SettingPopup : MonoBehaviour
 
     private void OnNewGame()
     {
+        NewGame?.Invoke();
         var sceneManager = FindObjectOfType<SceneManager>();
         if (!sceneManager)
         {

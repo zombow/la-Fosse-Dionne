@@ -4,10 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class ShopItem
+{
+    public Dictionary<ItemType, List<Item>> items = new Dictionary<ItemType, List<Item>>
+    {
+        { ItemType.Weapon, new List<Item>() },
+        { ItemType.Shield, new List<Item>() },
+        { ItemType.Armor, new List<Item>() },
+        { ItemType.Accessory, new List<Item>() },
+        { ItemType.Special, new List<Item>() },
+        { ItemType.Consumable, new List<Item>() }
+    };
+}
+
 public class AssetManager : MonoBehaviour
 {
     public static AssetManager Instance { get; private set; }
     public Dictionary<string, Item> itemList = new Dictionary<string, Item>();
+
+    public Dictionary<int, ShopItem> shopItemList = new Dictionary<int, ShopItem>
+    {
+        { 1, new ShopItem() },
+        { 2, new ShopItem() },
+        { 3, new ShopItem() },
+    };
 
     void Awake()
     {
@@ -16,6 +36,7 @@ public class AssetManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -47,6 +68,10 @@ public class AssetManager : MonoBehaviour
             if (!itemList.ContainsKey(item.id))
             {
                 itemList.Add(item.id, item);
+                if (itemList[item.id].type != ItemType.Special)
+                {
+                    shopItemList[itemList[item.id].tier].items[itemList[item.id].type].Add(item);
+                }
             }
             else
             {

@@ -35,7 +35,7 @@ public class StoryManager : MonoBehaviour
         else if (block.isShop) // 상점 분기
         {
             Storyscene.BeginShop(block, this);
-            shopmanager.ShowShop(block.shopType, () => { ShowStoryBlock(block.nextBlockAfterShop); });
+            shopmanager.ShowShop(player, block.shopType, () => { ShowStoryBlock(block.nextBlockAfterShop); });
         }
         else
         {

@@ -7,11 +7,10 @@ using UnityEngine.UI;
 
 public class InventoryPanel : MonoBehaviour
 {
-    private PlayerStats player; // inventoryPopup에서 주입
+    private PlayerStats player; // inventoryPopup / shopPopup 에서 주입
 
     [Header("equip item images")] // 장착된 아이템 슬롯들
     public ItemSlot equipArmorSlot;
-
     public ItemSlot equipShieldSlot;
     public ItemSlot equipWeaponSlot;
     public ItemSlot equipAccessorySlot;
@@ -21,7 +20,6 @@ public class InventoryPanel : MonoBehaviour
 
     [Header("Player Stats")] // 플레이어의 상태 정보
     public TextMeshProUGUI attackText;
-
     public TextMeshProUGUI defenseText;
     public TextMeshProUGUI criticalText;
     public TextMeshProUGUI evasionText;
@@ -29,7 +27,7 @@ public class InventoryPanel : MonoBehaviour
     public TextMeshProUGUI coinText;
 
     [HideInInspector] public ItemSlot selectedSlot;
-    public event Action<ItemSlot> OnSlotSelected;
+    public event Action<ItemSlot> OnInventorySlotSelected;
 
 
     public void SetupInventory(PlayerStats playerParam)
@@ -56,12 +54,12 @@ public class InventoryPanel : MonoBehaviour
         if (isOn)
         {
             selectedSlot = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>();
-            OnSlotSelected?.Invoke(selectedSlot);
+            OnInventorySlotSelected?.Invoke(selectedSlot);
         }
         else if (selectedSlot == UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>())
         {
             selectedSlot = null;
-            OnSlotSelected?.Invoke(selectedSlot);
+            OnInventorySlotSelected?.Invoke(selectedSlot);
         }
     }
 
@@ -106,6 +104,6 @@ public class InventoryPanel : MonoBehaviour
             itemSlot.slotToggle.isOn = false;
         }
 
-        OnSlotSelected?.Invoke(null);
+        OnInventorySlotSelected?.Invoke(null);
     }
 }

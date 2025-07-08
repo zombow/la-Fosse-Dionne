@@ -1,13 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static SettingManager Instance { get; private set; }
     public SettingPopup settingPrefab;
-    private SettingPopup _initPrefab;
+    [HideInInspector]
+    public SettingPopup _initPrefab;
     public GameObject safeArea;
+
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void Start()
     {

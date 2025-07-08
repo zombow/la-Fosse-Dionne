@@ -20,16 +20,14 @@ public class InventoryPopup : MonoBehaviour
 
     public void SetupInventory(PlayerStats playerStats)
     {
-        itemInfoPanelPrefab.gameObject.SetActive(false);
-        equipButton.gameObject.SetActive(false);
-        itemDeleteButton.gameObject.SetActive(false);
-
         player = playerStats;
         inventoryPanelPrefab.SetupInventory(player);
-        inventoryPanelPrefab.OnSlotSelected += OnSlotSelected;
+        inventoryPanelPrefab.OnInventorySlotSelected += OnSlotSelected;
 
         equipButton.onClick.AddListener(OnEquipButtonClicked);
         itemDeleteButton.onClick.AddListener(OnItemDeleteButtonClicked);
+
+        OnSlotSelected(null);
     }
 
     private void OnEquipButtonClicked()
@@ -53,6 +51,8 @@ public class InventoryPopup : MonoBehaviour
 
     private void OnSlotSelected(ItemSlot obj)
     {
+        equipButton.gameObject.SetActive(false);
+        itemDeleteButton.gameObject.SetActive(false);
         if (obj == null || obj.slotItem == null)
         {
             selectSlot = null;
@@ -62,11 +62,9 @@ public class InventoryPopup : MonoBehaviour
         }
 
         selectSlot = obj;
-        equipButton.gameObject.SetActive(false);
-        itemDeleteButton.gameObject.SetActive(false);
         itemInfoPanelPrefab.gameObject.SetActive(true);
-
         itemInfoPanelPrefab.UpdateUI(obj.slotItem);
+
         UpdateInteractionPanel();
     }
 
@@ -80,12 +78,6 @@ public class InventoryPopup : MonoBehaviour
         else if (selectSlot.slotType == SlotType.Equip)
         {
             equipButton.gameObject.SetActive(false);
-            itemDeleteButton.gameObject.SetActive(false);
-        }
-        else if (selectSlot.slotType == SlotType.Shop)
-        {
-            equipButtonText.text = "구매하기";
-            equipButton.gameObject.SetActive(true);
             itemDeleteButton.gameObject.SetActive(false);
         }
         else if (selectSlot.slotType == SlotType.Inventory)
