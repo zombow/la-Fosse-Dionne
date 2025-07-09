@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SettingPopup : MonoBehaviour
 {
+    private SettingManager settingManager;
     [Header("Exit")]
     public Button exitButton;
     [Header("New Game")]
@@ -22,6 +23,7 @@ public class SettingPopup : MonoBehaviour
 
     private void Start()
     {
+        settingManager = SettingManager.Instance;
         exitButton.onClick.AddListener(OnExit);
         newGameButton.onClick.AddListener(()=>SetPopup(newGameAlertPopupInstance.gameObject));
         
@@ -42,13 +44,6 @@ public class SettingPopup : MonoBehaviour
 
     void OnExit()
     {
-        var settingManager = FindObjectOfType<SettingManager>();
-        if (!settingManager)
-        {
-            Debug.LogError("Manager Not Found!");
-            return;
-        }
-
         settingManager.PopupOnOff();
     }
 

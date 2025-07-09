@@ -8,38 +8,45 @@ public class CombatManager : MonoBehaviour
     private CombatPopup instanceCombatPopupPrefab;
     public PlayerStats player;
     public Monster monster;
-    
+
     public void StartCombat(PlayerStats playerRef, Monster monsterRef, Action callback)
     {
         instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
         instanceCombatPopupPrefab.Initialize(playerRef, monsterRef, callback);
-        
+
         player = playerRef;
+        player.playerStateBlock.playerStatus[StateType.Hp] = player.playerStateBlock.maxHp;
+        player.RecalculateStats();
+
         monster = Instantiate(monsterRef);
         monster.ResetHp();
 
-        Debug.Log($"전투 시작: {player.playerStateBlock.playerName} vs {monster.monsterName}");
-        NextTurn();
+        instanceCombatPopupPrefab.CombatStart();
+        NextTurn(); // 주사위 굴리기 대기
     }
 
     private void NextTurn()
     {
+        instanceCombatPopupPrefab.UpdateCombatUI(player, monster);
+
         if (!player.IsAlive)
         {
             Debug.Log("플레이어가 사망했습니다.");
-            CombatPopupPrefab.CombatEnd();
+            player.playerStateBlock.playerStatus[StateType.Life]--;
+            instanceCombatPopupPrefab.CombatEnd();
             return;
         }
 
         if (!monster.IsAlive)
         {
             Debug.Log("몬스터를 처치했습니다!");
-            CombatPopupPrefab.CombatEnd();
+            instanceCombatPopupPrefab.CombatEnd();
             return;
         }
 
+        // 공격 순서 계산로직 적용
         PlayerAttack();
-        if (monster.IsAlive)
+        if (monster.IsAlive) 
             MonsterAttack();
 
         NextTurn();
@@ -55,7 +62,7 @@ public class CombatManager : MonoBehaviour
     private void MonsterAttack()
     {
         int damage = Mathf.Max(1, monster.attack - player.playerStateBlock.playerStatus[StateType.Strength] / 2);
-        player.playerStateBlock.hp = Mathf.Max(0, player.playerStateBlock.hp - damage);
-        Debug.Log($"몬스터가 플레이어에게 {damage} 데미지를 입혔습니다. (남은 HP: {player.playerStateBlock.hp})");
+        player.playerStateBlock.playerStatus[StateType.Hp] = Mathf.Max(0, player.playerStateBlock.playerStatus[StateType.Hp] - damage);
+        Debug.Log($"몬스터가 플레이어에게 {damage} 데미지를 입혔습니다. (남은 HP: {player.playerStateBlock.playerStatus[StateType.Hp]})");
     }
 }

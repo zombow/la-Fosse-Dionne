@@ -21,8 +21,7 @@
     "tier": 1,
     "grip": "one-handed",
     "stats": {
-      "intelligence": 2,
-      "speed": 0
+      "intelligence": 2
     },
     "value": 16,
     "description": "마법이 깃든 짧은 지팡이.",
@@ -34,8 +33,7 @@
     "type": "shield",
     "tier": 1,
     "stats": {
-      "defense": 1,
-      "speed": 0
+      "defense": 1
     },
     "value": 18,
     "description": "둥글게 깎은 나무판에 철을 덧대어 만든 방패.",
@@ -48,8 +46,7 @@
     "tier": 1,
     "stats": {
       "defense": 1,
-      "hp": 5,
-      "speed": 0
+      "hp": 5
     },
     "value": 25,
     "description": "천으로 만들어진 갑옷. 폭신하다.",
@@ -61,8 +58,7 @@
     "type": "armor",
     "tier": 1,
     "stats": {
-      "hp": 10,
-      "speed": 0
+      "hp": 10
     },
     "value": 30,
     "description": "동물 가죽을 벗겨 만든 옷. 벼룩이 좋아함.",
@@ -75,8 +71,7 @@
     "tier": 1,
     "grip": "one-handed",
     "stats": {
-      "strength": 2,
-      "speed": 0
+      "strength": 2
     },
     "value": 15,
     "description": "끝에 쇳덩이를 붙인 한손 둔기.",
@@ -89,8 +84,7 @@
     "tier": 1,
     "grip": "two-handed",
     "stats": {
-      "intelligence": 4,
-      "speed": 0
+      "intelligence": 4
     },
     "value": 28,
     "description": "나무를 깎아 만든 긴 지팡이.",
@@ -103,8 +97,7 @@
     "tier": 1,
     "grip": "two-handed",
     "stats": {
-      "agility": 4,
-      "speed": 0
+      "agility": 4
     },
     "value": 45,
     "description": "묵직한 크로스보우. 아, 왜 안 나가?",
@@ -117,8 +110,7 @@
     "tier": 1,
     "grip": "two-handed",
     "stats": {
-      "strength": 4,
-      "speed": 0
+      "strength": 4
     },
     "value": 33,
     "description": "균형 잡힌 무기로 다양한 상황에서 사용 가능.",
@@ -158,8 +150,7 @@
     "type": "shield",
     "tier": 1,
     "stats": {
-      "defense": 2,
-      "speed": 0
+      "defense": 2
     },
     "value": 20,
     "description": "작고 둥근 손방패.",
@@ -171,8 +162,7 @@
     "type": "armor",
     "tier": 1,
     "stats": {
-      "hp": 10,
-      "speed": 0
+      "hp": 10
     },
     "value": 92,
     "description": "부드러운 천으로 만들어진, 전신을 가리는 옷.",
@@ -199,8 +189,7 @@
     "tier": 2,
     "grip": "two-handed",
     "stats": {
-      "strength": 8,
-      "speed": 0
+      "strength": 8
     },
     "value": 90,
     "description": "창에 도끼날을 더한 무기.",
@@ -240,8 +229,7 @@
     "type": "shield",
     "tier": 2,
     "stats": {
-      "defense": 4,
-      "speed": 0
+      "defense": 4
     },
     "value": 18,
     "description": "연 모양의 방패.",
@@ -254,8 +242,7 @@
     "tier": 2,
     "stats": {
       "defense": 3,
-      "hp": 20,
-      "speed": 0
+      "hp": 20
     },
     "value": 95,
     "description": "강철판으로 가슴을 가린 갑옷.",
@@ -268,8 +255,7 @@
     "tier": 2,
     "grip": "two-handed",
     "stats": {
-      "intelligence": 10,
-      "speed": 0
+      "intelligence": 10
     },
     "value": 88,
     "description": "마법의 힘이 깃든 지팡이.",
@@ -282,8 +268,7 @@
     "tier": 2,
     "grip": "one-handed",
     "stats": {
-      "intelligence": 5,
-      "speed": 0
+      "intelligence": 5
     },
     "value": 90,
     "description": "유리로 만든 마법 지팡이.",
@@ -324,8 +309,7 @@
     "tier": 3,
     "stats": {
       "defense": 10,
-      "hp": 30,
-      "speed": 0
+      "hp": 30
     },
     "value": 0,
     "description": "모르방 언덕의 나무로 만든 갑옷.",
@@ -338,8 +322,7 @@
     "tier": 3,
     "grip": "two-handed",
     "stats": {
-      "intelligence": 25,
-      "speed": 0
+      "intelligence": 25
     },
     "value": 0,
     "description": "디옹의 물로 축성된 지팡이.",
@@ -365,8 +348,7 @@
     "type": "shield",
     "tier": 3,
     "stats": {
-      "defense": 10,
-      "speed": 0
+      "defense": 10
     },
     "value": 0,
     "description": "신탁의 힘으로 공격을 흘려내는 방패.",
@@ -378,8 +360,7 @@
     "type": "accessory",
     "tier": 1,
     "stats": {
-      "luck": 2,
-      "speed": 0
+      "luck": 2
     },
     "value": 40,
     "description": "별다른 장식은 없는 작은 은반지. 인간들은 서로 약속을 할 때 주고받곤 하지만, 아무런 효과도 없다.",
@@ -391,8 +372,7 @@
     "type": "accessory",
     "tier": 2,
     "stats": {
-      "agility": 5,
-      "speed": 0
+      "agility": 5
     },
     "value": 200,
     "description": "이렐르에게 건네받은 약속의 징표. 녹색 빛을 은은하게 뿜어낸다.",
@@ -404,8 +384,7 @@
     "type": "accessory",
     "tier": 2,
     "stats": {
-      "hp": 10,
-      "speed": 0
+      "hp": 10
     },
     "value": 400,
     "description": "실로시앤트 숲의 드루이드가 지니고 있던 보옥. 주변 환경의 생명력을 북돋는 신비한 마력을 지녔다.",
@@ -417,8 +396,7 @@
     "type": "accessory",
     "tier": 2,
     "stats": {
-      "defense": 3,
-      "speed": 0
+      "defense": 3
     },
     "value": 400,
     "description": "방패를 강화하는 마법이 걸려있는 팔찌.",
@@ -430,8 +408,7 @@
     "type": "accessory",
     "tier": 2,
     "stats": {
-      "strength": 5,
-      "speed": 0
+      "strength": 5
     },
     "value": 400,
     "description": "광전사의 몸에 새겨지는 주술적인 문양. 뜻은 '공격이 최선의 방어'다.",
@@ -443,8 +420,7 @@
     "type": "accessory",
     "tier": 2,
     "stats": {
-      "intelligence": 5,
-      "speed": 0
+      "intelligence": 5
     },
     "value": 400,
     "description": "마탑의 학장 에드몬드가 마도구의 사용법에 대해 기록해놓은 양피지.",

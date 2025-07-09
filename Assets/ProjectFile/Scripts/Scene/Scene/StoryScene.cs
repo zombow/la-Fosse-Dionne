@@ -19,7 +19,7 @@ public class StoryScene : MonoBehaviour
     public Transform choiceContainer;
     public GameObject choiceButtonPrefab;
 
-    [Header("Utility")] public Button inventoryButton;
+    [Header("Utility")] public Toggle inventoryButton;
     public InventoryPopup inventoryPopupPrefab;
     private InventoryPopup instanceInventoryPopup;
     public Button settingButton;
@@ -68,7 +68,7 @@ public class StoryScene : MonoBehaviour
         instanceInventoryPopup.SetupInventory(player);
         instanceInventoryPopup.gameObject.SetActive(false);
 
-        inventoryButton.onClick.AddListener(() =>
+        inventoryButton.onValueChanged.AddListener((isOn) =>
         {
             OpenPopup(instanceInventoryPopup.gameObject);
             instanceInventoryPopup.inventoryPanelPrefab.UpdateInventoryUI();
@@ -84,6 +84,7 @@ public class StoryScene : MonoBehaviour
     {
         if ((currentBlock.isShop || currentBlock.isBattleStart) && instancedPopup.gameObject.GetComponentInChildren<InventoryPopup>())
         {
+            inventoryButton.isOn = false;
             return;
         }
 

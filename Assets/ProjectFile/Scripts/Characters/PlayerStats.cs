@@ -14,7 +14,6 @@ public class PlayerStateBlock
     public int level = 1;
     public int gold = 0;
 
-    public int hp;
     public int maxHp;
     public int maxLifepoint = 5;
     public int maxSpiritpoint = 5;
@@ -65,7 +64,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Inventory")] public List<Item> inventory = new List<Item>();
 
-    public bool IsAlive => playerStateBlock.hp > 0;
+    public bool IsAlive => playerStateBlock.playerStatus[StateType.Hp] > 0;
     public event Action OnStatsChanged;
 
     public bool Equip(Item item)
@@ -142,7 +141,7 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
 
-        RecalculateStats();
+        RecalculateStats(true);
         return true;
     }
 
@@ -175,7 +174,7 @@ public class PlayerStats : MonoBehaviour
                 playerStateBlock.playerStatus[value.Key] += value.Value;
             }
         }
-
+        RecalculateStats();
         return true;
     }
 
@@ -226,36 +225,42 @@ public class PlayerStats : MonoBehaviour
         return true;
     }
 
-    public void RecalculateStats()
+    public void RecalculateStats(bool heal = true)
     {
-        playerStateBlock.attack = (int)(playerStateBlock.playerStatus[StateType.Strength] * 1.5f
-                                        + playerStateBlock.playerStatus[StateType.Agility] * 1.5f
-                                        + playerStateBlock.playerStatus[StateType.Intelligence] * 1.5f); // 공격력 생성 수정필요
+        playerStateBlock.attack = Mathf.CeilToInt(((playerStateBlock.playerStatus[StateType.Strength] + GetStatFromEquip(StateType.Strength)) * 1.5f
+                                                   + (playerStateBlock.playerStatus[StateType.Agility] + GetStatFromEquip(StateType.Agility)) * 1.5f
+                                                   + (playerStateBlock.playerStatus[StateType.Intelligence] + GetStatFromEquip(StateType.Intelligence)) * 1.5f)); // 공격력 생성 수정필요
 
-        playerStateBlock.defense = (int)(playerStateBlock.playerStatus[StateType.Strength] * 0.8f
-                                         + playerStateBlock.playerStatus[StateType.Agility] * 0.2f
-                                         + GetStatFromEquip(StateType.Defense)); // 방어력 생성 수정필요
+        playerStateBlock.defense = Mathf.CeilToInt((playerStateBlock.playerStatus[StateType.Strength] + GetStatFromEquip(StateType.Strength)) * 0.8f
+                                                   + (playerStateBlock.playerStatus[StateType.Agility] + GetStatFromEquip(StateType.Agility)) * 0.2f
+                                                   + (playerStateBlock.playerStatus[StateType.Defense] + GetStatFromEquip(StateType.Defense))); // 방어력 생성 수정필요
 
-        playerStateBlock.evasion = Mathf.Clamp((int)(playerStateBlock.playerStatus[StateType.Agility] * 1.2f
-                                                     + playerStateBlock.playerStatus[StateType.Luck] * 0.5f), 0, 100);
+        playerStateBlock.evasion = Mathf.CeilToInt(Mathf.Clamp(
+            (playerStateBlock.playerStatus[StateType.Agility] + GetStatFromEquip(StateType.Agility)) * 1.2f
+            + (playerStateBlock.playerStatus[StateType.Luck] + GetStatFromEquip(StateType.Luck)) * 0.5f, 0, 100));
 
-        playerStateBlock.critChance = Mathf.Clamp((int)(playerStateBlock.playerStatus[StateType.Luck] * 1.0f
-                                                        + playerStateBlock.playerStatus[StateType.Agility] * 0.3f), 0, 100);
+        playerStateBlock.critChance = Mathf.CeilToInt(Mathf.Clamp(
+            (playerStateBlock.playerStatus[StateType.Luck] + GetStatFromEquip(StateType.Luck)) * 1.0f
+            + (playerStateBlock.playerStatus[StateType.Agility] + GetStatFromEquip(StateType.Agility)) * 0.3f, 0, 100));
 
-        playerStateBlock.speed = Mathf.Clamp((int)(playerStateBlock.playerStatus[StateType.Agility] * 1.0f
-                                                   + playerStateBlock.playerStatus[StateType.Luck] * 0.2f)
-                                             + GetStatFromEquip(StateType.Speed), 0, 100);
+        playerStateBlock.speed = Mathf.CeilToInt(Mathf.Clamp(
+            (playerStateBlock.playerStatus[StateType.Agility] + GetStatFromEquip(StateType.Agility)) * 1.0f
+            + (playerStateBlock.playerStatus[StateType.Luck] + GetStatFromEquip(StateType.Luck)) * 0.2f
+            + (playerStateBlock.playerStatus[StateType.Speed] + GetStatFromEquip(StateType.Speed)), 0, 100));
 
         playerStateBlock.maxHp = 20 + playerStateBlock.level * 10
                                     + playerStateBlock.playerStatus[StateType.Strength] * 5
                                     + GetStatFromEquip(StateType.Hp);
-
-        playerStateBlock.hp = Mathf.Clamp(playerStateBlock.hp, 0, playerStateBlock.maxHp);
         
+        if (heal)
+        {
+            playerStateBlock.playerStatus[StateType.Hp] = playerStateBlock.maxHp;
+        }
+
         OnStatsChanged?.Invoke();
     }
 
-    private int GetStatFromEquip(StateType statName)
+    public int GetStatFromEquip(StateType statName)
     {
         int total = 0;
         foreach (var item in new[] { equippedWeapon, armor, shield, accessory })
@@ -283,7 +288,6 @@ public class PlayerStats : MonoBehaviour
         equippedWeapon = tempPlayerStats.equippedWeapon;
         accessory = tempPlayerStats.accessory;
         armor = tempPlayerStats.armor;
-
         TEST();
         RecalculateStats();
     }

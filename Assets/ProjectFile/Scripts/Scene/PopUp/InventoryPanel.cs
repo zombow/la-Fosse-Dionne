@@ -75,7 +75,7 @@ public class InventoryPanel : MonoBehaviour
         defenseText.text = player.playerStateBlock.defense.ToString();
         criticalText.text = player.playerStateBlock.critChance.ToString();
         evasionText.text = player.playerStateBlock.evasion.ToString();
-        healthText.text = player.playerStateBlock.hp.ToString();
+        healthText.text = player.playerStateBlock.playerStatus[StateType.Hp].ToString();
         coinText.text = player.playerStateBlock.gold.ToString();
 
         // 인벤토리 아이템 업데이트

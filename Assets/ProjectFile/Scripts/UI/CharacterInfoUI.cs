@@ -27,7 +27,6 @@ public class CharacterInfoUI : MonoBehaviour
 
     public void InfoInit(PlayerStats playerInfo)
     {
-
         playerstate = playerInfo; // StoryScene에서 주입
         playerstate.OnStatsChanged += UpdateStatUI;
         characterImage.sprite = playerInfo.playerStateBlock.looksSprite;
@@ -45,16 +44,19 @@ public class CharacterInfoUI : MonoBehaviour
             stateTextDictionary[state.stateType] = state.stateText;
         }
 
+        int point = 0;
         foreach (var state in stateText)
         {
             if (playerstate.playerStateBlock.playerStatus.TryGetValue(state.stateType, out int value))
             {
-                stateTextDictionary[state.stateType].text = value.ToString();
+                point += value + playerstate.GetStatFromEquip(state.stateType);
+                stateTextDictionary[state.stateType].text = point.ToString();
             }
             else
             {
                 stateTextDictionary[state.stateType].text = "0";
             }
+            point = 0;
         }
 
         // Life 하트 표시

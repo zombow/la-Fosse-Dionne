@@ -32,7 +32,7 @@ public class PlayerLooksToggle : MonoBehaviour
         if (isOn)
         {
             genderSelectToggle.SetLookssprite(looksSprite);
-            genderSelectToggle.SetCurrentSelectedIndex(index); // 아래 함수 추가 필요
+            genderSelectToggle.SetCurrentSelectedIndex(index);
         }
     }
 
