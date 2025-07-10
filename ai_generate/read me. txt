@@ -1,0 +1,54 @@
+1단계: 가상환경 재생성
+bash# 현재 가상환경 비활성화
+deactivate
+
+# 기존 가상환경 삭제
+rm -rf venv
+
+# 새 가상환경 생성
+python3 -m venv venv
+
+# 가상환경 활성화
+source venv/bin/activate
+
+# 이제 python 명령어가 있는지 확인
+which python
+which python3
+
+
+2단계: 패키지 설치
+bash# pip 업그레이드
+python -m pip install --upgrade pip
+
+# 필요한 패키지 설치
+python -m pip install fastapi uvicorn python-dotenv PyMuPDF requests google-generativeai
+
+
+3단계: 설치 확인
+bash# 패키지 설치 확인
+python -m pip list | grep fastapi
+
+최종 폴더 구조:
+ai_generate/
+├── main.py
+├── logic.py
+├── utils.py
+├── .env
+├── pdfs/          (PDF 파일들 저장, 비어있어도 됨)
+└── logs/          (로그 파일 저장)
+
+
+# 서버 실행
+python3 main.py
+
+성공하면 다음과 같은 메시지가 나타납니다:
+🔄 앱 시작 중...
+📂 PDF 문서를 로딩 중...
+🐍 TRPG 서버를 시작합니다...
+🌐 http://127.0.0.1:8000 에서 실행됩니다
+INFO:     Uvicorn running on http://0.0.0.0:8000
+
+서버를 실행한 후 유니티에서 플레이진행
+인카운터 생성 클릭  
+메세지가 생성되면 메세지 창에 원하는 채팅 입력
+인카운터가 끝나면 변화한 스탯들 확인
