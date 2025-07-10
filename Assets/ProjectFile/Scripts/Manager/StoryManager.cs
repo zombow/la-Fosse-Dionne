@@ -22,10 +22,10 @@ public class StoryManager : MonoBehaviour
     public void ShowStoryBlock(StoryBlock block)
     {
         Storyscene.UpdateGaugePanel(1); // 게이지 패널 업데이트 (게이지 패널값은 Block의 갯수를 백분율로 나누는것으로 수정필요)
-        if (block.isBattleStart && block.monsterToSpawn) // battle분기
+        if (block.isBattleStart) // battle분기
         {
             Storyscene.BeginBattle(block, this);
-            combatManager.StartCombat(player, block.monsterToSpawn, () =>
+            combatManager.StartCombat(player, block.spawnMonsterId, () =>
             {
                 ShowStoryBlock(block.returnBlockAfterBattle);
                 Storyscene.storyBG.sprite

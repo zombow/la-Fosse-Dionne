@@ -1,0 +1,242 @@
+[
+  {
+    "id": "monster_wolf",
+    "name": "늑대",
+    "type": "monster",
+    "hp": 35,
+    "combat_stats": {
+      "attack": 8,
+      "defense": 2,
+      "evasion": 10,
+      "crit_chance": 20,
+      "speed": 17
+    },
+    "tier": 1,
+    "animations": {
+      "idle": "image/monster/tier1/wolf/monster_wolf_idle",
+      "attack": "image/monster/tier1/wolf/monster_wolf_attack",
+      "hurt": "image/monster/tier1/wolf/monster_wolf_hurt",
+      "death": "image/monster/tier1/wolf/monster_wolf_death"
+    }
+  },
+  {
+    "id": "monster_fire_worm",
+    "name": "파이어 웜",
+    "type": "monster",
+    "hp": 30,
+    "combat_stats": {
+      "attack": 8,
+      "defense": 0,
+      "evasion": 5,
+      "crit_chance": 25,
+      "speed": 19
+    },
+    "tier": 1,
+    "animations": {
+      "idle": "image/monster/tier1/fireworm/monster_fireworm_idle",
+      "attack": "image/monster/tier1/fireworm/monster_fireworm_attack",
+      "hurt": "image/monster/tier1/fireworm/monster_fireworm_hurt",
+      "death": "image/monster/tier1/fireworm/monster_fireworm_death"
+    }
+  },
+  {
+    "id": "monster_mimic",
+    "name": "미믹",
+    "type": "monster",
+    "hp": 30,
+    "combat_stats": {
+      "attack": 7,
+      "defense": 0,
+      "evasion": 0,
+      "crit_chance": 10,
+      "speed": 5
+    },
+    "tier": 1,
+    "animations": {
+      "idle":  "image/monster/tier1/mimic/monster_mimic_idle",
+      "attack": "image/monster/tier1/mimic/monster_mimic_attack",
+      "hurt": "image/monster/tier1/mimic/monster_mimic_hurt",
+      "death": "image/monster/tier1/mimic/monster_mimic_death"
+    }
+  },
+  {
+    "id": "monster_slime",
+    "name": "슬라임",
+    "type": "monster",
+    "hp": 30,
+    "combat_stats": {
+      "attack": 5,
+      "defense": 0,
+      "evasion": 0,
+      "crit_chance": 10,
+      "speed": 5
+    },
+    "tier": 1,
+    "animations": {
+      "idle": "image/monster/tier1/slime/monster_slime_idle",
+      "attack": "image/monster/tier1/slime/monster_slime_attack",
+      "hurt": "image/monster/tier1/slime/monster_slime_hurt",
+      "death": "image/monster/tier1/slime/monster_slime_death"
+    }
+  },
+  {
+    "id": "monster_golem",
+    "name": "골렘",
+    "type": "monster",
+    "hp": 30,
+    "combat_stats": {
+      "attack": 8,
+      "defense": 3,
+      "evasion": 10,
+      "crit_chance": 10,
+      "speed": 13
+    },
+    "tier": 1,
+    "animations": {
+      "idle": "image/monster/tier1/golem/monster_golem_idle",
+      "attack": "image/monster/tier1/golem/monster_golem_attack",
+      "hurt": "image/monster/tier1/golem/monster_golem_hurt",
+      "death": "image/monster/tier1/golem/monster_golem_death"
+    }
+  },
+  {
+    "id": "monster_town_guard",
+    "name": "마을 경비병",
+    "type": "monster",
+    "hp": 40,
+    "combat_stats": {
+      "attack": 10,
+      "defense": 3,
+      "evasion": 10,
+      "crit_chance": 10,
+      "speed": 14
+    },
+    "tier": 2,
+    "animations": {
+      "idle": "image/monster/tier2/town_guard/monster_townguard_idle",
+      "attack": "image/monster/tier2/town_guard/monster_townguard_attack",
+      "hurt": "image/monster/tier2/town_guard/monster_townguard_hurt",
+      "death": "image/monster/tier2/town_guard/monster_townguard_death"
+    }
+  },
+  {
+    "id": "monster_knight",
+    "name": "성주의 기사",
+    "type": "monster",
+    "hp": 50,
+    "combat_stats": {
+      "attack": 15,
+      "defense": 5,
+      "evasion": 5,
+      "crit_chance": 10,
+      "speed": 16
+    },
+    "tier": 2,
+    "animations": {
+      "idle": "image/monster/tier2/knight/monster_knight_idle",
+      "attack": "image/monster/tier2/knight/monster_knight_attack",
+      "hurt": "image/monster/tier2/knight/monster_knight_hurt",
+      "death": "image/monster/tier2/knight/monster_knight_death"
+    }
+  },
+  {
+    "id": "monster_skeleton",
+    "name": "스켈레톤",
+    "type": "monster",
+    "hp": 80,
+    "combat_stats": {
+      "attack": 8,
+      "defense": 0,
+      "evasion": 0,
+      "crit_chance": 10,
+      "speed": 0
+    },
+    "tier": 3,
+    "animations": {
+      "idle": "image/monster/tier3/skeleton/monster_skeleton_idle",
+      "attack": "image/monster/tier3/skeleton/monster_skeleton_attack",
+      "hurt": "image/monster/tier3/skeleton/monster_skeleton_hurt",
+      "death": "image/monster/tier3/skeleton/monster_skeleton_death"
+    }
+  },
+  {
+    "id": "monster_bat",
+    "name": "박쥐",
+    "type": "monster",
+    "hp": 45,
+    "combat_stats": {
+      "attack": 15,
+      "defense": 0,
+      "evasion": 15,
+      "crit_chance": 15,
+      "speed": 23
+    },
+    "tier": 2,
+    "animations": {
+      "idle": "image/monster/tier2/bat/monster_bat_idle",
+      "attack": "image/monster/tier2/bat/monster_bat_attack",
+      "hurt": "image/monster/tier2/bat/monster_bat_hurt",
+      "death": "image/monster/tier2/bat/monster_bat_death"
+    }
+  },
+  {
+    "id": "monster_skul_wolf",
+    "name": "해골 늑대",
+    "type": "monster",
+    "hp": 42,
+    "combat_stats": {
+      "attack": 12,
+      "defense": 2,
+      "evasion": 12,
+      "crit_chance": 15,
+      "speed": 20
+    },
+    "tier": 2,
+    "animations": {
+      "idle": "image/monster/tier2/skul_wolf/monster_skulwolf_idle",
+      "attack": "image/monster/tier2/skul_wolf/monster_skulwolf_attack",
+      "hurt": "image/monster/tier2/skul_wolf/monster_skulwolf_hurt",
+      "death": "image/monster/tier2/skul_wolf/monster_skulwolf_death"
+    }
+  },
+  {
+    "id": "monster_necromancer",
+    "name": "네크로맨서",
+    "type": "monster",
+    "hp": 40,
+    "combat_stats": {
+      "attack": 25,
+      "defense": 0,
+      "evasion": 10,
+      "crit_chance": 25,
+      "speed": 18
+    },
+    "tier": 3,
+    "animations": {
+      "idle": "image/monster/tier3/necromancer/monster_necromancer_idle",
+      "attack": "image/monster/tier3/necromancer/monster_necromancer_attack",
+      "hurt": "image/monster/tier3/necromancer/monster_necromancer_hurt",
+      "death": "image/monster/tier3/necromancer/monster_necromancer_death"
+    }
+  },
+  {
+    "id": "monster_basilisk",
+    "name": "바실리스크",
+    "type": "monster",
+    "hp": 100,
+    "combat_stats": {
+      "attack": 30,
+      "defense": 8,
+      "evasion": 20,
+      "crit_chance": 20,
+      "speed": 20
+    },
+    "tier": 3,
+    "animations": {
+      "idle": "image/monster/tier3/basilisk/monster_basilisk_idle",
+      "attack": "image/monster/tier3/basilisk/monster_basilisk_attack_bite",
+      "hurt": "image/monster/tier3/basilisk/monster_basilisk_hurt",
+      "death": "image/monster/tier3/basilisk/monster_basilisk_death"
+    }
+  }
+]

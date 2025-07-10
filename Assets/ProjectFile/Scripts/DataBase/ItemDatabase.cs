@@ -46,4 +46,10 @@ public class Item
     public int value;
     public string description;
     public string image;
+    public Sprite itemSprite;
+    
+    public void LoadSprites()
+    {
+        itemSprite = Resources.Load<Sprite>(image);
+    }
 }

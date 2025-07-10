@@ -27,7 +27,7 @@ public class ItemSlot : MonoBehaviour
         if (Item != null)
         {
             slotItem = Item;
-            slotImage.sprite = Resources.Load<Sprite>(Item.image);
+            slotImage.sprite = Item.itemSprite;
             slotImage.color = Color.white;
         }
     }

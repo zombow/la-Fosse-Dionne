@@ -12,7 +12,7 @@ public class StoryBlock : ScriptableObject
     public string traitGained;
 
     public bool isBattleStart;
-    public Monster monsterToSpawn;
+    public string spawnMonsterId;
     public StoryBlock returnBlockAfterBattle;
     public int moralityChange;
     public int nextIndex;
@@ -24,7 +24,7 @@ public class StoryBlock : ScriptableObject
     public int shopType;
     public float shopChance;
     public StoryBlock nextBlockAfterShop;
-    
+
     public bool isRandomEncounter;
     public bool answer;
 }

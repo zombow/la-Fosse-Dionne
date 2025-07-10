@@ -36,7 +36,7 @@ public class ItemInfoPanel : MonoBehaviour
 
     public void UpdateUI(Item item)
     {
-        selectedItemImage.sprite = Resources.Load<Sprite>(item.image);
+        selectedItemImage.sprite = item.itemSprite;
         selectedItemDescription.text = item.description;
         selectedItemName.text = item.name;
         selectedItemValue.text = item.value.ToString();

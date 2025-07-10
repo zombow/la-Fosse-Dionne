@@ -9,18 +9,18 @@ public class CombatManager : MonoBehaviour
     public PlayerStats player;
     public Monster monster;
 
-    public void StartCombat(PlayerStats playerRef, Monster monsterRef, Action callback)
+    public void StartCombat(PlayerStats playerRef, string monsterId, Action callback)
     {
-        instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
-        instanceCombatPopupPrefab.Initialize(playerRef, monsterRef, callback);
 
         player = playerRef;
         player.playerStateBlock.playerStatus[StateType.Hp] = player.playerStateBlock.maxHp;
         player.RecalculateStats();
 
-        monster = Instantiate(monsterRef);
+        monster = AssetManager.Instance.monsterList["monster_fire_worm"]; // 예시로 Fire Worm 몬스터를 사용, 실제로는 monsterId를 사용하여 AssetManager에서 불러와야 함
         monster.ResetHp();
-
+        
+        instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
+        instanceCombatPopupPrefab.Initialize(playerRef, monster, callback);
         instanceCombatPopupPrefab.CombatStart();
         NextTurn(); // 주사위 굴리기 대기
     }
