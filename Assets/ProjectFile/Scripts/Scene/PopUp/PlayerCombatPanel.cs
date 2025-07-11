@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerCombatPanel : MonoBehaviour
 {
+    [Header("Player UI")]
     public Image playerImage;
     public TextMeshProUGUI playerNameText;
     public Slider playerHealthSlider;
@@ -13,30 +14,44 @@ public class PlayerCombatPanel : MonoBehaviour
     public TextMeshProUGUI playerAttackText;
     public TextMeshProUGUI playerDefenseText;
 
+    [Header("Interaction UI")]
     public GameObject dicePanel;
-    public GameObject resultPanel;
-
+    public GameObject startEndPanel;
     public Button rollDiceButton;
     public Button giveUpButton;
+    public Button startEndButton;
+    public TextMeshProUGUI startEndButtonText;
 
-    public Button exitButton;
-    public TextMeshProUGUI exitButtonText;
+    [Header("Combat UI")] 
+    public Slider speedSlider;
+    
+    private PlayerStats currentplayer;
+
+    public void InitPanel()
+    {
+        startEndButtonText.text = "전투시작";
+        dicePanel.SetActive(false);
+        startEndPanel.SetActive(true);
+    }
 
     public void BattleStart()
     {
         dicePanel.SetActive(true);
-        resultPanel.SetActive(false);
+        startEndPanel.SetActive(false);
+        // 배틀시작후 주사위 굴리기는 이상태로 쭉보이기?
+        
+        
     }
-
     public void BattleEnd(string resultText)
     {
         dicePanel.SetActive(false);
-        resultPanel.SetActive(true);
-        exitButtonText.text = resultText;
+        startEndPanel.SetActive(true);
+        startEndButtonText.text = resultText;
     }
 
     public void UpdatePlayerUI(PlayerStats playerStats)
     {
+        currentplayer = playerStats;
         playerImage.sprite = playerStats.playerStateBlock.looksSprite;
         playerNameText.text = playerStats.playerStateBlock.playerName;
         playerHealthSlider.maxValue = playerStats.playerStateBlock.maxHp;
@@ -44,5 +59,9 @@ public class PlayerCombatPanel : MonoBehaviour
         playerHealthText.text = playerStats.playerStateBlock.playerStatus[StateType.Hp].ToString();
         playerAttackText.text = playerStats.playerStateBlock.attack.ToString();
         playerDefenseText.text = playerStats.playerStateBlock.defense.ToString();
+        
+        speedSlider.maxValue = playerStats.playerStateBlock.speed;
     }
+
+
 }

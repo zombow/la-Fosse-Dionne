@@ -86,7 +86,7 @@ public class AssetManager : MonoBehaviour
             }
         }
     }
-
+    
     private void LoadMonsterDatabase()
     {
         TextAsset jsonText = Resources.Load<TextAsset>("monsters");
@@ -102,7 +102,7 @@ public class AssetManager : MonoBehaviour
             MissingMemberHandling = MissingMemberHandling.Ignore
         };
 
-        // 먼저 List<Item>으로 역직렬화
+        // 먼저 List<Monster>로 역직렬화
         List<Monster> monsters = JsonConvert.DeserializeObject<List<Monster>>(jsonText.text, settings);
 
         // Dictionary로 변환
@@ -111,7 +111,6 @@ public class AssetManager : MonoBehaviour
         {
             if (!monsterList.ContainsKey(monster.id))
             {
-                monster.ProcessAnimationPaths();
                 monster.LoadSprites();
                 monsterList.Add(monster.id, monster);
             }

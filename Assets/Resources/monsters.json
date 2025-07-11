@@ -180,7 +180,7 @@
     }
   },
   {
-    "id": "monster_skul_wolf",
+    "id": "monster_skull_wolf",
     "name": "해골 늑대",
     "type": "monster",
     "hp": 42,
@@ -193,10 +193,10 @@
     },
     "tier": 2,
     "animations": {
-      "idle": "image/monster/tier2/skul_wolf/monster_skulwolf_idle",
-      "attack": "image/monster/tier2/skul_wolf/monster_skulwolf_attack",
-      "hurt": "image/monster/tier2/skul_wolf/monster_skulwolf_hurt",
-      "death": "image/monster/tier2/skul_wolf/monster_skulwolf_death"
+      "idle": "image/monster/tier2/skull_wolf/monster_skullwolf_idle",
+      "attack": "image/monster/tier2/skull_wolf/monster_skullwolf_attack",
+      "hurt": "image/monster/tier2/skull_wolf/monster_skullwolf_hurt",
+      "death": "image/monster/tier2/skull_wolf/monster_skullwolf_death"
     }
   },
   {

@@ -4,6 +4,15 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEngine;
 
+[Serializable]
+public class CombatStats
+{
+    public int attack;
+    public int defense;
+    public int evasion;
+    public int crit_chance;
+    public int speed;
+}
 public enum AnimationType
 {
     [EnumMember(Value = "idle")] Idle,
@@ -16,28 +25,20 @@ public enum AnimationType
 public class Monster
 {
     public string id;
-    public string monsterName;
+    public string name;
     public string type;
 
     public int hp;
-    public int maxHp;
-    public int attack;
-    public int defense;
-    public int evasion;
-    public int critChance;
-    public int speed;
     public int tier;
+    
+    [JsonProperty("combat_stats")]
+    public CombatStats combatStats;
 
     [JsonProperty("animations")]
     public Dictionary<string, string> animationPathsRaw;
-
-    [JsonIgnore]
-    public Dictionary<AnimationType, string> animationPaths;
     
-    public Sprite[] idleSprite;
-    public Sprite[] attackSprite;
-    public Sprite[] hurtSprite;
-    public Sprite[] deathSprite;
+    [JsonIgnore]
+    public Dictionary<AnimationType, Sprite[]> animationSprites = new();
 
     public bool IsAlive => hp > 0;
 
@@ -45,20 +46,25 @@ public class Monster
     {
         hp = Mathf.Max(0, hp - damage);
     }
+    
+    
 
-    public void ResetHp()
+    public void LoadSprites()
     {
-        hp = maxHp;
-    }
-
-    public void ProcessAnimationPaths()
-    {
-        animationPaths = new Dictionary<AnimationType, string>();
+        animationSprites = new Dictionary<AnimationType, Sprite[]>();
         foreach (var kvp in animationPathsRaw)
         {
-            if (Enum.TryParse<AnimationType>(kvp.Key, true, out var enumKey))
+            if (Enum.TryParse<AnimationType>(kvp.Key, true, out var animType))
             {
-                animationPaths[enumKey] = kvp.Value;
+                Sprite[] sprites = Resources.LoadAll<Sprite>(kvp.Value);
+                if (sprites != null && sprites.Length > 0)
+                {
+                    animationSprites[animType] = sprites;
+                }
+                else
+                {
+                    Debug.LogWarning($"[Monster:{id}] 애니메이션 {animType}에 대한 스프라이트를 찾을 수 없습니다: {kvp.Value}");
+                }
             }
             else
             {
@@ -66,13 +72,6 @@ public class Monster
             }
         }
     }
-
-    public void LoadSprites()
-    {
-        ProcessAnimationPaths();
-        idleSprite = Resources.LoadAll<Sprite>(animationPaths[AnimationType.Idle]);
-        attackSprite = Resources.LoadAll<Sprite>(animationPaths[AnimationType.Attack]);
-        hurtSprite = Resources.LoadAll<Sprite>(animationPaths[AnimationType.Hurt]);
-        deathSprite = Resources.LoadAll<Sprite>(animationPaths[AnimationType.Death]);
-    }
+    
+    
 }

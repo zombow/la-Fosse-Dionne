@@ -25,7 +25,7 @@ public class StoryManager : MonoBehaviour
         if (block.isBattleStart) // battle분기
         {
             Storyscene.BeginBattle(block, this);
-            combatManager.StartCombat(player, block.spawnMonsterId, () =>
+            combatManager.InitCombat(player, block.spawnMonsterId, () =>
             {
                 ShowStoryBlock(block.returnBlockAfterBattle);
                 Storyscene.storyBG.sprite
