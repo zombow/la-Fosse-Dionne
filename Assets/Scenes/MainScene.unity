@@ -311,20 +311,16 @@ MonoBehaviour:
   player: {fileID: 556650827}
   monster:
     id: 
-    monsterName: 
+    name: 
     type: 
     hp: 0
-    maxHp: 0
-    attack: 0
-    defense: 0
-    evasion: 0
-    critChance: 0
-    speed: 0
     tier: 0
-    idleSprite: []
-    attackSprite: []
-    hurtSprite: []
-    deathSprite: []
+    combatStats:
+      attack: 0
+      defense: 0
+      evasion: 0
+      crit_chance: 0
+      speed: 0
 --- !u!1 &490255446
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b94dd3d86d88147a66753a9ad2d703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RollingSprites: []
 --- !u!222 &1766373916
 CanvasRenderer:
   m_ObjectHideFlags: 0

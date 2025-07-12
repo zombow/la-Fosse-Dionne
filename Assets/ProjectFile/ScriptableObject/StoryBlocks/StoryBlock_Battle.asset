@@ -18,7 +18,7 @@ MonoBehaviour:
   itemsGained: []
   traitGained: 
   isBattleStart: 1
-  monsterToSpawn: {fileID: 11400000, guid: 42e9a7c30ae6ba045b0cb16d06beeade, type: 2}
+  spawnMonsterId: monster_fire_worm
   returnBlockAfterBattle: {fileID: 11400000, guid: c5a2b4bdc0af4ea4abede6236f3b69d0, type: 2}
   moralityChange: 0
   nextIndex: 0

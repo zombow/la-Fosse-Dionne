@@ -11,20 +11,19 @@ public class CombatManager : MonoBehaviour
 
     public void InitCombat(PlayerStats playerRef, string monsterId, Action callback)
     {
-
         player = playerRef;
         player.playerStateBlock.playerStatus[StateType.Hp] = player.playerStateBlock.maxHp;
         player.RecalculateStats();
 
-        monster = AssetManager.Instance.monsterList["monster_fire_worm"]; // 예시로 Fire Worm 몬스터를 사용, 실제로는 monsterId를 사용하여 AssetManager에서 불러와야 함
-        
+        monster = AssetManager.Instance.monsterList[monsterId];
+
         instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
         instanceCombatPopupPrefab.Initialize(playerRef, monster, callback);
+        instanceCombatPopupPrefab.CheckCombatEnd += CheckTurn;
         
-        NextTurn(); // 주사위 굴리기 대기
     }
 
-    private void NextTurn()
+    private void CheckTurn()
     {
         instanceCombatPopupPrefab.UpdateCombatUI(player, monster);
 
@@ -33,6 +32,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log("플레이어가 사망했습니다.");
             player.playerStateBlock.playerStatus[StateType.Life]--;
             instanceCombatPopupPrefab.CombatEnd();
+        
             return;
         }
 
@@ -40,21 +40,15 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("몬스터를 처치했습니다!");
             instanceCombatPopupPrefab.CombatEnd();
+
             return;
         }
-
-        // 공격 순서 계산로직 적용
-        PlayerAttack();
-        if (monster.IsAlive) 
-            MonsterAttack();
-
-        NextTurn();
     }
 
     private void PlayerAttack()
     {
-        int damage = Mathf.Max(1, player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense);
-        monster.TakeDamage(damage);
+        int damage = Mathf.Max(1, player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense); // 데미지 계산공식 + dice결과 사용필요
+        CombatPopupPrefab.PlayerAttack();
         Debug.Log($"플레이어가 몬스터에게 {damage} 데미지를 입혔습니다. (남은 HP: {monster.hp})");
     }
 

@@ -5,18 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopItem
-{
-    public Dictionary<ItemType, List<Item>> items = new Dictionary<ItemType, List<Item>>
-    {
-        { ItemType.Weapon, new List<Item>() },
-        { ItemType.Shield, new List<Item>() },
-        { ItemType.Armor, new List<Item>() },
-        { ItemType.Accessory, new List<Item>() },
-        { ItemType.Special, new List<Item>() },
-        { ItemType.Consumable, new List<Item>() }
-    };
-}
 
 public class AssetManager : MonoBehaviour
 {
@@ -32,7 +20,9 @@ public class AssetManager : MonoBehaviour
     };
 
     public Dictionary<string, Monster> monsterList = new Dictionary<string, Monster>();
-
+    private Dictionary<int, Sprite> DiceSprites = new Dictionary<int, Sprite>();
+    public Sprite[] RollingSprites;
+    public Dictionary<string, Sprite[]> EffectSprites = new Dictionary<string, Sprite[]>();
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,7 +36,10 @@ public class AssetManager : MonoBehaviour
 
         LoadItemDatabase();
         LoadMonsterDatabase();
+        LoadDiceSprites();
+        LoadEffect();
     }
+
 
 
     private void LoadItemDatabase()
@@ -119,5 +112,26 @@ public class AssetManager : MonoBehaviour
                 Debug.LogWarning($"중복된 몬스터 ID: {monster.id} - 무시됨");
             }
         }
+    }
+    private void LoadDiceSprites()
+    {
+        for(int i = 1; i <= 20; i++)
+        {
+            Sprite Dicenumber = Resources.Load<Sprite>($"DiceImage/rolling dice {i}");
+            DiceSprites.Add(i, Dicenumber);
+        }
+        RollingSprites = Resources.LoadAll<Sprite>($"DiceImage/rollingdice");
+    }
+
+    public List<Sprite> LoadDiceRolling(int diceNumber)
+    {
+        List<Sprite> numberSprite = new List<Sprite>();
+        numberSprite.AddRange<Sprite>(RollingSprites);
+        numberSprite.Add(DiceSprites[diceNumber]);
+        return numberSprite;
+    }
+    private void LoadEffect()
+    {
+        EffectSprites.Add("smoke",Resources.LoadAll<Sprite>($"EffectImage/SmokeEffect"));
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -12,22 +13,73 @@ public class EnemyCombatPanel : MonoBehaviour
     public TextMeshProUGUI enemyAttackText;
     public TextMeshProUGUI enemyDefenseText;
 
-    [Header("Combat UI")] public Slider speedSlider;
+    [Header("Combat UI")] 
+    public Slider speedSlider;
 
-    private Coroutine currentAnimationCoroutine;
+    public Image EffectImage;
     [SerializeField] private float frameDelay = 0.1f;
+    private Coroutine currentAnimationCoroutine;
     private Monster currentMonster;
+    private Coroutine EffectCoroutine;
+    private Coroutine speedCoroutine;
+    private bool isPaused = false;
+    public event Action EnemyAttackReady;
+    public event Action EnemyEndAction;
 
 
-    public void InitPanel()
+    public void InitPanel(Monster monster)
     {
+        currentMonster = monster;
+        EffectImage.color = Color.clear;
+        PlayAnimation(AnimationType.Idle);
     }
 
     public void BattleStart()
     {
         // speed slider 채우기 시작
+        RegenSpeedSlider();
     }
 
+    private void RegenSpeedSlider()
+    {
+        isPaused = false;
+
+        if (speedCoroutine == null)
+        {
+            speedCoroutine = StartCoroutine(FillSpeedSliderCoroutine());
+        }
+    }
+
+    private IEnumerator FillSpeedSliderCoroutine()
+    {
+        float target = speedSlider.maxValue;
+
+        while (speedSlider.value < target)
+        {
+            if (!isPaused)
+            {
+                speedSlider.value += Time.deltaTime * 100;
+            }
+
+            yield return null;
+        }
+
+        EnemyAttack();
+        speedSlider.value = target;
+        speedCoroutine = null;
+    }
+
+    private void EnemyAttack()
+    {
+        EnemyAttackReady?.Invoke();
+        PlayAnimation(AnimationType.Attack);
+        TurnEnd();
+    }
+
+    public void StopSpeedSlider()
+    {
+        isPaused = true;
+    }
     public void PlayAnimation(AnimationType type)
     {
         if (!currentMonster.animationSprites.TryGetValue(type, out var sprites) || sprites == null || sprites.Length == 0)
@@ -72,7 +124,7 @@ public class EnemyCombatPanel : MonoBehaviour
             enemyImage.sprite = sprite;
             yield return new WaitForSeconds(frameDelay);
         }
-
+        EnemyEndAction?.Invoke();
         // 다시 Idle로 전환
         PlayAnimation(AnimationType.Idle);
     }
@@ -89,16 +141,6 @@ public class EnemyCombatPanel : MonoBehaviour
         enemyImage.sprite = frames[^1];
     }
 
-    public void StopAnimation()
-    {
-        if (currentAnimationCoroutine != null)
-        {
-            StopCoroutine(currentAnimationCoroutine);
-            currentAnimationCoroutine = null;
-        }
-    }
-
-
     public void UpdateEnemyUI(Monster monster)
     {
         currentMonster = monster;
@@ -110,8 +152,8 @@ public class EnemyCombatPanel : MonoBehaviour
         enemyHealthText.text = monster.hp.ToString();
         enemyAttackText.text = monster.combatStats.attack.ToString();
         enemyDefenseText.text = monster.combatStats.defense.ToString();
-        
-        speedSlider.maxValue = monster.combatStats.speed;
+
+        speedSlider.maxValue = 100 - monster.combatStats.speed; // 100 - speed 값으로 생각중
     }
 
     public void BattleEnd()
@@ -124,5 +166,42 @@ public class EnemyCombatPanel : MonoBehaviour
         {
             PlayAnimation(AnimationType.Death);
         }
+    }
+
+    public void PlayEffect(string effectName, int damage)
+    {
+        int reserveDamage = damage;
+        EffectCoroutine = StartCoroutine(EffectPlayOnce(AssetManager.Instance.EffectSprites[effectName], reserveDamage));
+    }
+    private IEnumerator EffectPlayOnce(Sprite[] frames, int damage)
+    {
+        EffectImage.color = Color.white;
+        
+        foreach (var sprite in frames)
+        {
+            EffectImage.sprite = sprite;
+            yield return new WaitForSeconds(frameDelay);
+        }
+
+        EffectImage.color = Color.clear;
+        EffectCoroutine = null;
+        currentMonster.TakeDamage(damage);
+    }
+
+    public void PlayerAttacked()
+    {
+        // player의 공격이 시작될때 호출도미
+        StopSpeedSlider();
+    }
+
+    public void PlayerAttackEnd()
+    {
+        RegenSpeedSlider();
+    }
+    
+    public void TurnEnd()
+    {
+        speedSlider.value = 0;
+        RegenSpeedSlider();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
+
 public enum StateType
 {
     [EnumMember(Value = "strength")] Strength,
@@ -52,4 +53,17 @@ public class Item
     {
         itemSprite = Resources.Load<Sprite>(image);
     }
+}
+
+public class ShopItem
+{
+    public Dictionary<ItemType, List<Item>> items = new Dictionary<ItemType, List<Item>>
+    {
+        { ItemType.Weapon, new List<Item>() },
+        { ItemType.Shield, new List<Item>() },
+        { ItemType.Armor, new List<Item>() },
+        { ItemType.Accessory, new List<Item>() },
+        { ItemType.Special, new List<Item>() },
+        { ItemType.Consumable, new List<Item>() }
+    };
 }
