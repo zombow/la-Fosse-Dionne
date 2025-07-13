@@ -28,6 +28,7 @@ public class Monster
     public string name;
     public string type;
 
+    public int maxHp;
     public int hp;
     public int tier;
     
@@ -47,7 +48,10 @@ public class Monster
         hp = Mathf.Max(0, hp - damage);
     }
     
-    
+    public void ResetHp()
+    {
+        hp = maxHp;
+    }
 
     public void LoadSprites()
     {

@@ -24,9 +24,10 @@ public class EnemyCombatPanel : MonoBehaviour
     private Coroutine speedCoroutine;
     private bool isPaused = false;
     public event Action EnemyAttackReady;
-    public event Action EnemyEndAction;
+    public event Action EnemyAttack;
+    public event Action<int> EnemyEndReaction;
 
-
+    private int getDamage;
     public void InitPanel(Monster monster)
     {
         currentMonster = monster;
@@ -39,7 +40,48 @@ public class EnemyCombatPanel : MonoBehaviour
         // speed slider 채우기 시작
         RegenSpeedSlider();
     }
-
+    
+    public void BattleEnd()
+    {
+        StopSpeedSlider();
+        if (currentMonster.hp > 0)
+        {
+            PlayAnimation(AnimationType.Idle);
+        }
+        else
+        {
+            PlayAnimation(AnimationType.Death);
+        }
+    }
+    public void AttackReady()
+    {
+        // enemy의 speed slider가 가득차면 호출됨
+        PlayAnimation(AnimationType.Attack);
+    }
+    public void PlayerAttackReady()
+    {
+        // 플레이어의 speed slider가 가득차면 호출됨
+        StopSpeedSlider();
+    }
+    public void EnemyGetHit(int damage, string effectName = "smoke")
+    {
+        getDamage = damage;
+        currentMonster.TakeDamage(damage);
+        PlayEffect(effectName);
+        PlayAnimation(AnimationType.Hurt);
+    }
+    
+    public void TurnEnd()
+    {
+        speedSlider.value = 0;
+        RegenSpeedSlider();
+    }
+    
+    public void PlayerTurnEnd()
+    {
+        RegenSpeedSlider();
+    }
+    
     private void RegenSpeedSlider()
     {
         isPaused = false;
@@ -64,22 +106,16 @@ public class EnemyCombatPanel : MonoBehaviour
             yield return null;
         }
 
-        EnemyAttack();
+        EnemyAttackReady?.Invoke();
         speedSlider.value = target;
         speedCoroutine = null;
-    }
-
-    private void EnemyAttack()
-    {
-        EnemyAttackReady?.Invoke();
-        PlayAnimation(AnimationType.Attack);
-        TurnEnd();
     }
 
     public void StopSpeedSlider()
     {
         isPaused = true;
     }
+    
     public void PlayAnimation(AnimationType type)
     {
         if (!currentMonster.animationSprites.TryGetValue(type, out var sprites) || sprites == null || sprites.Length == 0)
@@ -98,7 +134,7 @@ public class EnemyCombatPanel : MonoBehaviour
                 break;
             case AnimationType.Attack:
             case AnimationType.Hurt:
-                currentAnimationCoroutine = StartCoroutine(PlayOnceThenIdle(sprites));
+                currentAnimationCoroutine = StartCoroutine(PlayOnceThenIdle(sprites, type));
                 break;
             case AnimationType.Death:
                 currentAnimationCoroutine = StartCoroutine(PlayOnceThenFreezeLast(sprites));
@@ -117,16 +153,24 @@ public class EnemyCombatPanel : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayOnceThenIdle(Sprite[] frames)
+    private IEnumerator PlayOnceThenIdle(Sprite[] frames, AnimationType type)
     {
         foreach (var sprite in frames)
         {
             enemyImage.sprite = sprite;
             yield return new WaitForSeconds(frameDelay);
         }
-        EnemyEndAction?.Invoke();
-        // 다시 Idle로 전환
+        
         PlayAnimation(AnimationType.Idle);
+
+        if (type == AnimationType.Attack)
+        {
+            EnemyAttack?.Invoke();
+        }
+        else if (type == AnimationType.Hurt)
+        {
+            EnemyEndReaction?.Invoke(getDamage);
+        }
     }
 
     private IEnumerator PlayOnceThenFreezeLast(Sprite[] frames)
@@ -147,7 +191,7 @@ public class EnemyCombatPanel : MonoBehaviour
 
         // 기본 스탯 UI 갱신
         enemyNameText.text = monster.name;
-        enemyHealthSlider.maxValue = monster.hp;
+        enemyHealthSlider.maxValue = monster.maxHp;
         enemyHealthSlider.value = monster.hp;
         enemyHealthText.text = monster.hp.ToString();
         enemyAttackText.text = monster.combatStats.attack.ToString();
@@ -156,24 +200,11 @@ public class EnemyCombatPanel : MonoBehaviour
         speedSlider.maxValue = 100 - monster.combatStats.speed; // 100 - speed 값으로 생각중
     }
 
-    public void BattleEnd()
+    public void PlayEffect(string effectName)
     {
-        if (currentMonster.hp > 0)
-        {
-            PlayAnimation(AnimationType.Idle);
-        }
-        else
-        {
-            PlayAnimation(AnimationType.Death);
-        }
+        EffectCoroutine = StartCoroutine(EffectPlayOnce(AssetManager.Instance.EffectSprites[effectName]));
     }
-
-    public void PlayEffect(string effectName, int damage)
-    {
-        int reserveDamage = damage;
-        EffectCoroutine = StartCoroutine(EffectPlayOnce(AssetManager.Instance.EffectSprites[effectName], reserveDamage));
-    }
-    private IEnumerator EffectPlayOnce(Sprite[] frames, int damage)
+    private IEnumerator EffectPlayOnce(Sprite[] frames)
     {
         EffectImage.color = Color.white;
         
@@ -185,23 +216,6 @@ public class EnemyCombatPanel : MonoBehaviour
 
         EffectImage.color = Color.clear;
         EffectCoroutine = null;
-        currentMonster.TakeDamage(damage);
-    }
-
-    public void PlayerAttacked()
-    {
-        // player의 공격이 시작될때 호출도미
-        StopSpeedSlider();
-    }
-
-    public void PlayerAttackEnd()
-    {
-        RegenSpeedSlider();
     }
     
-    public void TurnEnd()
-    {
-        speedSlider.value = 0;
-        RegenSpeedSlider();
-    }
 }

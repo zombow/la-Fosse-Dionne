@@ -23,6 +23,7 @@ public class AssetManager : MonoBehaviour
     private Dictionary<int, Sprite> DiceSprites = new Dictionary<int, Sprite>();
     public Sprite[] RollingSprites;
     public Dictionary<string, Sprite[]> EffectSprites = new Dictionary<string, Sprite[]>();
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,7 +40,6 @@ public class AssetManager : MonoBehaviour
         LoadDiceSprites();
         LoadEffect();
     }
-
 
 
     private void LoadItemDatabase()
@@ -79,7 +79,7 @@ public class AssetManager : MonoBehaviour
             }
         }
     }
-    
+
     private void LoadMonsterDatabase()
     {
         TextAsset jsonText = Resources.Load<TextAsset>("monsters");
@@ -113,13 +113,15 @@ public class AssetManager : MonoBehaviour
             }
         }
     }
+
     private void LoadDiceSprites()
     {
-        for(int i = 1; i <= 20; i++)
+        for (int i = 1; i <= 20; i++)
         {
             Sprite Dicenumber = Resources.Load<Sprite>($"DiceImage/rolling dice {i}");
             DiceSprites.Add(i, Dicenumber);
         }
+
         RollingSprites = Resources.LoadAll<Sprite>($"DiceImage/rollingdice");
     }
 
@@ -130,8 +132,9 @@ public class AssetManager : MonoBehaviour
         numberSprite.Add(DiceSprites[diceNumber]);
         return numberSprite;
     }
+
     private void LoadEffect()
     {
-        EffectSprites.Add("smoke",Resources.LoadAll<Sprite>($"EffectImage/SmokeEffect"));
+        EffectSprites.Add("smoke", Resources.LoadAll<Sprite>($"EffectImage/SmokeEffect"));
     }
 }

@@ -3,7 +3,7 @@
     "id": "monster_wolf",
     "name": "늑대",
     "type": "monster",
-    "hp": 35,
+    "maxHp": 35,
     "combat_stats": {
       "attack": 8,
       "defense": 2,
@@ -23,7 +23,7 @@
     "id": "monster_fire_worm",
     "name": "파이어 웜",
     "type": "monster",
-    "hp": 30,
+    "maxHp": 30,
     "combat_stats": {
       "attack": 8,
       "defense": 0,
@@ -43,7 +43,7 @@
     "id": "monster_mimic",
     "name": "미믹",
     "type": "monster",
-    "hp": 30,
+    "maxHp": 30,
     "combat_stats": {
       "attack": 7,
       "defense": 0,
@@ -63,7 +63,7 @@
     "id": "monster_slime",
     "name": "슬라임",
     "type": "monster",
-    "hp": 30,
+    "maxHp": 30,
     "combat_stats": {
       "attack": 5,
       "defense": 0,
@@ -83,7 +83,7 @@
     "id": "monster_golem",
     "name": "골렘",
     "type": "monster",
-    "hp": 30,
+    "maxHp": 30,
     "combat_stats": {
       "attack": 8,
       "defense": 3,
@@ -103,7 +103,7 @@
     "id": "monster_town_guard",
     "name": "마을 경비병",
     "type": "monster",
-    "hp": 40,
+    "maxHp": 40,
     "combat_stats": {
       "attack": 10,
       "defense": 3,
@@ -123,7 +123,7 @@
     "id": "monster_knight",
     "name": "성주의 기사",
     "type": "monster",
-    "hp": 50,
+    "maxHp": 50,
     "combat_stats": {
       "attack": 15,
       "defense": 5,
@@ -143,7 +143,7 @@
     "id": "monster_skeleton",
     "name": "스켈레톤",
     "type": "monster",
-    "hp": 80,
+    "maxHp": 80,
     "combat_stats": {
       "attack": 8,
       "defense": 0,
@@ -163,7 +163,7 @@
     "id": "monster_bat",
     "name": "박쥐",
     "type": "monster",
-    "hp": 45,
+    "maxHp": 45,
     "combat_stats": {
       "attack": 15,
       "defense": 0,
@@ -183,7 +183,7 @@
     "id": "monster_skull_wolf",
     "name": "해골 늑대",
     "type": "monster",
-    "hp": 42,
+    "maxHp": 42,
     "combat_stats": {
       "attack": 12,
       "defense": 2,
@@ -203,7 +203,7 @@
     "id": "monster_necromancer",
     "name": "네크로맨서",
     "type": "monster",
-    "hp": 40,
+    "maxHp": 40,
     "combat_stats": {
       "attack": 25,
       "defense": 0,
@@ -223,7 +223,7 @@
     "id": "monster_basilisk",
     "name": "바실리스크",
     "type": "monster",
-    "hp": 100,
+    "maxHp": 100,
     "combat_stats": {
       "attack": 30,
       "defense": 8,

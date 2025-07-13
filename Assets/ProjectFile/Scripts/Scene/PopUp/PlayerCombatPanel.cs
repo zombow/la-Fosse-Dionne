@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerCombatPanel : MonoBehaviour
 {
@@ -15,8 +16,7 @@ public class PlayerCombatPanel : MonoBehaviour
     public TextMeshProUGUI playerAttackText;
     public TextMeshProUGUI playerDefenseText;
 
-    [Header("Interaction UI")] 
-    public GameObject dicePanel;
+    [Header("Interaction UI")] public GameObject dicePanel;
     public Image diceImage;
     public GameObject startEndPanel;
     public Button rollDiceButton;
@@ -27,12 +27,19 @@ public class PlayerCombatPanel : MonoBehaviour
     public CanvasGroup ButtonCanvasGroup;
 
     [Header("Combat UI")] public Slider speedSlider;
-
     private Coroutine speedCoroutine;
+
     private bool isMyTurnReady = false;
     private bool isPaused = false;
     public event Action PlayerAttackReady;
-    public event Action PlayerEndAction;
+    public event Action<int, string> PlayerAttack; // dagame 넘기기, 무기에따른 effect type도 바뀌도록
+    public event Action<int> PlayerEndReaction; // 플레이어가 공격받을때 등 액션이끝날때
+    public event Action CombatStart;
+    public event Action<bool> CombatEnd;
+    public event Action CombatClose;
+    
+    private Coroutine RollDiceCoroutine;
+    [SerializeField] float frameDelay = 0.1f; // 애니메이션 프레임 딜레이
 
     public void InitPanel(PlayerStats playerstats)
     {
@@ -40,13 +47,80 @@ public class PlayerCombatPanel : MonoBehaviour
         startEndButtonText.text = "전투시작";
         dicePanel.SetActive(false);
         startEndPanel.SetActive(true);
+        startEndButton.onClick.AddListener(() => CombatStart?.Invoke());
+        giveUpButton.onClick.AddListener(() => CombatEnd?.Invoke(false));
+        rollDiceButton.onClick.AddListener(RollDice);
     }
 
     public void BattleStart()
     {
+        startEndButton.onClick.RemoveAllListeners();
+        startEndButton.onClick.AddListener(() => CombatClose?.Invoke());
         dicePanel.SetActive(true);
         startEndPanel.SetActive(false);
-        // 배틀시작후 주사위 굴리기는 이상태로 쭉보이기?
+        RegenSpeedSlider();
+    }
+
+    public void BattleEnd(string resultText)
+    {
+        StopSpeedSlider();
+        dicePanel.SetActive(false);
+        startEndPanel.SetActive(true);
+        startEndButtonText.text = resultText;
+    }
+
+    private void RollDice()
+    {
+        int diceNumber = Random.Range(1, 20);
+        rollDiceButton.interactable = false;
+        RollDiceCoroutine = null;
+        RollDiceCoroutine = StartCoroutine(DiceRoll(AssetManager.Instance.LoadDiceRolling(diceNumber), diceNumber));
+
+    }
+
+    private IEnumerator DiceRoll(List<Sprite> frames, int diceNumber)
+    {
+        foreach (var sprite in frames)
+        {
+            diceImage.sprite = sprite;
+            yield return new WaitForSeconds(frameDelay);
+        }
+
+        // 마지막 프레임에서 멈춤
+        diceImage.sprite = frames[^1];
+        PlayerAttack?.Invoke(diceNumber, "smoke");
+    }
+
+    public void AttackReady()
+    {
+        // 플레이어의 speed 게이지가 가득찼을때 호출됨 
+        StopSpeedSlider();
+        isMyTurnReady = true;
+        rollDiceButton.interactable = true;
+        DiceCanvasGroup.alpha = 1f;
+        ButtonCanvasGroup.alpha = 1f;
+    }
+
+    public void EnemyAttackReady()
+    {
+        // 적의 speed slider가 가득차면 호출됨
+        StopSpeedSlider();
+    }
+
+    public void PlayerGetHit(int damage)
+    {
+        currentplayer.playerStateBlock.playerStatus[StateType.Hp] -= damage;
+        PlayerEndReaction?.Invoke(damage);
+    }
+    public void TurnEnd()
+    {
+        isMyTurnReady = false;
+        speedSlider.value = 0;
+        RegenSpeedSlider();
+    }
+
+    public void EnemyTurnEnd()
+    {
         RegenSpeedSlider();
     }
 
@@ -64,26 +138,6 @@ public class PlayerCombatPanel : MonoBehaviour
         ButtonCanvasGroup.alpha = 0.5f;
     }
 
-    public void TurnEnd()
-    {
-        isMyTurnReady = false;
-        speedSlider.value = 0;
-        RegenSpeedSlider();
-        PlayerEndAction?.Invoke();
-    }
-
-    public void StopSpeedSlider()
-    {
-        isPaused = true;
-
-        if (!isMyTurnReady)
-        {
-            rollDiceButton.interactable = false;
-            DiceCanvasGroup.alpha = 0.5f;
-            ButtonCanvasGroup.alpha = 0.5f;
-        }
-    }
-
     private IEnumerator FillSpeedSliderCoroutine()
     {
         float target = speedSlider.maxValue;
@@ -99,19 +153,20 @@ public class PlayerCombatPanel : MonoBehaviour
         }
 
         speedSlider.value = target;
-        isMyTurnReady = true;
-        rollDiceButton.interactable = true;
-        DiceCanvasGroup.alpha = 1f;
-        ButtonCanvasGroup.alpha = 1f;
         speedCoroutine = null;
         PlayerAttackReady?.Invoke(); // 공격준비 델리게이트
     }
 
-    public void BattleEnd(string resultText)
+    public void StopSpeedSlider()
     {
-        dicePanel.SetActive(false);
-        startEndPanel.SetActive(true);
-        startEndButtonText.text = resultText;
+        isPaused = true;
+
+        if (!isMyTurnReady)
+        {
+            rollDiceButton.interactable = false;
+            DiceCanvasGroup.alpha = 0.5f;
+            ButtonCanvasGroup.alpha = 0.5f;
+        }
     }
 
     public void UpdatePlayerUI(PlayerStats playerStats)
@@ -128,9 +183,5 @@ public class PlayerCombatPanel : MonoBehaviour
         speedSlider.maxValue = 100 - playerStats.playerStateBlock.speed;
     }
 
-    public void EnemyAttacked()
-    {
-        StopSpeedSlider();
-        // 적의공격이 들어올때 호출
-    }
+
 }

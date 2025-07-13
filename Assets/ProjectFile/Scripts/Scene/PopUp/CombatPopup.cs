@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 
 public class CombatPopup : MonoBehaviour
@@ -16,9 +12,10 @@ public class CombatPopup : MonoBehaviour
     [Header("Panels")] public EnemyCombatPanel enemyPanel;
     public TextMeshProUGUI logPanel;
     public PlayerCombatPanel playerPanel;
-    [SerializeField] float frameDelay = 0.1f; // 애니메이션 프레임 딜레이
-    private int RandomDice;
-    private Coroutine currentAnimationCoroutine;
+
+    private bool isPlayerReady = false;
+    private bool isEnemyReady = false;
+    private bool isResolvingTurn = false;
     private event Action onExit;
     public event Action CheckCombatEnd;
 
@@ -31,19 +28,24 @@ public class CombatPopup : MonoBehaviour
         settingPopup.NewGame += CloseCombat;
         onExit = callback;
 
-        playerPanel.startEndButton.onClick.RemoveAllListeners();
-        playerPanel.startEndButton.onClick.AddListener(StartBattle);
-        playerPanel.giveUpButton.onClick.AddListener(CombatEnd);
-        playerPanel.rollDiceButton.onClick.AddListener(RollDice);
-
         InitBattle();
-        playerPanel.PlayerAttackReady += enemyPanel.PlayerAttacked;
-        playerPanel.PlayerEndAction += enemyPanel.PlayerAttackEnd;
-        enemyPanel.EnemyAttackReady += playerPanel.EnemyAttacked;
-        enemyPanel.EnemyAttackReady += MonsterAttack;
-        enemyPanel.EnemyEndAction += EndAction;
+        playerPanel.CombatStart += StartBattle;
+        playerPanel.CombatEnd += EndBattle;
+        playerPanel.CombatClose += CloseCombat;
+
+        playerPanel.PlayerAttackReady += PlayerAttackReady;
+        playerPanel.PlayerAttack += PlayerAttack;
+        enemyPanel.EnemyEndReaction += PlayerEndTurn;
+
+        enemyPanel.EnemyAttackReady += EnemyAttackReady;
+        enemyPanel.EnemyAttack += EnemyAttack;
+        playerPanel.PlayerEndReaction += EnemyEndTurn;
+
         UpdateCombatUI(player, monster);
+
+        logPanel.text = monster.name + "과 전투를 시작합니다!";
     }
+
 
     public void InitBattle()
     {
@@ -53,37 +55,25 @@ public class CombatPopup : MonoBehaviour
 
     private void StartBattle()
     {
+        logPanel.text = " ";
         playerPanel.BattleStart();
         enemyPanel.BattleStart();
     }
 
 
-    private void RollDice()
+    public void EndBattle(bool bwin) // combatManager에서 호출됨
     {
-        RandomDice = Random.Range(1, 20);
-        playerPanel.rollDiceButton.interactable = false;
-        currentAnimationCoroutine = null;
-        currentAnimationCoroutine = StartCoroutine(PlayOnceThenFreezeLast(AssetManager.Instance.LoadDiceRolling(RandomDice)));
-    }
-
-    private IEnumerator PlayOnceThenFreezeLast(List<Sprite> frames)
-    {
-        foreach (var sprite in frames)
+        if (bwin) // 승패에따라 UI만 컨트롤 (보상은 CombatManager에서 처리)
         {
-            playerPanel.diceImage.sprite = sprite;
-            yield return new WaitForSeconds(frameDelay);
+            playerPanel.BattleEnd("전투 승리!");
+            logPanel.text = "적이 쓰러졋습니다";
+        }
+        else
+        {
+            playerPanel.BattleEnd("패배...");
+            logPanel.text = "당신은 쓰러졌습니다.";
         }
 
-        // 마지막 프레임에서 멈춤
-        playerPanel.diceImage.sprite = frames[^1];
-
-        PlayerAttack();
-    }
-
-    public void CombatEnd() // combatManager에서 호출됨
-    {
-        // 승패에따라 UI만 컨트롤 (보상은 CombatManager에서 처리)
-        playerPanel.BattleEnd("전투결과");
         enemyPanel.BattleEnd();
         playerPanel.startEndButton.onClick.RemoveAllListeners();
         playerPanel.startEndButton.onClick.AddListener(CloseCombat);
@@ -104,23 +94,83 @@ public class CombatPopup : MonoBehaviour
         enemyPanel.UpdateEnemyUI(monster);
     }
 
-    public void PlayerAttack()
+    private void PlayerAttackReady()
     {
-        int damage = Mathf.Max(1,
-            player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense + RandomDice); // dice 값을 단순히 더하는정도
-        enemyPanel.PlayEffect("smoke", damage);
-        enemyPanel.PlayAnimation(AnimationType.Hurt);
+        logPanel.text += "\n"+ player.playerStateBlock.playerName + "의 턴!";
+        isPlayerReady = true;
+        TryResolveTurn();
     }
 
-    public void EndAction()
+
+    private void EnemyAttackReady()
     {
+        // 적의 speed 게이지가 가득찼을때 호출됨
+        logPanel.text += "\n"+ monster.name + "의 공격!";
+        isEnemyReady = true;
+        TryResolveTurn();
+    }
+
+    private void TryResolveTurn()
+    {
+        if (isResolvingTurn)
+            return;
+
+        if (isPlayerReady)
+        {
+            isResolvingTurn = true;
+
+            // 플레이어 공격 처리
+            playerPanel.AttackReady();
+            enemyPanel.PlayerAttackReady();
+
+            // isPlayerReady만 초기화 — 적이 준비됐어도 다음 프레임으로 미룸
+            isPlayerReady = false;
+
+            // 공격 후 턴 종료 처리에서 적의 공격으로 넘어감
+        }
+        else if (isEnemyReady)
+        {
+            isResolvingTurn = true;
+
+            playerPanel.EnemyAttackReady();
+            enemyPanel.AttackReady();
+
+            isEnemyReady = false;
+        }
+    }
+
+    public void PlayerEndTurn(int damage)
+    {
+        logPanel.text += "\n" + monster.name + "은 " + damage.ToString() + "의 피해를 입었다.";
+        playerPanel.TurnEnd();
+        enemyPanel.PlayerTurnEnd();
         UpdateCombatUI(player, monster);
+        isResolvingTurn = false;
+        TryResolveTurn(); // 적이 준비됐던 상태면 이어서 실행
         CheckCombatEnd?.Invoke();
     }
 
-    public void MonsterAttack()
+    public void EnemyEndTurn(int damage)
+    {
+        logPanel.text += "\n" + player.playerStateBlock.playerName + "은 " + damage.ToString() + "의 피해를 입었다.";
+        enemyPanel.TurnEnd();
+        playerPanel.EnemyTurnEnd();
+        UpdateCombatUI(player, monster);
+        isResolvingTurn = false;
+        TryResolveTurn(); // 플레이어가 준비됐던 상태면 이어서 실행
+        CheckCombatEnd?.Invoke();
+    }
+
+    public void PlayerAttack(int dicenumber, string effectName = "smoke")
+    {
+        int damage = Mathf.Max(1,
+            player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense + dicenumber); // dice 값을 단순히 더하는정도
+        enemyPanel.EnemyGetHit(damage, effectName);
+    }
+
+    public void EnemyAttack()
     {
         int damage = Mathf.Max(1, monster.combatStats.attack - player.playerStateBlock.playerStatus[StateType.Strength] / 2);
-        player.playerStateBlock.playerStatus[StateType.Hp] -= damage;
+        playerPanel.PlayerGetHit(damage);
     }
 }

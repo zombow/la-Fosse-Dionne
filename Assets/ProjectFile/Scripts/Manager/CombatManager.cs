@@ -16,7 +16,8 @@ public class CombatManager : MonoBehaviour
         player.RecalculateStats();
 
         monster = AssetManager.Instance.monsterList[monsterId];
-
+        monster.ResetHp();
+        
         instanceCombatPopupPrefab = Instantiate(CombatPopupPrefab, SafeAreaTransform);
         instanceCombatPopupPrefab.Initialize(playerRef, monster, callback);
         instanceCombatPopupPrefab.CheckCombatEnd += CheckTurn;
@@ -31,24 +32,19 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("플레이어가 사망했습니다.");
             player.playerStateBlock.playerStatus[StateType.Life]--;
-            instanceCombatPopupPrefab.CombatEnd();
-        
-            return;
+            instanceCombatPopupPrefab.EndBattle(false);
         }
-
-        if (!monster.IsAlive)
+        else if (!monster.IsAlive)
         {
             Debug.Log("몬스터를 처치했습니다!");
-            instanceCombatPopupPrefab.CombatEnd();
-
-            return;
+            instanceCombatPopupPrefab.EndBattle(true);
         }
     }
 
     private void PlayerAttack()
     {
         int damage = Mathf.Max(1, player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense); // 데미지 계산공식 + dice결과 사용필요
-        CombatPopupPrefab.PlayerAttack();
+        //CombatPopupPrefab.PlayerAttack();
         Debug.Log($"플레이어가 몬스터에게 {damage} 데미지를 입혔습니다. (남은 HP: {monster.hp})");
     }
 
