@@ -10,7 +10,7 @@ public class SettingManager : MonoBehaviour
     [HideInInspector]
     public SettingPopup _initPrefab;
     public GameObject safeArea;
-
+    public Action<float> FontSizeChanged;
     public void Awake()
     {
         if (Instance != null && Instance != this)

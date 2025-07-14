@@ -27,4 +27,6 @@ public class StoryBlock : ScriptableObject
 
     public bool isRandomEncounter;
     public bool answer;
+    
+    
 }

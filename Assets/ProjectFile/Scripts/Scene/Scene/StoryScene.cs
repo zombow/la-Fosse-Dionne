@@ -31,6 +31,9 @@ public class StoryScene : MonoBehaviour
     public Sprite defaultBgSprite;
     public Sprite battleBgSprite;
 
+    [Header("Progress")]
+    public Slider progressSlider;
+    
     [Header("Character")] public CharacterInfoUI characterInfoUI;
 
     public float typingSpeed = 0.04f;
@@ -78,6 +81,7 @@ public class StoryScene : MonoBehaviour
         settingButton.onClick.AddListener(settingManager.PopupOnOff);
 
         characterInfoUI.InfoInit(player);
+        settingManager.FontSizeChanged += ChangeFontSize;
     }
 
     public void OpenPopup(GameObject instancedPopup)
@@ -120,6 +124,20 @@ public class StoryScene : MonoBehaviour
             StopCoroutine(typingCoroutine);
         skipRequested = false;
         typingCoroutine = StartCoroutine(TypeContentElements(block, manager));
+    }
+
+    private void ChangeFontSize(float size)
+    {
+        currentBlock.contentElements.ForEach(element =>
+        {
+            if (element.type == StoryElementType.Text)
+            {
+                foreach (var textComponent in textComponents)
+                {
+                    textComponent.fontSize = size;
+                }
+            }
+        });
     }
 
     public void BeginBattle(StoryBlock block, StoryManager storyManager)

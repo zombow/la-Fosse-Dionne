@@ -1240,6 +1240,11 @@ MonoBehaviour:
   exitButton: {fileID: 6823077838232455499}
   newGameButton: {fileID: 7323352382464541238}
   newGameAlertPopup: {fileID: 679053216116679074, guid: 5d1ed1252604640498ca99556d24cb3a, type: 3}
+  newGameAlertPopupInstance: {fileID: 0}
+  fontSizeText: {fileID: 3032874548668757410}
+  fontText: {fileID: 4990469575255233035}
+  fontSizeUpButton: {fileID: 7898245181151135927}
+  fontSizeDownButton: {fileID: 7545147069520644517}
   thanksToButton: {fileID: 7519159553339779281}
   thanksToPopup: {fileID: 2220029331160933048, guid: 1361cd43bf580c649b7c080d52d2e985, type: 3}
 --- !u!223 &7473827409487957573
@@ -1583,8 +1588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
