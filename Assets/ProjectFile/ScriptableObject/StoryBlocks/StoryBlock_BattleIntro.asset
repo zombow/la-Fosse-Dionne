@@ -19,7 +19,7 @@ MonoBehaviour:
   choices:
   - text: "\uC804\uD22C \uC2DC\uC791"
     nextBlock: {fileID: 11400000, guid: fc209220e65afdf4c9e4e0bf4ce63ca0, type: 2}
-    nextChapter: 0
+    nextChapter: 5
     requiredItemId: 
     itemReward: 
     traitReward: 
@@ -47,15 +47,16 @@ MonoBehaviour:
     indexIfLowMorality: 0
     indexIfMidMorality: 0
     indexIfHighMorality: 0
+  myChapter: 1
+  myIndex: 3
+  maxIndex: 4
   goldGained: 0
   itemsGained: []
   traitGained: 
   isBattleStart: 0
-  monsterToSpawn: {fileID: 0}
+  spawnMonsterId: 
   returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
-  nextIndex: 0
-  nextChapter: 0
   lifePointReward: 0
   spiritPointReward: 0
   isShop: 0

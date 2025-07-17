@@ -29,7 +29,7 @@ MonoBehaviour:
     spiritPointReward: 0
     requiresDiceRoll: 0
     successThreshold: 0
-    successBlock: {fileID: 0}
+    successBlock: {fileID: 11400000, guid: 5c93ba5b13994c041913aa9fa34c4c7f, type: 2}
     failBlock: {fileID: 0}
     requiredStatMin: 0
     requiredStatName: 
@@ -47,15 +47,16 @@ MonoBehaviour:
     indexIfLowMorality: 0
     indexIfMidMorality: 0
     indexIfHighMorality: 0
+  myChapter: 1
+  myIndex: 1
+  maxIndex: 4
   goldGained: 0
   itemsGained: []
   traitGained: 
   isBattleStart: 0
-  monsterToSpawn: {fileID: 0}
+  spawnMonsterId: 
   returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
-  nextIndex: -1
-  nextChapter: 0
   lifePointReward: 0
   spiritPointReward: 0
   isShop: 0

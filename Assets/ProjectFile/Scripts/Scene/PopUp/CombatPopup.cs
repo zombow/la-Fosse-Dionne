@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
 public class CombatPopup : MonoBehaviour
@@ -11,6 +13,7 @@ public class CombatPopup : MonoBehaviour
 
     [Header("Panels")] public EnemyCombatPanel enemyPanel;
     public TextMeshProUGUI logPanel;
+    public ScrollRect logPanelScrollRect;
     public PlayerCombatPanel playerPanel;
 
     private bool isPlayerReady = false;
@@ -43,7 +46,7 @@ public class CombatPopup : MonoBehaviour
 
         UpdateCombatUI(player, monster);
 
-        logPanel.text = monster.name + "과 전투를 시작합니다!";
+        LogPanelUpdate(monster.name + "과 전투를 시작합니다!", true);
     }
 
 
@@ -66,12 +69,12 @@ public class CombatPopup : MonoBehaviour
         if (bwin) // 승패에따라 UI만 컨트롤 (보상은 CombatManager에서 처리)
         {
             playerPanel.BattleEnd("전투 승리!");
-            logPanel.text = "적이 쓰러졋습니다";
+            LogPanelUpdate("적이 쓰러졋습니다", true);
         }
         else
         {
             playerPanel.BattleEnd("패배...");
-            logPanel.text = "당신은 쓰러졌습니다.";
+            LogPanelUpdate("당신은 쓰러졌습니다.", true);
         }
 
         enemyPanel.BattleEnd();
@@ -96,7 +99,6 @@ public class CombatPopup : MonoBehaviour
 
     private void PlayerAttackReady()
     {
-        logPanel.text += "\n"+ player.playerStateBlock.playerName + "의 턴!";
         isPlayerReady = true;
         TryResolveTurn();
     }
@@ -105,7 +107,6 @@ public class CombatPopup : MonoBehaviour
     private void EnemyAttackReady()
     {
         // 적의 speed 게이지가 가득찼을때 호출됨
-        logPanel.text += "\n"+ monster.name + "의 공격!";
         isEnemyReady = true;
         TryResolveTurn();
     }
@@ -118,9 +119,9 @@ public class CombatPopup : MonoBehaviour
         if (isPlayerReady)
         {
             isResolvingTurn = true;
-
             // 플레이어 공격 처리
             playerPanel.AttackReady();
+            LogPanelUpdate(player.playerStateBlock.playerName + "의 턴!");
             enemyPanel.PlayerAttackReady();
 
             // isPlayerReady만 초기화 — 적이 준비됐어도 다음 프레임으로 미룸
@@ -131,8 +132,8 @@ public class CombatPopup : MonoBehaviour
         else if (isEnemyReady)
         {
             isResolvingTurn = true;
-
             playerPanel.EnemyAttackReady();
+            LogPanelUpdate(monster.name + "의 공격!");
             enemyPanel.AttackReady();
 
             isEnemyReady = false;
@@ -141,7 +142,7 @@ public class CombatPopup : MonoBehaviour
 
     public void PlayerEndTurn(int damage)
     {
-        logPanel.text += "\n" + monster.name + "은 " + damage.ToString() + "의 피해를 입었다.";
+        LogPanelUpdate(monster.name + "은 " + damage + "의 피해를 입었다.");
         playerPanel.TurnEnd();
         enemyPanel.PlayerTurnEnd();
         UpdateCombatUI(player, monster);
@@ -152,7 +153,7 @@ public class CombatPopup : MonoBehaviour
 
     public void EnemyEndTurn(int damage)
     {
-        logPanel.text += "\n" + player.playerStateBlock.playerName + "은 " + damage.ToString() + "의 피해를 입었다.";
+        LogPanelUpdate(player.playerStateBlock.playerName + "은 " + damage.ToString() + "의 피해를 입었다.");
         enemyPanel.TurnEnd();
         playerPanel.EnemyTurnEnd();
         UpdateCombatUI(player, monster);
@@ -172,5 +173,19 @@ public class CombatPopup : MonoBehaviour
     {
         int damage = Mathf.Max(1, monster.combatStats.attack - player.playerStateBlock.playerStatus[StateType.Strength] / 2);
         playerPanel.PlayerGetHit(damage);
+    }
+
+    private void LogPanelUpdate(string text, bool clear = false)
+    {
+        if (string.IsNullOrEmpty(logPanel.text) || clear)
+        {
+            logPanel.text = text;
+        }
+        else
+        {
+            logPanel.text += "\n" + text;
+        }
+        Canvas.ForceUpdateCanvases();
+        logPanelScrollRect.verticalNormalizedPosition = 0f;
     }
 }

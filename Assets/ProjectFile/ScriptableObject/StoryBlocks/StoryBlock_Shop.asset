@@ -18,7 +18,7 @@ MonoBehaviour:
     image: {fileID: 0}
   choices:
   - text: 
-    nextBlock: {fileID: 0}
+    nextBlock: {fileID: 11400000, guid: 5c93ba5b13994c041913aa9fa34c4c7f, type: 2}
     nextChapter: 0
     requiredItemId: 
     itemReward: 
@@ -47,15 +47,16 @@ MonoBehaviour:
     indexIfLowMorality: 0
     indexIfMidMorality: 0
     indexIfHighMorality: 0
+  myChapter: 1
+  myIndex: 2
+  maxIndex: 4
   goldGained: 20
   itemsGained: []
   traitGained: 
   isBattleStart: 0
-  monsterToSpawn: {fileID: 0}
+  spawnMonsterId: 
   returnBlockAfterBattle: {fileID: 0}
   moralityChange: 0
-  nextIndex: 2
-  nextChapter: 0
   lifePointReward: 0
   spiritPointReward: 0
   isShop: 1

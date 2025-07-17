@@ -31,9 +31,8 @@ public class StoryScene : MonoBehaviour
     public Sprite defaultBgSprite;
     public Sprite battleBgSprite;
 
-    [Header("Progress")]
-    public Slider progressSlider;
-    
+    [Header("Progress")] public Slider progressSlider;
+
     [Header("Character")] public CharacterInfoUI characterInfoUI;
 
     public float typingSpeed = 0.04f;
@@ -156,7 +155,6 @@ public class StoryScene : MonoBehaviour
         ClearDisplay();
     }
 
-// [핵심] 텍스트/이미지를 순서대로 출력. skip 시 즉시 모든 내용 표시
     private IEnumerator TypeContentElements(StoryBlock block, StoryManager manager)
     {
         isTyping = true;
@@ -359,8 +357,13 @@ public class StoryScene : MonoBehaviour
         }
     }
 
-    public void UpdateGaugePanel(object gaugeValue)
+    public void UpdateGaugePanel(StoryBlock block)
     {
         gaugePanel.SetActive(true);
+        progressSlider.maxValue = block.maxIndex;
+        progressSlider.value = block.myIndex;
+
+        Debug.Log(block.maxIndex);
+        Debug.Log(block.myIndex);
     }
 }

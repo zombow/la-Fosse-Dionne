@@ -1,3 +1,5 @@
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Intro.asset|407|-2
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Shop.asset|407|280
-Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_ShopIntro.asset|411|134
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Battle.asset|470.4544|453.3336
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_BattleIntro.asset|474.7242|327.8675
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Intro.asset|472.9811|-78.03773
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_Shop.asset|473.9811|191.3208
+Assets/ProjectFile/ScriptableObject/StoryBlocks/StoryBlock_ShopIntro.asset|473.2642|59.47169

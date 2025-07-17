@@ -40,18 +40,4 @@ public class CombatManager : MonoBehaviour
             instanceCombatPopupPrefab.EndBattle(true);
         }
     }
-
-    private void PlayerAttack()
-    {
-        int damage = Mathf.Max(1, player.playerStateBlock.playerStatus[StateType.Strength] - monster.combatStats.defense); // 데미지 계산공식 + dice결과 사용필요
-        //CombatPopupPrefab.PlayerAttack();
-        Debug.Log($"플레이어가 몬스터에게 {damage} 데미지를 입혔습니다. (남은 HP: {monster.hp})");
-    }
-
-    private void MonsterAttack()
-    {
-        int damage = Mathf.Max(1, monster.combatStats.attack - player.playerStateBlock.playerStatus[StateType.Strength] / 2);
-        player.playerStateBlock.playerStatus[StateType.Hp] = Mathf.Max(0, player.playerStateBlock.playerStatus[StateType.Hp] - damage);
-        Debug.Log($"몬스터가 플레이어에게 {damage} 데미지를 입혔습니다. (남은 HP: {player.playerStateBlock.playerStatus[StateType.Hp]})");
-    }
 }

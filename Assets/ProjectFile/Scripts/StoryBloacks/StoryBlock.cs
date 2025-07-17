@@ -6,7 +6,9 @@ public class StoryBlock : ScriptableObject
 {
     public List<StoryContentElement> contentElements = new();
     public List<StoryChoice> choices = new();
-
+    public int myChapter;
+    public int myIndex;
+    public int maxIndex;
     public int goldGained;
     public List<string> itemsGained;
     public string traitGained;
@@ -14,9 +16,8 @@ public class StoryBlock : ScriptableObject
     public bool isBattleStart;
     public string spawnMonsterId;
     public StoryBlock returnBlockAfterBattle;
+    
     public int moralityChange;
-    public int nextIndex;
-    public int nextChapter;
     public int lifePointReward;
     public int spiritPointReward;
 
