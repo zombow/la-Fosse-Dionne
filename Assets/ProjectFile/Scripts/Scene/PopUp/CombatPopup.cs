@@ -175,7 +175,7 @@ public class CombatPopup : MonoBehaviour
         playerPanel.PlayerGetHit(damage);
     }
 
-    private void LogPanelUpdate(string text, bool clear = false)
+    public void LogPanelUpdate(string text, bool clear = false)
     {
         if (string.IsNullOrEmpty(logPanel.text) || clear)
         {

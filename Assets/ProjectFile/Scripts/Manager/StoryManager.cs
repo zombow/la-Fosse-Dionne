@@ -13,7 +13,7 @@ public class StoryManager : MonoBehaviour
 
     private Dictionary<int, int> chapterBlockCountCache;
 
-   
+
     public void InitAndStart(StoryBlock startBlock, StoryScene storyScene)
     {
         currentblock = startBlock;
@@ -28,7 +28,7 @@ public class StoryManager : MonoBehaviour
         if (block.isBattleStart) // battle분기
         {
             Storyscene.BeginBattle(block, this);
-            combatManager.InitCombat(player, block.spawnMonsterId, () =>
+            combatManager.InitCombat(player, block.spawnMonsterId, block, () =>
             {
                 ShowStoryBlock(block.returnBlockAfterBattle);
                 Storyscene.storyBG.sprite

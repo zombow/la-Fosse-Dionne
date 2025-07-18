@@ -252,6 +252,7 @@ public class PlayerStats : MonoBehaviour
                                     + playerStateBlock.playerStatus[StateType.Strength] * 5
                                     + GetStatFromEquip(StateType.Hp);
         
+        playerStateBlock.playerStatus[StateType.Life] = Mathf.Clamp(playerStateBlock.playerStatus[StateType.Life], 0, playerStateBlock.maxLifepoint);
         if (heal)
         {
             playerStateBlock.playerStatus[StateType.Hp] = playerStateBlock.maxHp;
@@ -288,14 +289,26 @@ public class PlayerStats : MonoBehaviour
         equippedWeapon = tempPlayerStats.equippedWeapon;
         accessory = tempPlayerStats.accessory;
         armor = tempPlayerStats.armor;
-        TEST();
+
         RecalculateStats();
     }
 
-    private void TEST()
+    public bool ItemBuy(Item item)
     {
-        inventory.Add(AssetManager.Instance.itemList["cons_potion_hp_small"]);
-        inventory.Add(AssetManager.Instance.itemList["tier1_dagger"]);
+        if (playerStateBlock.gold <item.value)
+        {
+            Debug.Log("골드가 부족합니다!");
+            // 추가팝업 필요?
+            return false;
+        }
+        if (inventory.Count >= 8)
+        {
+            Debug.Log("인벤토리가 가득 찼습니다!");
+            return false;
+        }
+        inventory.Add(item);
+        playerStateBlock.gold -= item.value;
+        return true;
     }
 
 
@@ -310,7 +323,20 @@ public class PlayerStats : MonoBehaviour
 
         inventory.Clear();
     }
+    public bool AddItem(Item item)
+    {
+        if (item == null) return false;
 
+        if (inventory.Count >= 8)
+        {
+            Debug.Log("인벤토리가 가득 찼습니다!");
+            return false;
+        }
+
+        inventory.Add(item);
+        RecalculateStats();
+        return true;
+    }
     public bool DeleteItem(Item selectSlotSlotItem)
     {
         if (selectSlotSlotItem == null) return false;

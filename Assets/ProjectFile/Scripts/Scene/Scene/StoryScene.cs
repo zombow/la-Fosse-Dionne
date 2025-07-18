@@ -362,8 +362,5 @@ public class StoryScene : MonoBehaviour
         gaugePanel.SetActive(true);
         progressSlider.maxValue = block.maxIndex;
         progressSlider.value = block.myIndex;
-
-        Debug.Log(block.maxIndex);
-        Debug.Log(block.myIndex);
     }
 }

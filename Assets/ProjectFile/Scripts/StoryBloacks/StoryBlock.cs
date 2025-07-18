@@ -9,17 +9,17 @@ public class StoryBlock : ScriptableObject
     public int myChapter;
     public int myIndex;
     public int maxIndex;
-    public int goldGained;
-    public List<string> itemsGained;
-    public string traitGained;
 
     public bool isBattleStart;
     public string spawnMonsterId;
     public StoryBlock returnBlockAfterBattle;
     
-    public int moralityChange;
-    public int lifePointReward;
-    public int spiritPointReward;
+    public int rewardGold;
+    public List<string> rewardItems = new();
+    public string rewardTrait;
+    public int rewardMorality;
+    public int rewardLifePoint;
+    public int rewardSpiritPoint;
 
     public bool isShop;
     public int shopType;

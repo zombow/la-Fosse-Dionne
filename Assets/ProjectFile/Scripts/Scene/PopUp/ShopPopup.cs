@@ -144,15 +144,7 @@ public class ShopPopup : MonoBehaviour
     private void BuyItem()
     {
         // 이전에 경고 popup을만들까?
-        if (Player.playerStateBlock.gold < selectSlot.slotItem.value)
-        {
-            Debug.Log("골드가 부족합니다!");
-            // 추가팝업 필요?
-            return;
-        }
-
-        Player.playerStateBlock.gold -= selectSlot.slotItem.value;
-        Player.inventory.Add(selectSlot.slotItem);
+        Player.ItemBuy(selectSlot.slotItem);
         inventoryPanel.UpdateInventoryUI();
         shopPanel.DiSelectSlot();
     }
