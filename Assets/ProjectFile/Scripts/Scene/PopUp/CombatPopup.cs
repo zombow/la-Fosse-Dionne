@@ -33,7 +33,6 @@ public class CombatPopup : MonoBehaviour
 
         InitBattle();
         playerPanel.CombatStart += StartBattle;
-        playerPanel.CombatEnd += EndBattle;
         playerPanel.CombatClose += CloseCombat;
 
         playerPanel.PlayerAttackReady += PlayerAttackReady;
@@ -80,6 +79,10 @@ public class CombatPopup : MonoBehaviour
         enemyPanel.BattleEnd();
         playerPanel.startEndButton.onClick.RemoveAllListeners();
         playerPanel.startEndButton.onClick.AddListener(CloseCombat);
+        
+        player.RecalculateStats();
+        Canvas.ForceUpdateCanvases();
+        
         CheckCombatEnd = null;
     }
 
@@ -185,6 +188,7 @@ public class CombatPopup : MonoBehaviour
         {
             logPanel.text += "\n" + text;
         }
+
         Canvas.ForceUpdateCanvases();
         logPanelScrollRect.verticalNormalizedPosition = 0f;
     }

@@ -9,8 +9,8 @@ using Unity.VisualScripting;
 
 public class StoryScene : MonoBehaviour
 {
+    private PlayerStats player;
     private StoryManager manager;
-    public PlayerStats player;
     public StoryBlock StartstoryBlock;
     public ScrollRect scrollRect;
     public RectTransform contentTransform;
@@ -155,6 +155,53 @@ public class StoryScene : MonoBehaviour
         ClearDisplay();
     }
 
+    private string GenerateRewardText(StoryBlock block)
+    {
+        List<string> lines = new();
+
+        if (block.rewardGold > 0)
+        {
+            lines.Add($"골드: {block.rewardGold}");
+            player.playerStateBlock.gold += currentBlock.rewardGold;
+        }
+
+        if (block.rewardItems != null && block.rewardItems.Count > 0)
+        {
+            foreach (var itemId in currentBlock.rewardItems)
+            {
+                player.AddItem(AssetManager.Instance.itemList[itemId]);
+                lines.Add($"획득 아이템: {string.Join(", ", AssetManager.Instance.itemList[itemId].name)}");
+            }
+        }
+
+        if (!string.IsNullOrEmpty(block.rewardTrait))
+        {
+            lines.Add($"획득 특성: {block.rewardTrait}"); // 성향은 미구현상태
+        }
+
+        if (block.rewardMorality != 0)
+        {
+            lines.Add($"도덕성 변화: {block.rewardMorality}");
+            player.playerStateBlock.playerStatus[StateType.Mortality] += currentBlock.rewardMorality;
+        }
+
+        if (block.rewardLifePoint != 0)
+        {
+            player.playerStateBlock.playerStatus[StateType.Life] += currentBlock.rewardLifePoint;
+            lines.Add($"생명력 변화: {block.rewardLifePoint}");
+        }
+
+        if (block.rewardSpiritPoint != 0)
+        {
+            player.playerStateBlock.playerStatus[StateType.Spirit] += currentBlock.rewardSpiritPoint;
+            lines.Add($"정신력 변화: {block.rewardSpiritPoint}");
+        }
+
+
+        return lines.Count > 0 ? string.Join("\n", lines) : null;
+    }
+
+
     private IEnumerator TypeContentElements(StoryBlock block, StoryManager manager)
     {
         isTyping = true;
@@ -234,8 +281,23 @@ public class StoryScene : MonoBehaviour
             }
         }
 
+        string rewardText = GenerateRewardText(block);
+        if (!string.IsNullOrEmpty(rewardText))
+        {
+            var rewardGO = Instantiate(textPrefab, contentTransform);
+            var tmp = rewardGO.GetComponent<TextMeshProUGUI>();
+            tmp.text = rewardText;
+            textComponents.Add(tmp);
+            textOriginals.Add(rewardText);
+            contentObjects.Add(rewardGO);
+        }
+
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
         isTyping = false;
         typingCoroutine = null;
+
+        player.RecalculateStats();
         SetChoiceButtons(block, manager);
         SetChoiceButtonsActive(true);
     }

@@ -75,15 +75,16 @@ MonoBehaviour:
   myChapter: 1
   myIndex: 0
   maxIndex: 4
-  goldGained: 10
-  itemsGained: []
-  traitGained: 
   isBattleStart: 0
   spawnMonsterId: 
   returnBlockAfterBattle: {fileID: 0}
-  moralityChange: 0
-  lifePointReward: 0
-  spiritPointReward: 0
+  rewardGold: 10
+  rewardItems:
+  - tier1_hide
+  rewardTrait: 
+  rewardMorality: 50
+  rewardLifePoint: -1
+  rewardSpiritPoint: -1
   isShop: 0
   shopType: 0
   shopChance: 0

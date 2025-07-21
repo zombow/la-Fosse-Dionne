@@ -35,7 +35,7 @@ public class PlayerCombatPanel : MonoBehaviour
     public event Action<int, string> PlayerAttack; // dagame 넘기기, 무기에따른 effect type도 바뀌도록
     public event Action<int> PlayerEndReaction; // 플레이어가 공격받을때 등 액션이끝날때
     public event Action CombatStart;
-    public event Action<bool> CombatEnd;
+    public event Action CombatGiveUp;
     public event Action CombatClose;
     
     private Coroutine RollDiceCoroutine;
@@ -48,7 +48,7 @@ public class PlayerCombatPanel : MonoBehaviour
         dicePanel.SetActive(false);
         startEndPanel.SetActive(true);
         startEndButton.onClick.AddListener(() => CombatStart?.Invoke());
-        giveUpButton.onClick.AddListener(() => CombatEnd?.Invoke(false));
+        giveUpButton.onClick.AddListener(() => CombatGiveUp?.Invoke());
         rollDiceButton.onClick.AddListener(RollDice);
     }
 
@@ -67,6 +67,8 @@ public class PlayerCombatPanel : MonoBehaviour
         dicePanel.SetActive(false);
         startEndPanel.SetActive(true);
         startEndButtonText.text = resultText;
+ 
+        CombatGiveUp = null;
     }
 
     private void RollDice()

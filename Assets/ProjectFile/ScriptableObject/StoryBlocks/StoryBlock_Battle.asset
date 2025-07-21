@@ -25,7 +25,7 @@ MonoBehaviour:
   - tier1_hide
   rewardTrait: 
   rewardMorality: 3
-  rewardLifePoint: 2
+  rewardLifePoint: 1
   rewardSpiritPoint: 1
   isShop: 0
   shopType: 0

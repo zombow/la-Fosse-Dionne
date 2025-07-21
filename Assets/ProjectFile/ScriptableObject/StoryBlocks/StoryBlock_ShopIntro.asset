@@ -50,15 +50,15 @@ MonoBehaviour:
   myChapter: 1
   myIndex: 1
   maxIndex: 4
-  goldGained: 0
-  itemsGained: []
-  traitGained: 
   isBattleStart: 0
   spawnMonsterId: 
   returnBlockAfterBattle: {fileID: 0}
-  moralityChange: 0
-  lifePointReward: 0
-  spiritPointReward: 0
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
   isShop: 0
   shopType: 0
   shopChance: 0

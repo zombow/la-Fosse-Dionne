@@ -14,6 +14,7 @@ public class StoryBlock : ScriptableObject
     public string spawnMonsterId;
     public StoryBlock returnBlockAfterBattle;
     
+    [Header("Rewards")]
     public int rewardGold;
     public List<string> rewardItems = new();
     public string rewardTrait;
