@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_11_BadWay
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uB2F9\uC2E0\uC740 \uD683\uBD88\uC744 \uAEBC\uB0B4\uC5B4 \uC0AC\uC2B4\uC758
+      \uB208\uC5D0 \uBD99\uC740 \uC774\uB07C\uC5D0 \uBD88\uC744 \uB314\uB2E4. \uB9C8\uCE58
+      \uC774\uB07C\uAC00 \uC0B4\uC544\uC788\uB294 \uB4EF \uAFC8\uD2C0\uB300\uBA70
+      \uCC22\uC5B4\uC9C0\uB294 \uBE44\uBA85\uACFC \uD568\uAED8 \uD0C0\uC62C\uB790\uB2E4.
+      \uC720\uB3C5\uD55C \uC5F0\uAE30\uAC00 \uD53C\uC5B4\uC624\uB974\uBA70 \uB2F9\uC2E0\uC758
+      \uBAA9\uC744 \uB530\uAC11\uAC8C \uD588\uACE0, \uC77C\uBD80 \uC5F0\uAE30\uB97C
+      \uB4E4\uC774\uB9C8\uC2E0 \uB2F9\uC2E0\uC740 \uBA48\uCD94\uC9C0 \uC54A\uB294
+      \uAE30\uCE68\uACFC \uD568\uAED8 \uC785\uC5D0\uC11C \uD53C\uB9DB\uC774 \uB0AC\uB2E4.\r\n\r\n\uD558\uC9C0\uB9CC
+      \uC774\uB07C\uAC00 \uD0C0\uBA74\uC11C \uC0AC\uB2F9 \uACF3\uACF3\uC774 \uB4DC\uB7EC\uB0AC\uACE0,
+      \uB2F9\uC2E0\uC740 \uC7AC\uBE60\uB974\uAC8C \uC8FC\uBCC0\uC744 \uB4A4\uC838\uBCF4\uC558\uB2E4.
+      \uC81C\uB2E8 \uB4A4\uCABD \uBCBD \uD2C8\uC0C8\uC5D0\uC11C \uBB34\uC5B8\uAC00
+      \uBC18\uC9DD\uC774\uB294 \uAC83\uC774 \uBCF4\uC600\uB2E4. \uB2F9\uC2E0\uC740
+      \uADF8\uAC83\uC744 \uAEBC\uB0B4\uC5B4 \uBCF4\uB2C8 \uC544\uB984\uB2F5\uAC8C
+      \uC7A5\uC2DD\uB41C <b>\uC740\uC7A5\uB3C4</b>\uC600\uB2E4.\n\n\uC0AC\uC2B4\uC758
+      \uC785\uC5D0\uC11C\uB3C4 \uAC70\uC6B8 \uC870\uAC01\uC774 \uB5A8\uC5B4\uC838
+      \uB098\uC654\uB2E4. \uBE44\uB85D \uBAB8\uC740 \uB3C5\uD55C \uC5F0\uAE30 \uB54C\uBB38\uC5D0
+      \uC0C1\uB2F9\uD788 \uC57D\uD574\uC84C\uC9C0\uB9CC, \uCD94\uAC00 \uC218\uD655\uC774
+      \uC788\uC5C8\uB358 \uC148\uC774\uC5C8\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: 80b8f22de1260e642b8f15cbc01d8a5c, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 23
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems:
+  - mirror_debris
+  - tier2_silver_dagger
+  rewardTrait: 
+  rewardMorality: -1
+  rewardLifePoint: -1
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

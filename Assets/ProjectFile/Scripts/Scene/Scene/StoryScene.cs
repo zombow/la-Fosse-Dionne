@@ -16,15 +16,16 @@ public class StoryScene : MonoBehaviour
     public RectTransform contentTransform;
     public GameObject textPrefab;
     public GameObject imagePrefab;
-    public Transform choiceContainer;
-    public GameObject choiceButtonPrefab;
+    public GameObject choiceContainer;
+    public ChoiceButton choiceButtonPrefab;
 
     [Header("Utility")] public Toggle inventoryButton;
     public InventoryPopup inventoryPopupPrefab;
     private InventoryPopup instanceInventoryPopup;
     public Button settingButton;
     private SettingManager settingManager;
-    public GameObject storyPanel; // popup발동시 비활성화시키기위해서
+    public RectTransform storyPanel; // popup발동시 비활성화시키기위해서
+    public RectTransform bottomPanel; // engin시 크기변경
 
     [Header("Battle")] public GameObject gaugePanel; // 전투시 비활성화를위해
     public Image storyBG;
@@ -81,6 +82,7 @@ public class StoryScene : MonoBehaviour
 
         characterInfoUI.InfoInit(player);
         settingManager.FontSizeChanged += ChangeFontSize;
+        ChangeFontSize(settingManager.settingPrefab.fontSizeText.fontSize);
     }
 
     public void OpenPopup(GameObject instancedPopup)
@@ -91,7 +93,7 @@ public class StoryScene : MonoBehaviour
             return;
         }
 
-        storyPanel.SetActive(instancedPopup.activeSelf);
+        storyPanel.gameObject.SetActive(instancedPopup.activeSelf);
         choiceContainer.gameObject.SetActive(instancedPopup.activeSelf);
 
         instancedPopup.SetActive(!instancedPopup.activeSelf);
@@ -102,7 +104,7 @@ public class StoryScene : MonoBehaviour
         // 이전 UI 초기화
         foreach (Transform child in contentTransform)
             Destroy(child.gameObject);
-        foreach (Transform child in choiceContainer)
+        foreach (Transform child in choiceContainer.transform)
             Destroy(child.gameObject);
         contentObjects.Clear();
         textComponents.Clear();
@@ -118,6 +120,23 @@ public class StoryScene : MonoBehaviour
         currentManager = manager;
 
         SetChoiceButtonsActive(false);
+
+        if (currentBlock.endingBlock)
+        {
+            gaugePanel.SetActive(false);
+            storyPanel.anchorMin = new Vector2(0f, 0.18f);
+            bottomPanel.anchorMax = new Vector2(1f, 0.18f);
+            
+            choiceButtonPrefab.EndingUI();
+        }
+        else
+        {
+            gaugePanel.SetActive(true);
+            storyPanel.anchorMin = new Vector2(0f, 0.3f);
+            bottomPanel.anchorMax = new Vector2(1f, 0.3f);
+
+            choiceButtonPrefab.StoryUI();
+        }
 
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
@@ -196,8 +215,14 @@ public class StoryScene : MonoBehaviour
             player.playerStateBlock.playerStatus[StateType.Spirit] += currentBlock.rewardSpiritPoint;
             lines.Add($"정신력 변화: {block.rewardSpiritPoint}");
         }
-
-
+        if(block.deleteItems != null && block.deleteItems.Count > 0 )
+        {
+            foreach (var itemId in currentBlock.deleteItems)
+            {
+                player.DeleteItem(AssetManager.Instance.itemList[itemId], true);
+                lines.Add($"제거된 아이템: {string.Join(", ", AssetManager.Instance.itemList[itemId].name)}");
+            }
+        }
         return lines.Count > 0 ? string.Join("\n", lines) : null;
     }
 
@@ -398,12 +423,12 @@ public class StoryScene : MonoBehaviour
 
     private void SetChoiceButtons(StoryBlock block, StoryManager manager)
     {
-        foreach (Transform child in choiceContainer)
+        foreach (Transform child in choiceContainer.transform)
             Destroy(child.gameObject);
 
         foreach (var choice in block.choices)
         {
-            GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceContainer);
+            GameObject buttonObj = Instantiate(choiceButtonPrefab.gameObject, choiceContainer.transform);
             buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = choice.text;
             buttonObj.GetComponent<Button>().onClick.AddListener(() => { manager.Choose(choice); });
         }
@@ -411,7 +436,7 @@ public class StoryScene : MonoBehaviour
 
     private void SetChoiceButtonsActive(bool active)
     {
-        foreach (Transform child in choiceContainer)
+        foreach (Transform child in choiceContainer.transform)
         {
             var btn = child.GetComponent<Button>();
             if (btn != null)

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: Chapter_04_06
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uC2E0\uBD80\uC758 \uC5BC\uAD74\uC774 \uBC1D\uC544\uC84C\uB2E4. \"\uC790\uB124\uC758
+      \uC9C0\uAE08\uAE4C\uC9C0\uC758 \uD589\uB3D9\uC744 \uBCF4\uB2C8... \uC790\uB124\uC57C\uB9D0\uB85C
+      \uC9C4\uC815\uD55C \uAD6C\uC6D0\uC790\uB85C\uAD70. \uC774\uAC78 \uC790\uB124\uC5D0\uAC8C
+      \uB9E1\uAE30\uB294 \uAC8C \uB9DE\uACA0\uC5B4.\"\r\n\uC2E0\uBD80\uB294 \uC9C0\uD558
+      \uCC3D\uACE0\uB85C \uD5A5\uD558\uBA70 \uB9D0\uD588\uB2E4. \"\uD0DC\uC591\uC758
+      \uC790\uB140\uB4E4\uC774 \uB0A8\uAE34 \uCD5C\uACE0\uC758 \uC720\uBB3C\uC744
+      \uC790\uB124\uC5D0\uAC8C \uC8FC\uACA0\uB124. \uC790\uB124\uB77C\uBA74 \uADF8
+      \uD798\uC744 \uC62C\uBC14\uB974\uAC8C \uC0AC\uC6A9\uD560 \uAC70\uB77C \uBBFF\uC5B4.\""
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 0}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 1
+    StreangthBlock: {fileID: 11400000, guid: f930e7727be887a47800db11cc86e4fc, type: 2}
+    AgilityBlock: {fileID: 11400000, guid: ece40c59ea24ffc4987abf0c2fbc87ab, type: 2}
+    IntelligenceBlock: {fileID: 11400000, guid: e6b22d10742ae0647a06504ae3825905, type: 2}
+    requiredItemId: []
+  myChapter: 4
+  myIndex: 0
+  maxIndex: 0
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

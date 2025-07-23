@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_11
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uC0AC\uB2F9 \uB0B4\uBD80\uB294 \uC2F8\uB298\uD558\uACE0 \uC2B5\uD588\uB2E4.
+      \uAD6C\uC11D\uC5D0\uB294 \uC791\uC740 \uC0D8\uC774 \uD750\uB974\uACE0 \uC788\uC5C8\uACE0 
+      \uD76C\uBBF8\uD55C \uD587\uC0B4\uC774 \uBB34\uB108\uC9C4 \uCC9C\uC7A5 \uD2C8\uC73C\uB85C
+      \uC2A4\uBA70\uB4E4\uC5B4, \uACF5\uC911\uC744 \uB5A0\uB3C4\uB294 \uBA3C\uC9C0
+      \uC785\uC790\uB4E4\uC744 \uBE44\uCD94\uACE0 \uC788\uC5C8\uB2E4.  \uC5B4\uB460
+      \uC18D\uC5D0 \uAC00\uB824\uC9C4 \uC870\uAC01\uC0C1 \uD558\uB098\uAC00 \uBE5B\uC904\uAE30
+      \uAC00\uC6B4\uB370 \uC11C \uC788\uC5C8\uB2E4. \uADF8\uAC83\uC740 \uC0AC\uC2B4\uC758
+      \uD615\uC0C1\uC774\uC5C8\uB2E4.\r"
+    image: {fileID: 0}
+  - type: 1
+    text: 
+    image: {fileID: 21300000, guid: 8d41b24792abcae4fbe4419b1f388c0a, type: 3}
+  - type: 0
+    text: "\uADF8\uB7EC\uB098 \uC0AC\uC2B4\uC758 \uB208\uC740 \uAC80\uAC8C \uC5BC\uB8E9\uC9C4
+      \uC774\uB07C\uC640 \uD53C\uCC98\uB7FC \uBFCC\uB824\uC9C4 \uD759\uBA3C\uC9C0\uB85C
+      \uB354\uB7FD\uD600\uC838 \uC788\uC5C8\uB2E4. \uB208\uC744 \uB4E4\uC5EC\uB2E4\uBCF4\uB2C8
+      \uADF8 \uC548\uC5D0\uC11C \uBB54\uAC00 \uB4E4\uB053\uB294 \uB4EF\uD55C \uAE30\uBD84
+      \uB098\uC05C \uAE30\uCC99\uC774 \uC77C\uC5C8\uB2E4. \uB9C8\uCE58 \uC0B4\uC544\uC788\uB294
+      \uC5B4\uB460\uC774 \uAFC8\uD2C0\uAC70\uB9AC\uB294 \uB4EF\uD588\uB2E4.\r\n\uB4F1\uC904\uAE30\uC5D0
+      \uC2DD\uC740\uB540\uC774 \uD758\uB800\uB2E4. \uC9C1\uAC10\uC801\uC73C\uB85C
+      \uB2F9\uC2E0\uC740 \uC0AC\uB2F9 \uB0B4\uBD80\uC5D0 \uBB34\uC5B8\uAC00 \uB2E4\uB978
+      \uC874\uC7AC\uAC00 \uC788\uB2E4\uB294 \uAC83\uC744 \uB290\uAF08\uB2E4. \uC0AC\uC2B4\uC758
+      \uB208\uC744 \uC815\uD654\uD574\uC57C \uD560 \uAC83 \uAC19\uC558\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uC0AC\uB2F9\uC758 \uC0D8\uBB3C\uB85C \uC870\uC2EC\uC2A4\uB7FD\uAC8C \uC2EF\uC5B4\uC900\uB2E4"
+    nextBlock: {fileID: 11400000, guid: a834ee113f759ac48ad695e7854b2f70, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  - text: "\uBD88\uC744 \uC9C0\uD3B4 \uC774\uB07C\uB97C \uD0DC\uC6B0\uBA74\uC11C
+      \uC0AC\uB2F9\uC744 \uB4A4\uC9C4\uB2E4"
+    nextBlock: {fileID: 11400000, guid: 0e9ef3d8569af0c46a6534688e5a7196, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 21
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

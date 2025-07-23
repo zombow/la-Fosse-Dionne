@@ -26,6 +26,7 @@ public class SettingManager : MonoBehaviour
     public void Start()
     {
         _initPrefab = Instantiate(settingPrefab, transform);
+        _initPrefab.InitPopup();
         _initPrefab.gameObject.SetActive(false);
         _initPrefab.transform.SetParent(safeArea.transform, false);
     }

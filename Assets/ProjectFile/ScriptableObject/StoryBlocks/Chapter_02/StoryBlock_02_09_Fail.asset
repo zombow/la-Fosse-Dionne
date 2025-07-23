@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_09_Fail
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\"\uB2F9\uC2E0\uC740 \uC548\uAC04\uD798\uC744 \uC37C\uC9C0\uB9CC \uBB38\uC740
+      \uAFC8\uCA4D\uB3C4 \uD558\uC9C0 \uC54A\uC558\uB2E4. \uC5B5\uC9C0\uB85C \uBB38\uC744
+      \uC5F4\uB824\uB2E4\uAC00 \uC5B4\uC124\uD504\uAC8C \uBD80\uC11C\uC9C4 \uCCA0\uCC3D\uC5D0
+      \uC190\uC774 \uCC14\uB838\uB2E4. \"\uC774\uB7F0 \uC2DD\uC73C\uB85C\uB294 \uC548
+      \uB418\uACA0\uAD70...\" \uB2F9\uC2E0\uC740 \uB2E4\uB978 \uBC29\uBC95\uC744
+      \uCC3E\uC544\uC57C \uD588\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uBE5B\uBC14\uB79C \uC5F4\uC1E0\uB97C \uC0AC\uC6A9\uD55C\uB2E4."
+    nextBlock: {fileID: 11400000, guid: a25552cc2c5870940bf1f74bef66884a, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId:
+    - old_key
+  myChapter: 2
+  myIndex: 19
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: -1
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

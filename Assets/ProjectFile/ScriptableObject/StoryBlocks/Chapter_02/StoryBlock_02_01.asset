@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_01
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uB2F9\uC2E0\uC740 \uC6B8\uCC3D\uD55C \uC232\uAE38\uC744 \uAC78\uC73C\uBA70
+      \uC0C8\uC18C\uB9AC\uC640 \uBC14\uB78C \uC18C\uB9AC\uC5D0 \uADC0\uB97C \uAE30\uC6B8\uC774\uACE0
+      \uC788\uC5C8\uB2E4. \n\uD587\uC0B4\uC774 \uB098\uBB47\uC78E \uC0AC\uC774\uB85C
+      \uC2A4\uBA70\uB4E4\uC5B4 \uAE38 \uC704\uC5D0 \uC5BC\uB8E9\uC9C4 \uADF8\uB9BC\uC790\uB97C
+      \uB9CC\uB4E4\uACE0 \uC788\uC5C8\uB2E4. \n\uADF8\uB7F0\uB370 \uAC11\uC790\uAE30
+      \uC8FC\uBCC0\uC774 \uC870\uC6A9\uD574\uC84C\uB2E4. \n\uC0C8\uB4E4\uC774 \uC9C0\uC800\uADC0\uB358
+      \uC18C\uB9AC\uB3C4, \uB098\uBB47\uC78E\uC774 \uBC14\uC2A4\uB77D\uAC70\uB9AC\uB358
+      \uC18C\uB9AC\uB3C4 \uBAA8\uB450 \uBA48\uCDC4\uB2E4. \uB9C8\uCE58 \uC232 \uC804\uCCB4\uAC00
+      \uC228\uC744 \uC8FD\uC774\uACE0 \uC788\uB294 \uAC83 \uAC19\uC558\uB2E4. \r\n"
+    image: {fileID: 0}
+  - type: 1
+    text: 
+    image: {fileID: 21300000, guid: b81447b12f0fbcc49a5e9971d92ed8d9, type: 3}
+  - type: 1
+    text: "\uB2F9\uC2E0\uC740 \uBC1C\uAC78\uC74C\uC744 \uBA48\uCD94\uACE0 \uC8FC\uBCC0\uC744
+      \uC0B4\uD3C8\uB2E4. \uADF8\uB54C \uC5B4\uB460 \uC18D\uC5D0\uC11C \uBB34\uC5B8\uAC00
+      \uBC18\uC9DD\uC774\uB294 \uAC83\uC774 \uBCF4\uC600\uB2E4. \n\uB0A0\uCE74\uB85C\uC6B4
+      \uB208\uBE5B\uC774 \uB2F9\uC2E0\uC744 \uB178\uB824\uBCF4\uACE0 \uC788\uC5C8\uB2E4.
+      \n\uB364\uBD88\uC774 \uBC14\uC2A4\uB77D\uAC70\uB9AC\uBA70 \uBB34\uC5B8\uAC00\uAC00
+      \uC6C0\uC9C1\uC774\uAE30 \uC2DC\uC791\uD588\uB2E4. \r\n\uC704\uD5D8\uC774 \uB2E4\uAC00\uC624\uACE0
+      \uC788\uC5C8\uB2E4"
+    image: {fileID: 0}
+  choices:
+  - text: "\uAC11\uC790\uAE30 \uC5B4\uB514\uC120\uAC00 \uBB34\uC5B8\uAC00\uAC00 \uB098\uD0C0\uB0AC\uB2E4!"
+    nextBlock: {fileID: 11400000, guid: 825fb53954756a349834ced89d353d26, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 0
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

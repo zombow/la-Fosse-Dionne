@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_05_BadWay
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\"\uBB3C\uB860\uC774\uC9C0\uC694. \uCC9C\uCC9C\uD788 \uBCF4\uC138\uC694.\"
+      \uAE30\uB85D\uAD00 \uC8FC\uC778\uC774 \uBC16\uC73C\uB85C \uB098\uAC00\uC790,
+      \uB2F9\uC2E0\uC740 \uC7AC\uBE68\uB9AC \uC11C\uAC00\uB97C \uB4A4\uC838 \uB208\uC5D0
+      \uB744\uB294 \uADC0\uC911\uD55C \uBB38\uC11C\uB4E4\uC744 \uCC3E\uC544\uB0C8\uB2E4.\r\n
+      \uB2F9\uC2E0\uC740 <b>'\uC5D0\uB4DC\uBAAC\uB4DC\uC758 \uC591\uD53C\uC9C0</b>'\uB77C\uACE0
+      \uC801\uD78C \uB450\uB8E8\uB9C8\uB9AC\uB97C \uC7AC\uBE60\uB974\uAC8C  \uD488
+      \uC548\uC5D0 \uC228\uACBC\uB2E4. \uAE30\uB85D\uAD00 \uC8FC\uC778\uC774 \uB3CC\uC544\uC654\uC744
+      \uB54C, \uB2F9\uC2E0\uC740 \uC544\uBB34\uB807\uC9C0 \uC54A\uAC8C \uC6D0\uB798
+      \uCC45\uB9CC \uB4E4\uACE0 \uC11C \uC788\uC5C8\uB2E4. \uB2F9\uC2E0\uC774 \uCC45\uC744
+      \uB3CC\uB824\uC8FC\uB824 \uD558\uC790, \uAE30\uB85D\uAD00 \uC8FC\uC778\uC740
+      \uC190\uC744 \uC800\uC5C8\uB2E4. \r\n\"\uAC00\uC838\uAC00\uAC8C. \uADF8\uB300\uAC00
+      \uBC14\uC2E4\uB9AC\uC2A4\uD06C\uB97C \uCC3E\uB294 \uAC83\uC744 \uBCF4\uB2C8,
+      \uC774 \uCC45\uC774 \uADF8\uB300\uC5D0\uAC8C \uB354 \uD544\uC694\uD560 \uAC70\uC57C.\" "
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: b2bc4b7aa5fc79a4c9e3c8eb3cc2fe80, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 11
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems:
+  - acc_edmund_scroll
+  rewardTrait: 
+  rewardMorality: -1
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

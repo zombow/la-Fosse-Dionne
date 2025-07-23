@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: Chapter_04_07
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uC2E0\uBD80\uAC00 \uACE0\uAC1C\uB97C \uB044\uB355\uC600\uB2E4. \"\uBB3C\uB860\uC774\uC9C0.
+      \uC790\uB124\uB97C \uB3C4\uC640\uC57C\uACA0\uC5B4. \uC6B0\uB9AC\uAC00 \uAC00\uC9C4
+      \uC7A5\uBE44 \uC911 \uAD1C\uCC2E\uC740 \uAC83\uB4E4\uC744 \uC8FC\uB9C8. \uD558\uC9C0\uB9CC
+      \uC870\uC2EC\uD558\uAC8C. \uB77C\uBABD\uC740 \uC0DD\uAC01\uBCF4\uB2E4 \uC704\uD5D8\uD55C
+      \uC0C1\uB300\uC77C \uAC70\uC57C."
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: cb9db98b09e4acb47a442ddec5beda75, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
+    requiredItemId: []
+  myChapter: 4
+  myIndex: 0
+  maxIndex: 0
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems:
+  - tier2_greatsword
+  - tier2_magic_staff
+  - tier2_half_plate
+  rewardTrait: 
+  rewardMorality: 2
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

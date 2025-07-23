@@ -10,9 +10,9 @@ public class StoryBlock : ScriptableObject
     public int myIndex;
     public int maxIndex;
 
+    [Header("Battle")]
     public bool isBattleStart;
     public string spawnMonsterId;
-    public StoryBlock returnBlockAfterBattle;
     
     [Header("Rewards")]
     public int rewardGold;
@@ -21,14 +21,16 @@ public class StoryBlock : ScriptableObject
     public int rewardMorality;
     public int rewardLifePoint;
     public int rewardSpiritPoint;
-
+    
+    public List<string> deleteItems = new();
+    
+    [Header("Shop")]
     public bool isShop;
     public int shopType;
     public float shopChance;
-    public StoryBlock nextBlockAfterShop;
 
     public bool isRandomEncounter;
     public bool answer;
-    
-    
+    public bool endingBlock;
+
 }

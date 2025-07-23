@@ -13,7 +13,6 @@ public class StoryManager : MonoBehaviour
 
     private Dictionary<int, int> chapterBlockCountCache;
 
-
     public void InitAndStart(StoryBlock startBlock, StoryScene storyScene)
     {
         currentblock = startBlock;
@@ -30,7 +29,7 @@ public class StoryManager : MonoBehaviour
             Storyscene.BeginBattle(block, this);
             combatManager.InitCombat(player, block.spawnMonsterId, block, () =>
             {
-                ShowStoryBlock(block.returnBlockAfterBattle);
+                ShowStoryBlock(block.choices[0].nextBlock);
                 Storyscene.storyBG.sprite
                     = Storyscene.defaultBgSprite;
             });
@@ -38,7 +37,7 @@ public class StoryManager : MonoBehaviour
         else if (block.isShop) // 상점 분기
         {
             Storyscene.BeginShop(block, this);
-            shopmanager.ShowShop(player, block.shopType, () => { ShowStoryBlock(block.nextBlockAfterShop); });
+            shopmanager.ShowShop(player, block.shopType, () => { ShowStoryBlock(block.choices[0].nextBlock); });
         }
         else
         {
@@ -48,17 +47,31 @@ public class StoryManager : MonoBehaviour
 
     public void Choose(StoryChoice choice)
     {
-        if (choice.requiresProbabilityCheck)
+        if (choice.RequiresItem(player))
         {
-            float chance = choice.CalculateSuccessChance(player);
-            if (Random.Range(0f, 100f) <= chance)
-                ShowStoryBlock(choice.successBlock);
+            if (currentblock.endingBlock)
+            {
+                SettingManager.Instance._initPrefab.OnNewGame();
+            }
+            else if (choice.requiresProbabilityCheck)
+            {
+                if (choice.CalculateSuccessChance(player))
+                    ShowStoryBlock(choice.successBlock);
+                else
+                    ShowStoryBlock(choice.failBlock);
+            }
+            if (choice.requiresMoralityCheck)
+            {
+                ShowStoryBlock(choice.GetMoralityBlock(player));
+            }
+            if( choice.requiresStateCheck)
+            {
+                ShowStoryBlock(choice.GetStateBlock(player));
+            }
             else
-                ShowStoryBlock(choice.failBlock);
-        }
-        else
-        {
-            ShowStoryBlock(choice.nextBlock);
+            {
+                ShowStoryBlock(choice.nextBlock);
+            }
         }
     }
 }

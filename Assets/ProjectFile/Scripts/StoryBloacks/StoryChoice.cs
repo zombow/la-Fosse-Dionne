@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -5,43 +7,86 @@ public class StoryChoice
 {
     public string text;
     public StoryBlock nextBlock;
-    public int nextChapter;
 
-    public string requiredItemId;
-    public string itemReward;
-    public string traitReward;
-    public int goldReward;
-    public int moralityChange;
-    public int lifePointReward;
-    public int spiritPointReward;
-
-    public bool requiresDiceRoll;
-    public int successThreshold;
+    [Header("Branch")] public bool requiresProbabilityCheck;
     public StoryBlock successBlock;
     public StoryBlock failBlock;
-
-    public int requiredStatMin;
-    public string requiredStatName;
-    public int passStatIndex;
-    public int failStatIndex;
-
-    public bool requiresProbabilityCheck;
     public float baseChance;
-    public float strengthMultiplier;
-    public float agilityMultiplier;
-    public float intelligenceMultiplier;
-    public float luckMultiplier;
+    public float successChance;
+    public StateType CalcType;
 
+    [Header("MoralityBranch")] public bool requiresMoralityCheck;
     public int moralityLowThreshold;
-    public int moralityMidThreshold;
     public int moralityHighThreshold;
+    public StoryBlock UpperMoralityBlock;
+    public StoryBlock MiddleMoralityBlock;
+    public StoryBlock LowerMoralityBlock;
 
-    public int indexIfLowMorality;
-    public int indexIfMidMorality;
-    public int indexIfHighMorality;
+    [Header("StateBranch")] public bool requiresStateCheck;
+    public StoryBlock StreangthBlock;
+    public StoryBlock AgilityBlock;
+    public StoryBlock IntelligenceBlock;
 
-    public float CalculateSuccessChance(PlayerStats player)
+    public List<string> requiredItemId;
+
+    public bool CalculateSuccessChance(PlayerStats player)
     {
-        return baseChance + player.playerStateBlock.playerStatus[StateType.Strength] * strengthMultiplier; //TODO: 힘배수만 적용중 수정필요
+        int mult = Random.Range(1, 6); // 최대 1부터 6까지랜덤값 (6면체 주사위를 생각)
+        float chance = (baseChance + player.playerStateBlock.playerStatus[CalcType]) * mult;
+        if (100 - successChance <= chance)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public StoryBlock GetMoralityBlock(PlayerStats player)
+    {
+        return requiresMoralityCheck
+            ? player.playerStateBlock.playerStatus[StateType.Mortality] >= moralityHighThreshold ? UpperMoralityBlock
+            : player.playerStateBlock.playerStatus[StateType.Mortality] >= moralityLowThreshold ? MiddleMoralityBlock
+            : LowerMoralityBlock
+            : null;
+    }
+
+    public StoryBlock GetStateBlock(PlayerStats player)
+    {
+        Dictionary<StateType, int> vale = new Dictionary<StateType, int>();
+        vale.Add(StateType.Strength, player.playerStateBlock.playerStatus[StateType.Strength]);
+        vale.Add(StateType.Intelligence, player.playerStateBlock.playerStatus[StateType.Intelligence]);
+        vale.Add(StateType.Agility, player.playerStateBlock.playerStatus[StateType.Agility]);
+        StateType maxType = vale
+            .OrderByDescending(kv => kv.Value)
+            .ThenBy(kv => kv.Key) // 키 순서대로 정렬
+            .First().Key;
+        if (maxType == StateType.Strength)
+        {
+            return StreangthBlock;
+        }
+        else if (maxType == StateType.Intelligence)
+        {
+            return IntelligenceBlock;
+        }
+        else if (maxType == StateType.Agility)
+        {
+            return AgilityBlock;
+        }
+
+        return null;
+    }
+
+    public bool RequiresItem(PlayerStats player)
+    {
+        if (requiredItemId.Count == 0) return true;
+        foreach (var itemId in requiredItemId)
+        {
+            if (!player.inventory.Contains(AssetManager.Instance.itemList[itemId]))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_07
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "<size=125%> <b> \u300A\uC5D8\uB77C\uD2F4\uC73C\uB85C\uC758 \uC5EC\uC815\u300B
+      </b> </size=125%> \r\n\uCC28\uAC00\uC6B4 \uB208\uBC1C\uC774 \uD718\uBAB0\uC544\uCE58\uB294
+      \uC0B0\uAE38\uC744 \uB530\uB77C \uB2F9\uC2E0\uC740 <b>\uC5D8\uB77C\uD2F4</b>\uC73C\uB85C
+      \uD5A5\uD588\uB2E4. \uBC1C\uAC78\uC74C\uB9C8\uB2E4 \uBB34\uB98E\uAE4C\uC9C0
+      \uCC28\uC624\uB974\uB294 \uB208\uC744 \uD5E4\uCE58\uBA70 \uC774\uD2C0 \uBC24\uC744
+      \uC0B0\uC911\uC5D0\uC11C \uBCF4\uB0B8 \uD6C4, \uB9C8\uCE68\uB0B4 \uC548\uAC1C
+      \uC18D\uC5D0\uC11C \uB9C8\uC744\uC758 \uC724\uACFD\uC774 \uB4DC\uB7EC\uB0AC\uB2E4.
+      \uADF8\uACF3\uC740 \uC774\uB07C \uB080 \uB3CC\uB2F4\uACFC \uC9D9\uC740 \uD68C\uC0C9
+      \uC9C0\uBD95\uC73C\uB85C \uB36E\uC778 \uC678\uB534 \uB9C8\uC744\uC774\uC5C8\uACE0,
+      \uC911\uC2EC\uC5D0\uB294 \uC791\uACE0 \uC090\uAC71\uAC70\uB9AC\uB294 \uB098\uBB34
+      \uC5EC\uAD00 \uD55C \uCC44\uAC00 \uB369\uADF8\uB7EC\uB2C8 \uB193\uC5EC \uC788\uC5C8\uB2E4.\r"
+    image: {fileID: 0}
+  - type: 1
+    text: 
+    image: {fileID: 21300000, guid: 32b7b437987533740a4e31f15dca8ede, type: 3}
+  - type: 0
+    text: "\uC5EC\uAD00 \uB0B4\uBD80\uB294 \uD669\uD1A0\uC0C9 \uD654\uB86F\uBD88
+      \uBE5B\uB9CC\uC774 \uC5B4\uB460\uC744 \uBC00\uC5B4\uB0B4\uB294 \uC870\uC6A9\uD55C
+      \uACF5\uAC04\uC774\uC5C8\uB2E4.  \r\n\uC548\uCABD \uAD6C\uC11D, \uC11C\uB9AC\uAF43\uC774
+      \uD540 \uCC3D\uAC00\uC5D0\uB294 \uBC31\uBC1C\uC774 \uBB34\uC131\uD55C \uB178\uC778
+      \uD55C \uC0AC\uB78C\uC774 \uD640\uB85C \uC549\uC544 \uC788\uC5C8\uB2E4.  \r\n\uADF8\uB140\uB294
+      \uB9C8\uCE58 \uC5BC\uC5B4\uBD99\uC740 \uC2DC\uAC04 \uC18D\uC5D0 \uAC07\uD78C
+      \uB4EF \uC544\uBB34 \uB9D0 \uC5C6\uC774 \uACE0\uAC1C\uB97C \uB4E4\uACE0 \uBB34\uC5B8\uAC00\uB97C
+      \uB4E3\uB294 \uB4EF\uD588\uB2E4.  "
+    image: {fileID: 0}
+  - type: 0
+    text: "\uB2F9\uC2E0\uC740 \uBA70\uCE60\uAC04\uC758 \uD5D8\uD55C \uC5EC\uC815\uC73C\uB85C
+      \uC9C0\uCE5C \uBAB8\uC744 \uB290\uB07C\uBA70 \uC5EC\uAD00 \uC8FC\uC778\uC744
+      \uBC14\uB77C\uBCF4\uC558\uB2E4.  \r\n\uB530\uB73B\uD55C \uACF3\uC5D0\uC11C
+      \uC26C\uACE0 \uC2F6\uC740 \uB9C8\uC74C\uB3C4 \uC788\uC5C8\uC9C0\uB9CC, \uBB34\uC5C7\uBCF4\uB2E4
+      \uBE44\uB974\uB098\uB97C \uCC3E\uB294 \uAC83\uC774 \uAE09\uD588\uB2E4."
+    image: {fileID: 0}
+  - type: 1
+    text: 
+    image: {fileID: 21300000, guid: 1d589c1dd8f1d674abbf3a2051f6be10, type: 3}
+  choices:
+  - text: "\uC2E4\uB840\uD558\uC9C0\uB9CC, \uD639\uC2DC '\uBE44\uB974\uB098'\uB77C\uB294
+      \uBD84\uC5D0 \uB300\uD574 \uC544\uC2DC\uB098\uC694? \uADF8\uB9AC\uACE0 \uBC29
+      \uD558\uB098\uC640 \uB530\uB73B\uD55C \uC2DD\uC0AC\uB97C \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4."
+    nextBlock: {fileID: 11400000, guid: 0aca17a8b748aea48a2dfcc62833231a, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  - text: "\uC800\uAE30 \uACC4\uC2E0 \uB178\uC778\uBD84\uACFC \uC774\uC57C\uAE30\uB97C
+      \uC880 \uD574\uC57C\uACA0\uB294\uB370... (\uB2E4\uB978 \uC190\uB2D8\uB4E4\uC758
+      \uC9D0\uAC00\uBC29\uC744 \uC2AC\uCA4D \uB4A4\uC838\uBCF8\uB2E4)"
+    nextBlock: {fileID: 11400000, guid: 1a40ae6f42362ec45bc5d5f5b6a83176, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 13
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_03_01_BadWay
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uB0B4\uAC00 \uC6D0\uD558\uB294 \uAC74 \uC774\uB7F0 \uAC83\uC774 \uC544\uB2D0\uC138.
+      \uC790\uB124\uB3C4 \uC54C\uC9C0 \uC54A\uB294\uAC00?"
+    image: {fileID: 0}
+  choices:
+  - text: "\uAC70\uC6B8 \uC870\uAC01\uC744 \uB0B4\uBBFC\uB2E4"
+    nextBlock: {fileID: 11400000, guid: c096ae89fcb5c144eaef315dc2935aa7, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId:
+    - mirror_debris
+  myChapter: 3
+  myIndex: 2
+  maxIndex: 5
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

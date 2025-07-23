@@ -10,26 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
-  m_Name: StoryBlock_Battle
+  m_Name: Chapter_05_01
   m_EditorClassIdentifier: 
   contentElements: []
   choices: []
-  myChapter: 0
+  myChapter: 5
   myIndex: 0
-  maxIndex: 1
-  isBattleStart: 1
-  spawnMonsterId: monster_fire_worm
-  returnBlockAfterBattle: {fileID: 11400000, guid: c5a2b4bdc0af4ea4abede6236f3b69d0, type: 2}
-  rewardGold: 10
-  rewardItems:
-  - tier1_hide
+  maxIndex: 0
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
   rewardTrait: 
-  rewardMorality: 3
-  rewardLifePoint: 1
-  rewardSpiritPoint: 1
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
   isShop: 0
   shopType: 0
   shopChance: 0
-  nextBlockAfterShop: {fileID: 0}
   isRandomEncounter: 0
   answer: 0
+  endingBlock: 0

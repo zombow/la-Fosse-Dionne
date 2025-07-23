@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_11_GoodWay
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uB2F9\uC2E0\uC740 \uC6A9\uAE30\uB97C \uB0B4\uC5B4 \uAD6C\uC11D\uC758
+      \uB9D1\uC740 \uC0D8\uBB3C\uC744 \uC190\uC73C\uB85C \uB5A0\uC11C \uC0AC\uC2B4\uC758
+      \uB208\uC744 \uC870\uC2EC\uC2A4\uB7FD\uAC8C \uC53B\uC5B4\uC8FC\uC5C8\uB2E4.
+      \uCC28\uAC00\uC6B4 \uBB3C\uC774 \uB354\uB7EC\uC6B4 \uC774\uB07C\uC640 \uBA3C\uC9C0\uB97C
+      \uC53B\uC5B4\uB0B4\uC790, \uB180\uB77C\uC6B4 \uC77C\uC774 \uC77C\uC5B4\uB0AC\uB2E4.
+      \uC0AC\uC2B4\uC758 \uB208\uC744 \uB36E\uACE0 \uC788\uB358 \uC5B4\uB460\uC774
+      \uB9C8\uCE58 \uC5F0\uAE30\uCC98\uB7FC \uC0AC\uB77C\uC9C0\uBA70 \uBE44\uBA85\uC744
+      \uC9C0\uB974\uB294 \uB4EF\uD55C \uC18C\uB9AC\uAC00 \uB4E4\uB838\uACE0, \uC774\uB0B4
+      \uC0AC\uC2B4\uC758 \uB208\uC5D0\uC11C\uB294 \uD0DC\uC591\uC744 \uB2EE\uC740
+      \uD669\uAE08\uBE5B \uAD11\uCC44\uAC00 \uD53C\uC5B4\uC62C\uB790\uB2E4.\r\n\uADF8
+      \uC21C\uAC04, \uC0AC\uC2B4\uC758 \uC785\uC5D0\uC11C \uBC18\uC9DD\uC774\uB294
+      \uBB34\uC5B8\uAC00\uAC00 \uB5A8\uC5B4\uC84C\uB2E4. \uB2F9\uC2E0\uC740 \uC870\uC2EC\uC2A4\uB7FD\uAC8C
+      \uADF8\uAC83\uC744 \uC9D1\uC5B4\uB4E4\uC5C8\uB2E4. \uC190\uBC14\uB2E5 \uC704\uC5D0\uB294
+      \uC815\uAD50\uD558\uAC8C <b>\uC138\uACF5\uB41C \uD669\uAE08\uBE5B \uAC70\uC6B8
+      \uC870\uAC01</b>\uC774 \uB193\uC5EC \uC788\uC5C8\uB2E4"
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: 80b8f22de1260e642b8f15cbc01d8a5c, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId: []
+  myChapter: 2
+  myIndex: 22
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems:
+  - mirror_debris
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

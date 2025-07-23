@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_03_01
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: " <size=125%> <b> \u300A\uC804\uD658 \uD3EC\uC778\uD2B8: \uC0AC\uB2F9 \uC815\uD654
+      \uD6C4 \uADC0\uD658\u300B </b> </size=125%>\r\n    \uAC70\uC6B8 \uC870\uAC01\uC744
+      \uD488\uC5D0 \uC548\uACE0 \uB2E4\uC2DC \uB9C8\uC744\uB85C \uB3CC\uC544\uC624\uC790,
+      \uC5EC\uAD00 \uCC3D\uAC00\uC758 \uB178\uC778\uC740 \uB9C8\uCE58 \uB2F9\uC2E0\uC758
+      \uBC1C\uC18C\uB9AC\uB97C \uC774\uBBF8 \uC54C\uACE0 \uC788\uC5C8\uB2E4\uB294
+      \uB4EF \uC870\uC6A9\uD788 \uACE0\uAC1C\uB97C \uB4E4\uC5C8\uB2E4.\r\n    \r\n   
+      \"\uC0AC\uC2B4\uC758 \uB208\uC740... \uB2E4\uC2DC \uBE5B\uC744 \uCC3E\uC558\uACA0\uC9C0?
+      \uC774\uC81C \uC790\uB124\uAC00 \uC6D0\uD558\uB294 \uAC83\uC744 \uB4E4\uB824\uC8FC\uACA0\uB124.
+      \uC0AC\uC2E4 \uC790\uB124\uAC00 \uCC3E\uB358 <b>\uBE44\uB974\uB098</b>\uAC00
+      \uB098\uC77C\uC138.\"\r\n    \r\n    \uB2F9\uC2E0\uC740 \uBBF8\uC138\uD558\uAC8C
+      \uB180\uB790\uC9C0\uB9CC, \uC5B4\uB518\uAC00 \uC9D0\uC791\uD588\uB2E4\uB294
+      \uB4EF \uACE0\uAC1C\uB97C \uB044\uB355\uC600\uB2E4. <b>\uBE44\uB974\uB098</b>\uB294
+      \uBB34\uC5B8\uAC00\uB97C \uB2EC\uB77C\uB294 \uB4EF \uC8FC\uB984\uC9C4 \uC190\uC744
+      \uB0B4\uBC00\uC5C8\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uAC70\uC6B8 \uC870\uAC01\uC744 \uB0B4\uBBFC\uB2E4"
+    nextBlock: {fileID: 11400000, guid: c096ae89fcb5c144eaef315dc2935aa7, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId:
+    - mirror_debris
+  - text: "10 \uACE8\uB4DC\uB97C \uC62C\uB824\uB193\uB294\uB2E4."
+    nextBlock: {fileID: 11400000, guid: c81057b557045884d9cf8af1a365726c, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId:
+    - mirror_debris
+  myChapter: 3
+  myIndex: 0
+  maxIndex: 5
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

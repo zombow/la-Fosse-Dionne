@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: StoryBlock_02_09
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "<size=125%><b>\u300A\uC0AC\uC2B4\uC758 \uB208\u300B</b></size=125%>\r\n   
+      <b>'\uC5D8\uB77C\uD2F4'</b> \uB9C8\uC744 \uC5B8\uB355 \uB108\uBA38, \uAC70\uCE60\uAC8C
+      \uAC08\uB77C\uC9C4 \uBC14\uC704 \uD2C8 \uC0AC\uC774\uB85C \uC228\uB4EF\uC774
+      \uC790\uB9AC\uD55C \uC624\uB798\uB41C \uC0AC\uB2F9\uC73C\uB85C \uD5A5\uD588\uB2E4.
+      \uAE38\uC740 \uC5C6\uC5C8\uACE0, \uC624\uC9C1 \uC548\uAC1C\uC640 \uB208\uC744
+      \uD5E4\uCE58\uBA70 \uC9C1\uAC10\uC744 \uB530\uB77C \uBC1C\uAC78\uC74C\uC744
+      \uC62E\uACBC\uB2E4. \uC0AC\uB2F9\uC740 \uB9C8\uCE58 \uC138\uC0C1\uC5D0\uC11C
+      \uC78A\uD600\uC9C4 \uB4EF \uACE0\uC694\uD588\uACE0, \uC2DC\uAC04\uC774 \uBA48\uCD98
+      \uAC83 \uAC19\uC740 \uC801\uB9C9\uC774 \uAC10\uB3CC\uC558\uB2E4.\r\n\uB179\uC2A8
+      \uCCA0\uC7A5\uC73C\uB85C \uB2E8\uB2E8\uD788 \uC7A0\uAE34 \uBB38 \uC55E\uC5D0\uC11C,
+      \uB2F9\uC2E0\uC740 \uC5B4\uB5BB\uAC8C \uB4E4\uC5B4\uAC08\uC9C0 \uACE0\uBBFC\uD588\uB2E4.\r"
+    image: {fileID: 0}
+  choices:
+  - text: "\uD798\uC73C\uB85C \uC5F4\uC5B4\uBCF8\uB2E4."
+    nextBlock: {fileID: 0}
+    requiresProbabilityCheck: 1
+    successBlock: {fileID: 11400000, guid: 29fc9c1b734a8c540abc84e24276720a, type: 2}
+    failBlock: {fileID: 11400000, guid: db3cb62e4e0e84148a05a527c2fc1dab, type: 2}
+    baseChance: 30
+    successChance: 30
+    CalcType: 0
+    requiredItemId: []
+  - text: "\uBE5B\uBC14\uB79C \uC5F4\uC1E0\uB97C \uC0AC\uC6A9\uD55C\uB2E4."
+    nextBlock: {fileID: 11400000, guid: a25552cc2c5870940bf1f74bef66884a, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiredItemId:
+    - old_key
+  myChapter: 2
+  myIndex: 17
+  maxIndex: 25
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

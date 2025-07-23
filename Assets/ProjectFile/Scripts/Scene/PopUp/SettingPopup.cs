@@ -25,7 +25,7 @@ public class SettingPopup : MonoBehaviour
 
     public event Action NewGame;
 
-    private void Start()
+    public void InitPopup()
     {
         settingManager = SettingManager.Instance;
         exitButton.onClick.AddListener(OnExit);
@@ -67,7 +67,7 @@ public class SettingPopup : MonoBehaviour
         }
     }
 
-    private void OnNewGame()
+    public void OnNewGame()
     {
         NewGame?.Invoke();
         settingManager.FontSizeChanged = null;
@@ -77,9 +77,10 @@ public class SettingPopup : MonoBehaviour
             Debug.LogError("SceneManager Not Found!");
             return;
         }
-
-        SetPopup(newGameAlertPopupInstance.gameObject);
+        newGameAlertPopupInstance.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         sceneManager.ChangeScene(SceneType.Start);
-        OnExit();
     }
+
+
 }

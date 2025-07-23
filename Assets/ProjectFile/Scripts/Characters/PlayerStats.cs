@@ -337,11 +337,11 @@ public class PlayerStats : MonoBehaviour
         RecalculateStats();
         return true;
     }
-    public bool DeleteItem(Item selectSlotSlotItem)
+    public bool DeleteItem(Item selectSlotSlotItem, bool isStory = false)
     {
         if (selectSlotSlotItem == null) return false;
 
-        if (selectSlotSlotItem.type == ItemType.Special)
+        if (!isStory && selectSlotSlotItem.type == ItemType.Special)
         {
             return false;
         }
