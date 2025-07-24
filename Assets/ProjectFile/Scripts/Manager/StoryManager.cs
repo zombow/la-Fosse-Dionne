@@ -23,7 +23,8 @@ public class StoryManager : MonoBehaviour
 
     public void ShowStoryBlock(StoryBlock block)
     {
-        Storyscene.UpdateGaugePanel(block); // 게이지 패널 업데이트 (게이지 패널값은 Block의 갯수를 백분율로 나누는것으로 수정필요)
+        currentblock = block;
+        Storyscene.UpdateGaugePanel(block); // 
         if (block.isBattleStart) // battle분기
         {
             Storyscene.BeginBattle(block, this);
@@ -53,24 +54,28 @@ public class StoryManager : MonoBehaviour
             {
                 SettingManager.Instance._initPrefab.OnNewGame();
             }
-            else if (choice.requiresProbabilityCheck)
-            {
-                if (choice.CalculateSuccessChance(player))
-                    ShowStoryBlock(choice.successBlock);
-                else
-                    ShowStoryBlock(choice.failBlock);
-            }
-            if (choice.requiresMoralityCheck)
-            {
-                ShowStoryBlock(choice.GetMoralityBlock(player));
-            }
-            if( choice.requiresStateCheck)
-            {
-                ShowStoryBlock(choice.GetStateBlock(player));
-            }
             else
             {
-                ShowStoryBlock(choice.nextBlock);
+                if (choice.requiresProbabilityCheck)
+                {
+                    if (choice.CalculateSuccessChance(player))
+                        ShowStoryBlock(choice.successBlock);
+                    else
+                        ShowStoryBlock(choice.failBlock);
+                }
+                else if (choice.requiresMoralityCheck)
+                {
+                    ShowStoryBlock(choice.GetMoralityBlock(player));
+                }
+
+                else if (choice.requiresStateCheck)
+                {
+                    ShowStoryBlock(choice.GetStateBlock(player));
+                }
+                else
+                {
+                    ShowStoryBlock(choice.nextBlock);
+                }
             }
         }
     }

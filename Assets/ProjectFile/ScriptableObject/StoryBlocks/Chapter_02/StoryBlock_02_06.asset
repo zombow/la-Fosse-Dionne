@@ -39,6 +39,16 @@ MonoBehaviour:
     baseChance: 0
     successChance: 0
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 2
   myIndex: 12

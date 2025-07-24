@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: Chapter_05_06
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "<b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uC640\uC758 \uC2B9\uBD80\uC5D0\uC11C
+      \uB2F9\uC2E0\uC740 \uAC70\uC758 \uB9C9\uC0C1\uB9C9\uD558\uC600\uC9C0\uB9CC
+      \uC870\uAE08\uC529 \uBC00\uB9AC\uACE0 \uC788\uC5C8\uB2E4. \uB2F9\uC2E0\uC740
+      \uAC00\uC05C \uC228\uC744 \uACE0\uB974\uBA70 \uC7A0\uC2DC \uAC70\uB9AC\uB97C
+      \uBC8C\uB824 \uAE30\uB465 \uB4A4\uB85C \uBAB8\uC744 \uC228\uACBC\uB2E4. \uADF8
+      \uB54C \uCC9C\uC7A5 \uD2C8\uC73C\uB85C \uD76C\uBBF8\uD55C \uBD89\uC740 \uBE5B\uC774
+      \uC2A4\uBA70\uB4E4\uAE30 \uC2DC\uC791\uD588\uB2E4. \uC0C8\uBCBD\uC774\uC5C8\uB2E4.\r\n\r\n\uB2F9\uC2E0\uC740
+      <b>\uBE44\uB974\uB098</b>\uC758 \uB9D0\uC744 \uB5A0\uC62C\uB838\uB2E4. \"\uC0C8\uBCBD\uC774
+      \uBC1D\uC544\uC62C \uB54C... \uD0DC\uC591\uBE5B\uC774 \uB4DC\uB9AC\uC6CC <b>\uAC70\uC6B8</b>\uC744
+      \uBE44\uCD94\uC5B4\uC57C \uD55C\uB2E4.\"\r\n\r\n\"\uB3C4\uB9DD\uB9CC \uCE58\uB294
+      \uAC81\uC7C1\uC774!\" <b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uAC00 \uC870\uB871\uD588\uC9C0\uB9CC,
+      \uB2F9\uC2E0\uC740 \uC774\uC81C \uB54C\uAC00 \uB418\uC5C8\uC74C\uC744 \uC54C\uC558\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: e0d771aa1c1c9754f9c6b87d037b56d6, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
+    requiredItemId: []
+  myChapter: 5
+  myIndex: 7
+  maxIndex: 13
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

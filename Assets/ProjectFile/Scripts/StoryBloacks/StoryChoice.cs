@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class StoryChoice
 {
+    [TextArea]
     public string text;
     public StoryBlock nextBlock;
 

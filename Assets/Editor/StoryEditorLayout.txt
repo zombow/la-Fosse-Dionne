@@ -46,5 +46,15 @@ Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_04/Chapter_04_06_Streang
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_04/Chapter_04_07.asset|8394.022|1927.778
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_04/Chapter_04_08.asset|8733.749|1931.805
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_04/Chapter_04_09.asset|9161.666|1924.365
-Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05.asset|11400.91|200.9088
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_01.asset|10969.91|5.887695
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_02.asset|10936.67|393.3333
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_03.asset|10970|659.9999
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_04.asset|10960|909.9999
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_04_Battle.asset|10993.33|1206.667
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_05.asset|10990|1466.667
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_05_Battle.asset|11020.48|1694.762
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_06.asset|11017.14|1913.333
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_07.asset|11020.95|2124.286
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_08.asset|10998.09|2342.857
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_09.asset|10970.95|2529.047
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_05/Chapter_05_10.asset|10972.38|2746.667

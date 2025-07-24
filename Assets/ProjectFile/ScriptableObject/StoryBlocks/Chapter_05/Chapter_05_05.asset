@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: Chapter_05_05
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "\uB2F9\uC2E0\uC740 \uAC04\uC2E0\uD788 <b>\uB85C\uBE0C \uBB34\uB9AC</b>\uB4E4\uC744
+      \uD574\uCE58\uC6B0\uACE0 \uC758\uC2DD\uC744 \uC9C4\uD589\uD558\uB358 <b>\uB77C\uBABD</b>\uC744
+      \uB9C9\uC558\uB2E4. \u201C\uC644\uC804\uD558\uC9C4 \uC54A\uC9C0\uB9CC \uC0C1\uAD00
+      \uC5C6\uC5B4 \uC774\uC81C \uB098\uB97C \uB9C9\uC744 \uC21C \uC5C6\uC744 \uAC70\uB2E4!\u201D\r\n\uB2F9\uC2E0\uC774
+      \uB85C\uBE0C \uBB34\uB9AC\uB4E4\uC5D0\uAC8C \uC2DC\uAC04\uC774 \uBE8F\uAE34
+      \uC0AC\uC774 \uC758\uC2DD\uC744 \uB9C8\uCE5C <b>\uB77C\uBABD</b>\uC758 \uBAB8\uC774
+      \uAE09\uC18D\uB3C4\uB85C \uBCC0\uD558\uAE30 \uC2DC\uC791\uD588\uB2E4. \uD0A4\uAC00
+      2\uBBF8\uD130 \uC774\uC0C1\uC73C\uB85C \uCEE4\uC9C0\uACE0, \uC628\uBAB8\uC774
+      \uBE44\uB298\uB85C \uB36E\uC774\uBA70, \uB208\uC5D0\uC11C\uB294 \uB179\uC0C9
+      \uBD88\uAF43\uC774 \uD0C0\uC62C\uB790\uB2E4. \uC774\uBBF8 <b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uC758
+      \uBAA8\uC2B5\uC774\uC5C8\uB2E4. \uB2E4\uB9CC \uBC29\uD574\uB97C \uBC1B\uC544\uC11C
+      \uC778\uC9C0 \uC644\uC804\uD558\uC9C0\uB294 \uC54A\uC558\uB2E4.\r\n\"\uAC10\uD788
+      \uB0B4 \uC758\uC2DD\uC744 \uBC29\uD574\uD558\uB2E4\uB2C8!\""
+    image: {fileID: 0}
+  - type: 1
+    text: 
+    image: {fileID: 21300000, guid: 1c193eac16a841e49927e2761b5de2c8, type: 3}
+  choices:
+  - text: "<b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uAC00 \uD3EC\uD6A8\uD558\uBA70 \uAC70\uB300\uD55C
+      \uAF2C\uB9AC\uB85C \uB2F9\uC2E0\uC744 \uD5A5\uD574 \uD718\uB458\uB800\uB2E4."
+    nextBlock: {fileID: 11400000, guid: 6ee2b2ce597ce3a45965834f3eb10e27, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
+    requiredItemId: []
+  myChapter: 5
+  myIndex: 5
+  maxIndex: 13
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

@@ -43,13 +43,13 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 4
-  myIndex: 0
-  maxIndex: 0
+  myIndex: 6
+  maxIndex: 14
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0
   rewardItems:
-  - tier1_dangeom
+  - tier1_dagger
   - tier1_round_shield
   rewardTrait: 
   rewardMorality: 1

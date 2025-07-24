@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
+  m_Name: Chapter_05_08
+  m_EditorClassIdentifier: 
+  contentElements:
+  - type: 0
+    text: "<size=125%><b>\u300A\uC2E0\uBD80\uC758 \uADC0\uD658\uACFC \uD574\uBC29\u300B</b></size=125%>\r\n\r\n<b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uAC00
+      \uC644\uC804\uD788 \uB3CC \uC870\uAC01\uC0C1\uC774 \uB418\uC5B4 \uBB34\uB108\uC838
+      \uB0B4\uB9AC\uC790, \uB9C8\uCE58 \uB9C8\uBC95\uC774 \uD480\uB9AC\uB4EF \uC81C\uB2E8
+      \uC704\uC758 \uB2F9\uC2E0\uC758 <b>\uC5F0\uC778</b>\uC774 \uCC9C\uCC9C\uD788
+      \uC228\uC744 \uC26C\uAE30 \uC2DC\uC791\uD588\uB2E4. \uCC3D\uBC31\uD588\uB358
+      \uD53C\uBD80\uC5D0 \uB2E4\uC2DC \uD608\uC0C9\uC774 \uB3CC\uC544\uC624\uACE0,
+      \uAD73\uC5B4\uC788\uB358 \uBAB8\uC774 \uBD80\uB4DC\uB7EC\uC6CC\uC84C\uB2E4.\r\n\r\n\"\uC5EC\uAE30\uAC00...
+      \uC5B4\uB514\uC9C0?\" \uADF8\uB140\uAC00 \uB208\uC744 \uB728\uBA70 \uB2F9\uC2E0\uC744
+      \uBCF4\uC558\uB2E4. \"\uB2F9\uC2E0... \uB3CC\uC544\uC654\uAD70\uC694.\"\r\n\r\n\uBC14\uB85C
+      \uADF8\uB54C, <b>\uC2E0\uBD80</b>\uAC00 \uC9C0\uD558 \uACF5\uAC04\uC73C\uB85C
+      \uB6F0\uC5B4\uB4E4\uC5B4\uC654\uB2E4. \uADF8\uC758 \uC637\uC740 \uCC22\uC5B4\uC838
+      \uC788\uC5C8\uACE0 \uC5BC\uAD74\uC5D0\uB294 \uC0C1\uCC98\uAC00 \uC788\uC5C8\uC9C0\uB9CC,
+      \uB208\uC5D0\uB294 \uC548\uB3C4\uC758 \uBE5B\uC774 \uAC00\uB4DD\uD588\uB2E4.\r\n\r\n\"\uB2E4\uD589\uC774\uC57C!
+      \uC131\uACF5\uD588\uAD6C\uB098!\" <b>\uC2E0\uBD80</b>\uAC00 \uC228\uC744 \uD5D0\uB5A1\uC774\uBA70
+      \uB9D0\uD588\uB2E4. \"\uBCD1\uC0AC\uB4E4\uC744 \uD55C\uCC38 \uB3CC\uAC8C \uB9CC\uB4E4\uC5C8\uC9C0\uB9CC,
+      \uC774\uC81C \uADF8\uB4E4\uB3C4 \uC8FC\uC778\uC744 \uC783\uACE0 \uD63C\uB780\uC5D0
+      \uBE60\uC838 \uC788\uC744 \uAC70\uC57C.\"\r\n\r\n\uB2F9\uC2E0\uC740 \uC5F0\uC778\uC744
+      \uC548\uC73C\uBA70 \uB208\uBB3C\uC744 \uD758\uB838\uB2E4. \"\uC774\uC81C \uAD1C\uCC2E\uC544.
+      \uBAA8\uB4E0 \uAC8C \uB05D\uB0AC\uC5B4.\"\r\n\r\n\uC9C0\uD558 \uACF5\uAC04\uC774
+      \uD754\uB4E4\uB9AC\uAE30 \uC2DC\uC791\uD588\uB2E4. <b>\uBC14\uC2E4\uB9AC\uC2A4\uD06C</b>\uC758
+      \uC8FD\uC74C\uACFC \uD568\uAED8 \uC774\uACF3\uC744 \uB5A0\uBC1B\uCE58\uB358
+      \uB9C8\uBC95\uC758 \uD798\uC774 \uC0AC\uB77C\uC9C4 \uAC83 \uAC19\uC558\uB2E4.
+      \uC138 \uC0AC\uB78C\uC740 \uC7AC\uBE68\uB9AC \uC9C0\uD558 \uD1B5\uB85C\uB97C
+      \uD1B5\uD574 \uD0C8\uCD9C\uD588\uB2E4."
+    image: {fileID: 0}
+  choices:
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: 94ea1700b34c02f46ba72f6d5bab57b6, type: 2}
+    requiresProbabilityCheck: 0
+    successBlock: {fileID: 0}
+    failBlock: {fileID: 0}
+    baseChance: 0
+    successChance: 0
+    CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
+    requiredItemId: []
+  myChapter: 5
+  myIndex: 9
+  maxIndex: 13
+  isBattleStart: 0
+  spawnMonsterId: 
+  rewardGold: 0
+  rewardItems: []
+  rewardTrait: 
+  rewardMorality: 0
+  rewardLifePoint: 0
+  rewardSpiritPoint: 0
+  deleteItems: []
+  isShop: 0
+  shopType: 0
+  shopChance: 0
+  isRandomEncounter: 0
+  answer: 0
+  endingBlock: 0

@@ -39,7 +39,7 @@ MonoBehaviour:
       \uB208\uC744 \uC815\uD654\uD574\uC57C \uD560 \uAC83 \uAC19\uC558\uB2E4."
     image: {fileID: 0}
   choices:
-  - text: "\uC0AC\uB2F9\uC758 \uC0D8\uBB3C\uB85C \uC870\uC2EC\uC2A4\uB7FD\uAC8C \uC2EF\uC5B4\uC900\uB2E4"
+  - text: "\uC0AC\uB2F9\uC758 \uC0D8\uBB3C\uB85C \uC870\uC2EC\uC2A4\uB7FD\uAC8C \uC53B\uC5B4\uC900\uB2E4"
     nextBlock: {fileID: 11400000, guid: a834ee113f759ac48ad695e7854b2f70, type: 2}
     requiresProbabilityCheck: 0
     successBlock: {fileID: 0}
@@ -47,6 +47,16 @@ MonoBehaviour:
     baseChance: 0
     successChance: 0
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   - text: "\uBD88\uC744 \uC9C0\uD3B4 \uC774\uB07C\uB97C \uD0DC\uC6B0\uBA74\uC11C
       \uC0AC\uB2F9\uC744 \uB4A4\uC9C4\uB2E4"
@@ -57,6 +67,16 @@ MonoBehaviour:
     baseChance: 0
     successChance: 0
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 2
   myIndex: 21

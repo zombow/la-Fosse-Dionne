@@ -28,7 +28,7 @@ public class ShopPopup : MonoBehaviour
     {
         settingPrefab = SettingManager.Instance._initPrefab;
         settingPrefab.NewGame += CloseShop;
-       
+
         Player = player;
         this.onExit = onExitCallback;
         SetupItems(shopType);
@@ -76,9 +76,16 @@ public class ShopPopup : MonoBehaviour
         {
             ButtonSetup(true);
         }
-        else if (selectSlot.slotType == SlotType.Inventory && selectSlot.slotItem.type != ItemType.Special)
+        else if (selectSlot.slotType == SlotType.Inventory)
         {
-            ButtonSetup(false);
+            if (selectSlot.slotItem.type == ItemType.Special)
+            {
+                itemDetailsPanel.transform.SetParent(shopPanel.transform, false);
+            }
+            else
+            {
+                ButtonSetup(false);
+            }
         }
     }
 
@@ -188,7 +195,7 @@ public class ShopPopup : MonoBehaviour
     {
         Player.OnStatsChanged -= inventoryPanel.UpdateInventoryUI;
         settingPrefab.NewGame -= CloseShop;
-        
+
         Destroy(gameObject);
         onExit?.Invoke();
     }

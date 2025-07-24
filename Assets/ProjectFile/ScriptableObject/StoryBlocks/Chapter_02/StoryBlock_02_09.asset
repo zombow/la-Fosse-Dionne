@@ -35,6 +35,16 @@ MonoBehaviour:
     baseChance: 30
     successChance: 30
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   - text: "\uBE5B\uBC14\uB79C \uC5F4\uC1E0\uB97C \uC0AC\uC6A9\uD55C\uB2E4."
     nextBlock: {fileID: 11400000, guid: a25552cc2c5870940bf1f74bef66884a, type: 2}
@@ -44,6 +54,16 @@ MonoBehaviour:
     baseChance: 0
     successChance: 0
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId:
     - old_key
   myChapter: 2

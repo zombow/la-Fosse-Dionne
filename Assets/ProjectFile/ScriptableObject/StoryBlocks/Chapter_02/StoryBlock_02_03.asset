@@ -51,6 +51,16 @@ MonoBehaviour:
     baseChance: 0
     successChance: 0
     CalcType: 0
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   - text: "\"\uC774 \uC815\uB3C4 \uAE30\uB85D\uC774\uBA74 \uCDA9\uBD84\uD558\uACA0\uAD70\uC694.\"
       (\uBAB0\uB798 \uCD94\uAC00 \uACE0\uC11C\uB97C \uD6D4\uCE58\uB824\uACE0 \uC2DC\uB3C4)"
@@ -61,6 +71,16 @@ MonoBehaviour:
     baseChance: 30
     successChance: 30
     CalcType: 1
+    requiresMoralityCheck: 0
+    moralityLowThreshold: 0
+    moralityHighThreshold: 0
+    UpperMoralityBlock: {fileID: 0}
+    MiddleMoralityBlock: {fileID: 0}
+    LowerMoralityBlock: {fileID: 0}
+    requiresStateCheck: 0
+    StreangthBlock: {fileID: 0}
+    AgilityBlock: {fileID: 0}
+    IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 2
   myIndex: 4
