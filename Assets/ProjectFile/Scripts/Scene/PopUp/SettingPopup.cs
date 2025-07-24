@@ -13,6 +13,8 @@ public class SettingPopup : MonoBehaviour
     public NewGameAlertPopup newGameAlertPopup;
     [HideInInspector] public NewGameAlertPopup newGameAlertPopupInstance;
 
+    [Header("Audio")] public Slider bgmSlider;
+    public Slider sfxSlider;
     [Header("FontSize")] public TextMeshProUGUI fontSizeText;
     public TextMeshProUGUI fontText;
     public Button fontSizeUpButton;
@@ -40,6 +42,12 @@ public class SettingPopup : MonoBehaviour
         thanksToButton.onClick.AddListener(() => SetPopup(thanksToPopupInstance.gameObject));
         thanksToPopupInstance = Instantiate(thanksToPopup, transform);
         thanksToPopupInstance.gameObject.SetActive(false);
+
+        bgmSlider.onValueChanged.AddListener(value => { settingManager.BGMSource.volume = value; });
+        settingManager.BGMSource.volume = bgmSlider.value;
+        sfxSlider.onValueChanged.AddListener(value => { settingManager.SFMSource.volume = value; });
+        settingManager.SFMSource.volume = sfxSlider.value;
+
     }
 
 
@@ -70,6 +78,7 @@ public class SettingPopup : MonoBehaviour
     public void OnNewGame()
     {
         NewGame?.Invoke();
+        settingManager.AudioReset();
         settingManager.FontSizeChanged = null;
         var sceneManager = FindObjectOfType<SceneManager>();
         if (!sceneManager)
@@ -77,10 +86,9 @@ public class SettingPopup : MonoBehaviour
             Debug.LogError("SceneManager Not Found!");
             return;
         }
+
         newGameAlertPopupInstance.gameObject.SetActive(false);
         gameObject.SetActive(false);
         sceneManager.ChangeScene(SceneType.Start);
     }
-
-
 }

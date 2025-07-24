@@ -1241,6 +1241,8 @@ MonoBehaviour:
   newGameButton: {fileID: 7323352382464541238}
   newGameAlertPopup: {fileID: 679053216116679074, guid: 5d1ed1252604640498ca99556d24cb3a, type: 3}
   newGameAlertPopupInstance: {fileID: 0}
+  bgmSlider: {fileID: 4772060916975083892}
+  sfxSlider: {fileID: 4224198716221673268}
   fontSizeText: {fileID: 3032874548668757410}
   fontText: {fileID: 4990469575255233035}
   fontSizeUpButton: {fileID: 7898245181151135927}

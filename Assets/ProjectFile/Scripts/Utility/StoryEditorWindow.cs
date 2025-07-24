@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 
+#if UNITY_EDITOR
 public class StoryEditorWindow : EditorWindow
 {
     private List<StoryBlock> loadedBlocks = new();
@@ -532,3 +533,4 @@ public class StoryEditorWindow : EditorWindow
         EditorUtility.SetDirty(fromNode.block);
     }
 }
+#endif

@@ -11,6 +11,8 @@ public class SettingManager : MonoBehaviour
     public SettingPopup _initPrefab;
     public GameObject safeArea;
     public Action<float> FontSizeChanged;
+    public AudioSource BGMSource;
+    public AudioSource SFMSource;
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,5 +42,10 @@ public class SettingManager : MonoBehaviour
         }
         
         _initPrefab.gameObject.SetActive(!_initPrefab.gameObject.activeSelf);
+    }
+
+    public void AudioReset()
+    {
+        BGMSource.time = 0;
     }
 }
