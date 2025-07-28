@@ -7,7 +7,7 @@ public class StoryManager : MonoBehaviour
 
     public CombatManager combatManager;
     public ShopManager shopmanager;
-
+    public TRPGChatManager trpgChatManager;
     private StoryBlock currentblock = null;
     public PlayerStats player;
 
@@ -17,9 +17,10 @@ public class StoryManager : MonoBehaviour
     {
         currentblock = startBlock;
         Storyscene = storyScene;
-
+        trpgChatManager = gameObject.AddComponent<TRPGChatManager>();
         ShowStoryBlock(currentblock);
     }
+
 
     public void ShowStoryBlock(StoryBlock block)
     {
@@ -27,7 +28,7 @@ public class StoryManager : MonoBehaviour
         Storyscene.UpdateGaugePanel(block); // 
         if (block.isBattleStart) // battle분기
         {
-            Storyscene.BeginBattle(block, this);
+            Storyscene.BeginBattle(block);
             combatManager.InitCombat(player, block.spawnMonsterId, block, () =>
             {
                 ShowStoryBlock(block.choices[0].nextBlock);
@@ -37,12 +38,16 @@ public class StoryManager : MonoBehaviour
         }
         else if (block.isShop) // 상점 분기
         {
-            Storyscene.BeginShop(block, this);
+            Storyscene.BeginShop(block);
             shopmanager.ShowShop(player, block.shopType, () => { ShowStoryBlock(block.choices[0].nextBlock); });
+        }
+        else if (block.isRandomEncounter)
+        {
+            Storyscene.BeginRandomEncounter(block, trpgChatManager); ;
         }
         else
         {
-            Storyscene.Display(block, this);
+            Storyscene.Display(block);
         }
     }
 

@@ -48,7 +48,6 @@ public class StoryScene : MonoBehaviour
     // 직렬화용 데이터 저장
     private List<string> textOriginals = new();
     private StoryBlock currentBlock;
-    private StoryManager currentManager;
 
     private void Awake()
     {
@@ -112,12 +111,11 @@ public class StoryScene : MonoBehaviour
         lastDisplayedElement = -1;
     }
 
-    public void Display(StoryBlock block, StoryManager manager)
+    public void Display(StoryBlock block)
     {
         ClearDisplay();
 
         currentBlock = block;
-        currentManager = manager;
 
         SetChoiceButtonsActive(false);
 
@@ -126,7 +124,7 @@ public class StoryScene : MonoBehaviour
             gaugePanel.SetActive(false);
             storyPanel.anchorMin = new Vector2(0f, 0.18f);
             bottomPanel.anchorMax = new Vector2(1f, 0.18f);
-            
+
             choiceButtonPrefab.EndingUI();
         }
         else
@@ -158,20 +156,43 @@ public class StoryScene : MonoBehaviour
         });
     }
 
-    public void BeginBattle(StoryBlock block, StoryManager storyManager)
+    public void BeginBattle(StoryBlock block)
     {
         currentBlock = block;
-        currentManager = storyManager;
+
         ClearDisplay();
         gaugePanel.SetActive(false);
         storyBG.sprite = battleBgSprite;
     }
 
-    public void BeginShop(StoryBlock block, StoryManager storyManager)
+    public void BeginShop(StoryBlock block)
     {
         currentBlock = block;
-        currentManager = storyManager;
         ClearDisplay();
+    }
+
+    public void BeginRandomEncounter(StoryBlock block, TRPGChatManager chatManager)
+    {
+        currentBlock = block;
+        ClearDisplay();
+
+        GameObject buttonObj = Instantiate(choiceButtonPrefab.gameObject, choiceContainer.transform);
+        ChoiceButton button = buttonObj.GetComponent<ChoiceButton>();
+        chatManager.sendButton = button.sendButton;
+        chatManager.messageInput = button.inputField;
+        button.RandomEncounterUI();
+
+        var textGO = Instantiate(textPrefab, contentTransform);
+        var tmp = textGO.GetComponent<TextMeshProUGUI>();
+        chatManager.chatText = tmp;
+        chatManager.RandomEncounterEnd += () => { EndRandomEncounter(block); };
+        chatManager.InitChat(player);
+        gaugePanel.SetActive(false);
+    }
+
+    private void EndRandomEncounter(StoryBlock block)
+    {
+        SetChoiceButtons(block, manager);
     }
 
     private string GenerateRewardText(StoryBlock block)
@@ -215,7 +236,8 @@ public class StoryScene : MonoBehaviour
             player.playerStateBlock.playerStatus[StateType.Spirit] += currentBlock.rewardSpiritPoint;
             lines.Add($"정신력 변화: {block.rewardSpiritPoint}");
         }
-        if(block.deleteItems != null && block.deleteItems.Count > 0 )
+
+        if (block.deleteItems != null && block.deleteItems.Count > 0)
         {
             foreach (var itemId in currentBlock.deleteItems)
             {
@@ -223,6 +245,7 @@ public class StoryScene : MonoBehaviour
                 lines.Add($"제거된 아이템: {string.Join(", ", AssetManager.Instance.itemList[itemId].name)}");
             }
         }
+
         return lines.Count > 0 ? string.Join("\n", lines) : null;
     }
 

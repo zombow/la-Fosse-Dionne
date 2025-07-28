@@ -35,7 +35,7 @@ MonoBehaviour:
     requiredItemId: []
   myChapter: 5
   myIndex: 4
-  maxIndex: 13
+  maxIndex: 12
   isBattleStart: 1
   spawnMonsterId: monster_necromancer
   rewardGold: 0

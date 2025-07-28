@@ -38,7 +38,7 @@ MonoBehaviour:
     requiredItemId: []
   myChapter: 5
   myIndex: 6
-  maxIndex: 13
+  maxIndex: 12
   isBattleStart: 1
   spawnMonsterId: monster_basilisk
   rewardGold: 0

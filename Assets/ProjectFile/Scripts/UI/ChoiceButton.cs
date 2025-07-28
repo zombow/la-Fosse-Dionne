@@ -6,15 +6,22 @@ using UnityEngine.UI;
 
 public class ChoiceButton : MonoBehaviour
 {
-    public Image buttonIcon;
+    [Header("Story")] public Image buttonIcon;
     public TextMeshProUGUI buttonText;
+
+    [Header("RandomEncounter")] public TMP_InputField inputField;
+    public Button sendButton;
 
     public void EndingUI()
     {
+        buttonIcon.gameObject.SetActive(false);
+        buttonText.gameObject.SetActive(true);
+        inputField.gameObject.SetActive(false);
+        sendButton.gameObject.SetActive(false);
+        
         buttonText.rectTransform.anchorMin = new Vector2(0f, 0f);
         buttonText.rectTransform.anchorMax = new Vector2(1f, 1f);
         buttonText.alignment = TextAlignmentOptions.Center;
-        buttonIcon.gameObject.SetActive(false);
     }
 
     public void StoryUI()
@@ -23,5 +30,17 @@ public class ChoiceButton : MonoBehaviour
         buttonText.rectTransform.anchorMax = new Vector2(1f, 0.8f);
         buttonText.alignment = TextAlignmentOptions.Left;
         buttonIcon.gameObject.SetActive(true);
+        buttonText.gameObject.SetActive(true);
+        
+        inputField.gameObject.SetActive(false);
+        sendButton.gameObject.SetActive(false);
+    }
+
+    public void RandomEncounterUI()
+    {
+        buttonIcon.gameObject.SetActive(false);
+        buttonText.gameObject.SetActive(false);
+        inputField.gameObject.SetActive(true);
+        sendButton.gameObject.SetActive(true);
     }
 }

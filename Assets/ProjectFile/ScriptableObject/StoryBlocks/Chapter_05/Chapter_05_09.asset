@@ -65,7 +65,7 @@ MonoBehaviour:
     requiredItemId: []
   myChapter: 5
   myIndex: 10
-  maxIndex: 13
+  maxIndex: 12
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0

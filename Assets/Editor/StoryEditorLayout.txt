@@ -1,4 +1,5 @@
-Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/StoryBlock_01_01.asset|220|-180
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/Random.asset|223.6047|-150.1042
+Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/StoryBlock_01_01.asset|225.8824|-280
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/StoryBlock_01_02.asset|216.6666|9.259277
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/StoryBlock_01_03.asset|227.7777|192.5927
 Assets/ProjectFile/ScriptableObject/StoryBlocks/Chapter_01/StoryBlock_01_04.asset|227.7775|394.4445

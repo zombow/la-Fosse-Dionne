@@ -797,6 +797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052723539}
   - component: {fileID: 1052723540}
+  - component: {fileID: 1052723541}
   m_Layer: 0
   m_Name: StoryManager
   m_TagString: Untagged
@@ -834,7 +835,20 @@ MonoBehaviour:
   Storyscene: {fileID: 0}
   combatManager: {fileID: 473099725}
   shopmanager: {fileID: 594618478}
+  trpgChatManager: {fileID: 1052723541}
   player: {fileID: 556650827}
+--- !u!114 &1052723541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052723538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aff5da496971649b36129c6bea8287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127738712
 GameObject:
   m_ObjectHideFlags: 0
