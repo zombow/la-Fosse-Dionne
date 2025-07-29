@@ -974,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonIcon: {fileID: 3242776940321803271}
   buttonText: {fileID: 3252108811841210629}
+  storyButton: {fileID: 1766651926157583923}
   inputField: {fileID: 4866633588895761707}
   sendButton: {fileID: 4925931232115206861}
 --- !u!1 &6348441797591063792

@@ -180,11 +180,16 @@ public class StoryScene : MonoBehaviour
         ChoiceButton button = buttonObj.GetComponent<ChoiceButton>();
         chatManager.sendButton = button.sendButton;
         chatManager.messageInput = button.inputField;
-        button.RandomEncounterUI();
+        chatManager.startEncounterButton = button.storyButton;
+        chatManager.startEncounterText = button.buttonText;
+        button.buttonText.text = " ";
+
+        button.BeginRandomEncounterUI();
 
         var textGO = Instantiate(textPrefab, contentTransform);
         var tmp = textGO.GetComponent<TextMeshProUGUI>();
         chatManager.chatText = tmp;
+        chatManager.OnEncounterStart += button.RandomEncounterUI;
         chatManager.RandomEncounterEnd += () => { EndRandomEncounter(block); };
         chatManager.InitChat(player);
         gaugePanel.SetActive(false);

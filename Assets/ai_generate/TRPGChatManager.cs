@@ -65,12 +65,15 @@ public class TRPGChatManager : MonoBehaviour
     [Header("=== 채팅 UI ===")] public TextMeshProUGUI chatText;
     public TMP_InputField messageInput;
     public Button sendButton;
+    public Button startEncounterButton;
+    public TextMeshProUGUI startEncounterText;
 
     [Header("=== 플레이어 데이터 ===")] public PlayerStats playerStats;
 
     public bool isWaitingResponse = false;
     public bool encounterActive = false;
 
+    public Action OnEncounterStart;
     public Action RandomEncounterEnd;
 
     public void InitChat(PlayerStats player)
@@ -78,24 +81,34 @@ public class TRPGChatManager : MonoBehaviour
         Debug.Log("🎮 TRPG 채팅 시스템 시작!");
 
         playerStats = player;
-        
+
         // 버튼 이벤트 연결 (null 체크 추가)
         if (sendButton != null)
             sendButton.onClick.AddListener(SendMessage);
         else
+        {
             Debug.LogWarning("⚠️ SendButton이 연결되지 않았습니다!");
+            RandomEncounterEnd?.Invoke();
+        }
 
         // Enter 키 입력 처리
         if (messageInput != null)
             messageInput.onEndEdit.AddListener(OnEnterPressed);
         else
+        {
             Debug.LogWarning("⚠️ MessageInput이 연결되지 않았습니다!");
+            RandomEncounterEnd?.Invoke();
+        }
 
         if (chatText != null)
-            chatText.text = "⚔️ TRPG 인카운터 시스템에 오신 것을 환영합니다!\n'인카운터 시작' 버튼을 눌러 모험을 시작하세요!";
+            chatText.text = "🎲 TRPG 채팅 시스템이 시작되었습니다!";
         else
+        {
             Debug.LogWarning("⚠️ ChatText가 연결되지 않았습니다!");
+            RandomEncounterEnd?.Invoke();
+        }
 
+        startEncounterButton.gameObject.SetActive(false);
         // 서버 연결 테스트
         StartCoroutine(TestConnection());
     }
@@ -114,18 +127,24 @@ public class TRPGChatManager : MonoBehaviour
             {
                 Debug.Log("✅ 서버 연결 성공!");
                 AddMessageToChat("✅ Python TRPG 서버에 연결되었습니다!");
-                StartEncounter();
+                AddMessageToChat("⚔️ TRPG 인카운터 시스템에 오신 것을 환영합니다!\n'인카운터 시작' 버튼을 눌러 모험을 시작하세요!");
+                startEncounterText.text = "인카운터 시작";
+                startEncounterButton.onClick.AddListener(StartEncounter);
+                startEncounterButton.gameObject.SetActive(true);
             }
             else
             {
                 Debug.LogWarning($"⚠️ 서버 연결 실패: {request.error}");
                 AddMessageToChat("❌ TRPG 서버 연결 실패. 서버를 실행해주세요!");
+                RandomEncounterEnd?.Invoke();
             }
         }
     }
 
     public void StartEncounter()
     {
+        startEncounterButton.onClick.RemoveListener(StartEncounter);
+        OnEncounterStart?.Invoke();
         Debug.Log("🎯 새로운 인카운터 시작!");
         SendMessageToServer("랜덤 인카운터");
         encounterActive = true;
@@ -200,6 +219,7 @@ public class TRPGChatManager : MonoBehaviour
             Debug.LogError($"❌ JSON 직렬화 오류: {e.Message}");
             RemoveLastMessage();
             AddMessageToChat("❌ 메시지 전송 중 오류가 발생했습니다.");
+            RandomEncounterEnd?.Invoke();
             if (sendButton != null)
                 sendButton.interactable = true;
             isWaitingResponse = false;
@@ -231,6 +251,7 @@ public class TRPGChatManager : MonoBehaviour
                 Debug.LogError($"❌ 응답 코드: {request.responseCode}");
                 AddMessageToChat($"❌ 서버 연결 오류: {request.error}");
                 AddMessageToChat("🔧 Python 서버가 실행되고 있는지 확인해주세요!");
+                RandomEncounterEnd?.Invoke();
             }
         }
 
