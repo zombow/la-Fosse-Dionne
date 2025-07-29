@@ -275,7 +275,8 @@ public class TRPGChatManager : MonoBehaviour
                 AddMessageToChat("❌ 서버 응답을 처리할 수 없습니다.");
                 return;
             }
-
+  
+            ApplyChanges(response);
             // GM 응답 표시
             if (!string.IsNullOrEmpty(response.response))
             {
@@ -291,6 +292,9 @@ public class TRPGChatManager : MonoBehaviour
 
                 AddMessageToChat("📜 인카운터가 완료되었습니다! 새로운 모험을 시작할 수 있습니다.");
                 RandomEncounterEnd?.Invoke();
+                
+                RandomEncounterEnd = null; 
+                OnEncounterStart = null; 
             }
 
             Debug.Log("✅ TRPG 응답 처리 완료!");
@@ -303,46 +307,43 @@ public class TRPGChatManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowStatChanges(PlayerStats oldStats, TRPGResponse response)
+    void ApplyChanges(TRPGResponse response)
     {
-        // 스탯 변화 표시
-        string changes = "📊 변화: ";
         bool hasChanges = false;
 
-        if (response.HasTraitScore())
-        {
-            changes += $"성향 {response.trait_score:+0.0} ";
-            hasChanges = true;
-        }
+        // if (response.HasTraitScore()) // 성향 미구현
+        // {
+        //     changes += $"성향 {response.trait_score:+0.0} ";
+        //     hasChanges = true;
+        // }
 
         if (response.HasGoldAmount())
         {
-            changes += $"골드 {response.gold_amount:+0} ";
+            playerStats.playerStateBlock.gold += response.gold_amount;
             hasChanges = true;
         }
 
-        if (response.HasExpAmount())
-        {
-            changes += $"경험치 {response.exp_amount:+0} ";
-            hasChanges = true;
-        }
+        // if (response.HasExpAmount()) // 경험치 미구현
+        // {
+        //     changes += $"경험치 {response.exp_amount:+0} ";
+        //     hasChanges = true;
+        // }
 
         if (response.HasMentalAmount())
         {
-            changes += $"정신력 {response.mental_amount:+0} ";
+            playerStats.playerStateBlock.playerStatus[StateType.Spirit] += response.mental_amount;
             hasChanges = true;
         }
 
         if (response.HasHealthAmount())
         {
-            changes += $"생명력 {response.health_amount:+0} ";
+            playerStats.playerStateBlock.playerStatus[StateType.Life] += response.health_amount;
             hasChanges = true;
         }
 
         if (hasChanges)
         {
-            yield return new WaitForSeconds(1f);
-            AddMessageToChat(changes.Trim());
+            playerStats.RecalculateStats();
         }
     }
 

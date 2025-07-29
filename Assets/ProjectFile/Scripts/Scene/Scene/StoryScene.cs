@@ -198,6 +198,7 @@ public class StoryScene : MonoBehaviour
     private void EndRandomEncounter(StoryBlock block)
     {
         SetChoiceButtons(block, manager);
+        
     }
 
     private string GenerateRewardText(StoryBlock block)
