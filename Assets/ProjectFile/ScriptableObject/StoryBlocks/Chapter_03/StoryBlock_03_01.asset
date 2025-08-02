@@ -72,7 +72,7 @@ MonoBehaviour:
     - mirror_debris
   myChapter: 3
   myIndex: 0
-  maxIndex: 5
+  maxIndex: 6
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0

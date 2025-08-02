@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
-  m_Name: Random
+  m_Name: Random_04
   m_EditorClassIdentifier: 
   contentElements:
   - type: 0
     text: 
     image: {fileID: 0}
   choices:
-  - text: "\uB2E4\uC74C\n"
-    nextBlock: {fileID: 11400000, guid: 28a05828193fd1f40b0dac3546f36ca8, type: 2}
+  - text: "\uB2E4\uC74C"
+    nextBlock: {fileID: 11400000, guid: 4b6642ad8ce1c59458cf727560f455dc, type: 2}
     requiresProbabilityCheck: 0
     successBlock: {fileID: 0}
     failBlock: {fileID: 0}
@@ -36,9 +36,9 @@ MonoBehaviour:
     AgilityBlock: {fileID: 0}
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
-  myChapter: 1
-  myIndex: 1
-  maxIndex: 5
+  myChapter: 4
+  myIndex: 6
+  maxIndex: 15
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0

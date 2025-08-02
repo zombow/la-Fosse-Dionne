@@ -34,7 +34,7 @@ MonoBehaviour:
     image: {fileID: 0}
   choices:
   - text: "\uB2E4\uC74C"
-    nextBlock: {fileID: 11400000, guid: fc1c48e6365641e48a65169ee0a8e302, type: 2}
+    nextBlock: {fileID: 11400000, guid: 18c66619bbee7a0409886465d3c994b7, type: 2}
     requiresProbabilityCheck: 0
     successBlock: {fileID: 0}
     failBlock: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 1
-  myIndex: 4
+  myIndex: 3
   maxIndex: 5
   isBattleStart: 0
   spawnMonsterId: 

@@ -59,7 +59,7 @@ public class TRPGResponse
 
 public class TRPGChatManager : MonoBehaviour
 {
-    [Header("=== Python 서버 설정 ===")] public string serverUrl = "http://127.0.0.1:8000/chat";
+    [Header("=== Python 서버 설정 ===")] public string serverUrl = "https://trpg-ai-api-production.up.railway.app/chat";
     public string playerId = "unity_player";
 
     [Header("=== 채팅 UI ===")] public TextMeshProUGUI chatText;

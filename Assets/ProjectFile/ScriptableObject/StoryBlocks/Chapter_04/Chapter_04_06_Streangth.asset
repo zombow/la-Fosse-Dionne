@@ -40,8 +40,8 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 4
-  myIndex: 4
-  maxIndex: 14
+  myIndex: 3
+  maxIndex: 15
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0

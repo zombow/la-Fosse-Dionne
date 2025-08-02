@@ -10,21 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19c74eb6ad94c2e4897c202283b5f1c8, type: 3}
-  m_Name: StoryBlock_03_03
+  m_Name: Random_01
   m_EditorClassIdentifier: 
   contentElements:
   - type: 0
-    text: "\uADF8\uB9AC\uACE0 \uC9C0\uAE08 \uB2F9\uC2E0 \uC55E\uC5D0 \uC549\uC740
-      \uB178\uC778, \uADF8 \uC544\uBB34\uAC83\uB3C4 \uBE44\uCD94\uC9C0 \uC54A\uB294
-      \uC720\uBC31\uC0C9 \uB208\uB3D9\uC790\uC758 \uC8FC\uC778\uC774 \uBC14\uB85C
-      \uC804\uC124 \uC18D \uC778\uBB3C\uC774\uC5C8\uB2E4. \r\n\uBE44\uB974\uB098\uB294
-      \uB354\uB294 \uC544\uBB34 \uB9D0\uB3C4 \uD558\uC9C0 \uC54A\uC558\uB2E4. \r\n\uADF8\uC800
-      \uADF8\uC758 \uC190 \uC704\uC5D0 \uB193\uC778 \uAC70\uC6B8 \uC870\uAC01\uB9CC\uC774
-      \uC870\uC6A9\uD788 \uD669\uAE08\uBE5B\uC744 \uBA38\uAE08\uACE0 \uC788\uC5C8\uB2E4."
+    text: 
     image: {fileID: 0}
   choices:
-  - text: "\uB2E4\uC74C"
-    nextBlock: {fileID: 11400000, guid: c076630a108b1da4089e13fa0d2c84b1, type: 2}
+  - text: "\uB2E4\uC74C\n"
+    nextBlock: {fileID: 11400000, guid: fc1c48e6365641e48a65169ee0a8e302, type: 2}
     requiresProbabilityCheck: 0
     successBlock: {fileID: 0}
     failBlock: {fileID: 0}
@@ -42,9 +36,9 @@ MonoBehaviour:
     AgilityBlock: {fileID: 0}
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
-  myChapter: 3
-  myIndex: 3
-  maxIndex: 6
+  myChapter: 1
+  myIndex: 4
+  maxIndex: 5
   isBattleStart: 0
   spawnMonsterId: 
   rewardGold: 0
@@ -57,6 +51,6 @@ MonoBehaviour:
   isShop: 0
   shopType: 0
   shopChance: 0
-  isRandomEncounter: 0
+  isRandomEncounter: 1
   answer: 0
   endingBlock: 0
