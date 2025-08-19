@@ -34,7 +34,7 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 4
-  myIndex: 8
+  myIndex: 7
   maxIndex: 15
   isBattleStart: 1
   spawnMonsterId: monster_knight

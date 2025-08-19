@@ -56,7 +56,7 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 0}
     requiredItemId: []
   myChapter: 4
-  myIndex: 7
+  myIndex: 0
   maxIndex: 15
   isBattleStart: 0
   spawnMonsterId: 

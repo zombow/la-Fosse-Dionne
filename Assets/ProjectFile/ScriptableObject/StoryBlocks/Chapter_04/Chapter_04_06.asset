@@ -44,7 +44,7 @@ MonoBehaviour:
     IntelligenceBlock: {fileID: 11400000, guid: e6b22d10742ae0647a06504ae3825905, type: 2}
     requiredItemId: []
   myChapter: 4
-  myIndex: 0
+  myIndex: 1
   maxIndex: 15
   isBattleStart: 0
   spawnMonsterId: 

@@ -18,7 +18,7 @@ MonoBehaviour:
     image: {fileID: 0}
   choices:
   - text: "\uB2E4\uC74C"
-    nextBlock: {fileID: 11400000, guid: b5051da117c1dd34fb049e39be5682d0, type: 2}
+    nextBlock: {fileID: 11400000, guid: 4b6642ad8ce1c59458cf727560f455dc, type: 2}
     requiresProbabilityCheck: 0
     successBlock: {fileID: 0}
     failBlock: {fileID: 0}
