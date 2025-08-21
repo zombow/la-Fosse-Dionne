@@ -81,6 +81,6 @@ def request_gemini(messages_history):
  - Google Gemini AI와 통신
  - PDF 문서 로딩 (게임 세계관 자료)
  - API 오류 처리 및 재시도 로직
----
+   
 ### 4. simple_chat.py - 테스트 클라이언트
 - 콘솔에서 API를 테스트할 수 있는 간단한 클라이언트
