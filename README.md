@@ -1,6 +1,8 @@
 # la-Fosse-Dionne
 > Google Gemini AI를 이용한 모바일 TRPG게임
 
+### APK배포 : https://drive.google.com/file/d/1wuhTFpJJciYYybvyZrKvonBCSWMywGQ-/view?usp=drive_link
+
 ## 1. 게임 기획
 AI가 실시간으로 생성하는 랜덤 인카운터를 통해 매번 새로운 이야기를 경험할 수 있는 모바일 TRPG 게임.
 플레이어는 등장하는 상황과 캐릭터와의 대화를 통해 서사를 풀어나가며, 반복적인 플레이에도 변주되는 재미를 느낄 수 있도록하고
