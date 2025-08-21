@@ -42,6 +42,7 @@ Unity 게임을 위한 FastAPI 백엔드 서비스 - Railway에서 실행 중
 
 📖 소개
 TRPG AI API는 Google Gemini AI를 활용하여 동적인 TRPG 랜덤 인카운터를 생성하는 RESTful API 서버입니다. Unity 클라이언트와 완벽하게 연동되며, 플레이어의 행동에 따라 실시간으로 스토리가 변화하고 게임 스탯을 자동으로 관리합니다.
+
 ✨ 주요 기능
 
 🤖 AI 게임 마스터: Gemini 1.5 Pro가 실시간으로 TRPG 시나리오 생성
@@ -52,6 +53,7 @@ TRPG AI API는 Google Gemini AI를 활용하여 동적인 TRPG 랜덤 인카운�
 ⚡ Unity 최적화: CORS 설정 및 JSON 기반 통신으로 간편한 연동
 
 🚀 빠른 시작
+
 🌐 배포된 서버 사용 (바로 시작)
 이미 Railway에 배포된 서버를 바로 사용할 수 있습니다:
 API 엔드포인트: https://trpg-ai-api-production.up.railway.app/chat
@@ -75,7 +77,9 @@ public class TRPGResponse
     public int? mental_amount;
     public int? health_amount;
 }
+
 🏠 로컬 개발 환경
+
 bash# 저장소 클론
 git clone https://github.com/yourusername/trpg-ai-api.git
 cd trpg-ai-api
@@ -98,6 +102,7 @@ python main.py
 💡 API 키 발급: Google AI Studio에서 무료로 발급받을 수 있습니다.
 
 📡 API 사용법
+
 기본 엔드포인트
 MethodEndpointDescriptionGET/서버 상태 확인GET/health헬스체크POST/chatAI 인카운터 진행
 인카운터 시작
@@ -123,9 +128,12 @@ json{
   "mental_amount": 1,
   "health_amount": 0
 }
+
 🎲 게임 시스템
+
 스코어 계산 규칙
 요소선한 행동중립 행동악한 행동성향값+1 ~ +20-1 ~ -2골드+3 ~ 10+5 ~ 15+15 ~ 30경험치+1 ~ 2+2 ~ 3+3 ~ 5정신력+1 (평화로운 해결)0-1 (스트레스)생명력+1 (휴식/치료)0-1 (위험한 행동)
+
 인카운터 예시
 🎭 시나리오: 여관에서 만난 울고 있는 상인
 📝 선택지:
@@ -141,6 +149,7 @@ json{
 메모리 기반: 서버 재시작 시 세션 초기화
 
 🏗️ 프로젝트 구조
+
 trpg-ai-api/
 ├── 🚀 main.py              # FastAPI 서버 엔트리포인트
 ├── 🧠 logic.py             # 게임 로직 및 AI 처리
@@ -171,6 +180,7 @@ PDF 문서 로딩 및 세계관 확장
 API 오류 처리 및 재시도 로직
 
 🌐 Unity 연동 가이드
+
 C# 스크립트 예시
 csharpusing System;
 using UnityEngine;
@@ -232,7 +242,9 @@ public class TRPGManager : MonoBehaviour
         }
     }
 }
+
 🚀 Railway 배포
+
 One-Click 배포
 수동 배포 단계
 
@@ -248,6 +260,7 @@ Railway Dashboard 접속
 
 
 환경변수 설정 ⚠️ 중요!
+
 Railway Variables 탭에서 추가:
 GEMINI_API_KEY = your_actual_gemini_api_key_here
 
@@ -256,6 +269,7 @@ bashcurl https://your-app.railway.app/health
 
 
 🧪 테스트 가이드
+
 API 테스트
 bash# 1. 서버 상태 확인
 curl https://trpg-ai-api-production.up.railway.app/
@@ -269,12 +283,16 @@ curl -X POST https://trpg-ai-api-production.up.railway.app/chat \
 curl -X POST https://trpg-ai-api-production.up.railway.app/chat \
   -H "Content-Type: application/json" \
   -d '{"message": "친절하게 도와준다", "user_id": "test"}'
-성공 확인
+  
+✅성공 확인
+
 ✅ 서버 실행: {"status": "online"} 응답
 ✅ AI 응답: Gemini가 실제 TRPG 시나리오 생성
 ✅ 세션 관리: 사용자별 인카운터 진행상황 저장
 ✅ 스코어 시스템: 행동에 따른 점수 변화
+
 🔧 문제해결
+
 <details>
 <summary><strong>🚫 Gemini API 키 오류</strong></summary>
 bash# 환경변수 확인
