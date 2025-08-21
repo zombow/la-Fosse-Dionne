@@ -437,23 +437,15 @@ cp your_game_rules.pdf pdfs/
 
 ## 🙏 감사의 말
 
-- [Google Gemini](https://ai.google.dev/) - AI 모델 제공
-- [FastAPI](https://fastapi.tiangolo.com/) - 웹 프레임워크
-- [Railway](https://railway.app/) - 호스팅 플랫폼
-
-## 📞 지원
-
-- 🐛 **버그 리포트**: [Issues](https://github.com/yourusername/trpg-ai-api/issues)
-- 💡 **기능 요청**: [Discussions](https://github.com/yourusername/trpg-ai-api/discussions)
+- 이소연(010-2741-1382) - 아트 
+- 양호열(010-6861-0830) - 초기 전투 구현 
+- 조연모(010-6695-5272) - 초기 프론트 구현
+- 박준영(010-3763-6671) - 음악 
 
 ---
 
 <div align="center">
 
-**⭐ 이 프로젝트가 유용하다면 스타를 눌러주세요!**
 
-**🎮 Unity TRPG 개발자를 위한 완전한 AI 백엔드 솔루션**
-
-Made with ❤️ by **박현열**
 
 </div>
