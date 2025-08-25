@@ -22,6 +22,8 @@ AI가 실시간으로 생성하는 랜덤 인카운터를 통해 매번 새로�
  - 아트디자인 `1명`
 
 ### 흐름도
+<img width="2276" height="1078" alt="image" src="https://github.com/user-attachments/assets/195b03a5-5f1d-4b56-93b8-4e47731b793d" />
+
 <img width="1088" height="1153" alt="image" src="https://github.com/user-attachments/assets/9912c046-93c1-4f91-a20f-7dcd9da5ea9d" />
 
 ## 랜덤 인카운터 AI구조 (박현열)
